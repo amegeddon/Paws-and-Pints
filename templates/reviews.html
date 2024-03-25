@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paws and Pints</title>
+</head>
+<body>
+    {% for review in reviews %}
+        {{ reviews.pub_name }}<br>
+        {{ reviews.location }}<br>
+        {{ reviews.rating }}<br>
+        {{ reviews.review_title }}<br>
+        {{ reviews.review_text }}<br>
+        {{ reviews.date_visited }}<br>
+        {{ reviews.photo }}<br>
+        {{ reviews.recommend }}<br>
+    {% endfor %}
+</body>
+</html>
