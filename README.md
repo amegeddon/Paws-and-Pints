@@ -453,20 +453,12 @@ The website was tested on the following devices:
 
 | Bug                                                                                                                                         | Fix                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| Initial rendering of reviews.html failed with a cursor object error.  | The problem arose from using 'reviews.pub_name' to access database information. However, 'reviews' represents the entire cursor object retrieved from MongoDB, while 'pub_name' is an attribute of each individual document (review) within the cursor. Changing 'reviews' to 'review' in the iteration loop resolved the error
+| Initial rendering of reviews.html failed with a cursor object error.  | The problem arose from using 'reviews.pub_name' to access database information. However, 'reviews' represents the entire cursor object retrieved from MongoDB, while 'pub_name' is an attribute of each individual document (review) within the cursor. Changing 'reviews' to 'review' in the iteration loop resolved the error.   | 
 
-Therefore, the correct approach is to use review.pub_name to target the specific attribute of each review document. This distinction ensures accurate retrieval and rendering of data from the database.   | 
+ Side navbar mobile function not working, 404 error on js file being returned  | A simple typo had caused this error, the Javascript folder had been named 'jss'. Correcting it to 'js', resolved the issue and the scripts.js file was able to be located and executed    | 
 
 
-
-ProvideHint function failing to display hint | Console log debugging revealed that hintIndex was not returning as true, reason being that the original names array was in lowercase and the hiddenName was being changed to uppercase. issue resolved by adding "to.lowercase" to hiddenName in hintIndex variable.        
-| Message displayed when correct answer found was clashing with the quote message that is also displayed   |   Giving the quote message a unique id seperate from that of the message resolved this.                                                               |                             | Added a unique id to the quote. 
-| On mobile devices in landscape orientation game is dominated by image and unplayable       |  Added media query targeting devices in landscape orientation.              |
-|   After tidying code game stopped functioning as expected. Letters that were in the guessed name were not being displayed.                                               |  I had moved the const letters variable into the global list of variables. The letter was not being converted to uppercase and therefore was not validating as true. Placing the letters variable back into the handleGuess function corrected the bug.                       |
-| Failing html validator as section tag used without heading  | Changed to div elements instead                                                    |
-Mobile landscape media query clashing with tablet media query  |     Moving the media query from bottom of style sheet to below mobile queries helped. Targeting problematic elements with more specific css using classes such as .heading for the game title did solve some of the issues, but left some unsolvable ones.  Adding max height 500px to the mobile orientation landscape media query stopped the clash with the tablet media query and resolved the issue.                              | 404 page scoring 95 on best practice lighthouse testing | Console logging an error from js script, removed script tag from 404 html to resolve problem. 
-| Parse error in css file   |  Css validator highlighted a parse error at line 597, unclosed media query on line 510 causing the problem. Closing it resolved the issue.                           
-| Empty H3 element containing wordDisplay returning a warning on html validator           | Added a non breaking space as content inside the heading element so as to give it content that does not impact on the visual representation of the wordDisplay.                             |
+             |
 
 ## Deployment
 
