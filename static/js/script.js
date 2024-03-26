@@ -1,3 +1,12 @@
 $(document).ready(function () {
     $(".sidenav").sidenav({edge: "right"});
 });
+
+function togglePasswordVisibility() {
+    var passwordField = document.getElementById("password");
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+    } else {
+        passwordField.type = "password";
+    }
+}
