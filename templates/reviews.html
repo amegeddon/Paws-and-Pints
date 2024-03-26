@@ -10,12 +10,12 @@
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">{{ review.pub_name }}<i class="material-icons right"></i></span>
-                <p><i class="fas fa-map-marker-alt"></i>Location: {{ review.location }}</p> 
-                <p>{{ review.rating }}</p>
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong>{{ review.location }}</p> 
                 <div class="stars">
+                    <p class="rating bold">Rating: </p>
                     {% for i in range(1, 6) %}
                         {% if review.rating|int >= i %}
-                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star filled"><i class="fas fa-star"></i></span>
                         {% else %}
                             <span class="star"><i class="far fa-star"></i></span>
                         {% endif %}

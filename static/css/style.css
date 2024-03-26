@@ -3,12 +3,22 @@
 }
 
 .stars {
-    display: inline-block;
+    display: flex;
+    align-items: center;
 }
+
+.rating {
+    margin-right: 50px;
+}
+
 .star {
     font-size: 20px;
     color: gray;
 }
 .filled {
     color: yellow;
+}
+
+.bold {
+    font-weight: 500;
 }
