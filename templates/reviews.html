@@ -1,25 +1,36 @@
 {% extends "base.html" %}
 {% block content %}
-
  
-    <div class="card">
-        {% for review in reviews %}
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="{{ url_for('static', filename='images/bunny.jpg') }}">
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">{{ review.pub_name }}<i class="material-icons right"></i></span>
-          <p>{{ review.location }}</p>
-          <p>{{ review.rating }}</p>
-          <p>{{ review.rating }}</p>
-          <p>{{ review.recommend }}</p>
-          <p>{{ review.date_visited }}</p>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">{{ review.review_title }}<i class="material-icons right">close</i></span>
-          <p>{{ review.review_text }}</p>
+<div class="row">
+    {% for review in reviews %}
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="{{ url_for('static', filename='images/bunny.jpg') }}">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">{{ review.pub_name }}<i class="material-icons right"></i></span>
+                <p><i class="fas fa-map-marker-alt"></i>Location: {{ review.location }}</p> 
+                <p>{{ review.rating }}</p>
+                <div class="stars">
+                    {% for i in range(1, 6) %}
+                        {% if review.rating|int >= i %}
+                            <span class="star"><i class="fas fa-star"></i></span>
+                        {% else %}
+                            <span class="star"><i class="far fa-star"></i></span>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <p>{{ review.recommend }}</p>
+                <p>{{ review.date_visited }}</p>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">{{ review.review_title }}<i class="material-icons right">close</i></span>
+                <p>{{ review.review_text }}</p>
+            </div>
         </div>
     </div>
-      {% endfor %}    
+    {% endfor %}
+</div>
 
- {% endblock %}
+{% endblock %}
