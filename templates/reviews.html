@@ -4,13 +4,13 @@
 <div class="row">
     {% for review in reviews %}
     <div class="col s12 m4">
-        <div class="card">
+        <div class="card" style="position: relative;">
             <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="{{ url_for('static', filename='images/bunny.jpg') }}">
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">{{ review.pub_name }}<i class="fas fa-angle-down right"></i></span>
-                <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong>{{ review.location }}</p> 
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Location: </strong>{{ review.location }}</p> 
                 <div class="stars">
                     <p class="rating bold">Rating: </p>
                     {% for i in range(1, 6) %}
@@ -27,6 +27,21 @@
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">{{ review.review_title }}<i class="fas fa-times right"></i></span>
                 <p>{{ review.review_text }}</p>
+            </div>
+            
+        <!-- Card icon section -->    
+            <div class="card-icons" style="position: absolute; bottom: 0; right: 0;">
+                {% if review.dogs_allowed %}
+                    <i class="fas fa-paw tooltipped" data-position="bottom" data-tooltip="Dogs allowed inside"></i>
+                {% endif %}
+                
+                {% if review.food_served %}
+                    <i class="fas fa-utensils tooltipped" data-position="bottom" data-tooltip="Serves Food"></i>
+                {% endif %}
+
+                {% if review.water_provided %}
+                <i class="mdi--bowl tooltipped" data-position="bottom" data-tooltip="Water provided for dogs"></i>
+                {% endif %}
             </div>
         </div>
     </div>
