@@ -1,15 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
 
-    {% for review in reviews %}
-        {{ review.pub_name }}<br>
-        {{ review.location }}<br>
-        {{ review.rating }}<br>
-        {{ review.review_title }}<br>
-        {{ review.review_text }}<br>
-        {{ review.date_visited }}<br>
-        {{ review.photo }}<br>
-        {{ review.recommend }}<br>
-    {% endfor %}
+ 
+    <div class="card">
+        {% for review in reviews %}
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="{{ url_for('static', filename='images/bunny.jpg') }}">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">{{ review.pub_name }}<i class="material-icons right"></i></span>
+          <p>{{ review.location }}</p>
+          <p>{{ review.rating }}</p>
+          <p>{{ review.rating }}</p>
+          <p>{{ review.recommend }}</p>
+          <p>{{ review.date_visited }}</p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">{{ review.review_title }}<i class="material-icons right">close</i></span>
+          <p>{{ review.review_text }}</p>
+        </div>
+    </div>
+      {% endfor %}    
 
  {% endblock %}
