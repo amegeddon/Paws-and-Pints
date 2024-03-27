@@ -36,14 +36,14 @@
                 </div>
             </div>
     
-         <!-- Food served radio buttons -->
+         <!-- Food served radio button -->
             <div class="row">
                 <div class="input-field col s12">
                     <label class="flex-row">
                         <i class="fas fa-utensils prefix light-blue-text text-darken-4"></i>
                         <span class="question">Does the pub serve food?</span>
                         <span class="radio-group">
-                            <label>
+                            <label class="radio_label">
                                 <input name="food_served" type="radio" value="yes" />
                                 <span>Yes</span>
                             </label>
@@ -56,9 +56,121 @@
                 </div>
             </div>
 
+        <!-- Dogs allowed inside radio button -->
+            <div class="row margin-custom">
+                <div class="input-field col s12">
+                    <label class="flex-row">
+                        <i class="fas fa-paw prefix light-blue-text text-darken-4"></i>
+                        <span class="question">Are dogs allowed inside the Pub?</span>
+                        <span class="radio-group">
+                            <label class="radio_label">
+                                <input name="dogs_allowed" type="radio" value="yes" />
+                                <span>Yes</span>
+                            </label>
+                            <label>
+                                <input name="dogs_allowed" type="radio" value="no" />
+                                <span>No</span>
+                            </label>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+             <!-- Dogs water provided radio button -->
+             <div class="row margin-custom">
+                <div class="input-field col s12">
+                    <label class="flex-row">
+                        <i class="mdi--bowl prefix light-blue-text text-darken-4"></i>
+                        <span class="question">Does the Pub provide drinking water for dogs?</span>
+                        <span class="radio-group">
+                            <label class="radio_label">
+                                <input name="water_provided" type="radio" value="yes" />
+                                <span>Yes</span>
+                            </label>
+                            <label>
+                                <input name="water_provided" type="radio" value="no" />
+                                <span>No</span>
+                            </label>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+             <!-- Dog meals offered radio button -->
+             <div class="row margin-custom">
+                <div class="input-field col s12">
+                    <label class="flex-row">
+                        <i class="fa-solid fa-bowl-food prefix light-blue-text text-darken-4"></i>
+                        <span class="question">Does the Pub offer Dog meals?</span>
+                        <span class="radio-group">
+                            <label class="radio_label">
+                                <input name="dog_meals" type="radio" value="yes" />
+                                <span>Yes</span>
+                            </label>
+                            <label>
+                                <input name="dog_meals" type="radio" value="no" />
+                                <span>No</span>
+                            </label>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+             <!-- Enjoyable walks nearby radio button -->
+             <div class="row margin-custom">
+                <div class="input-field col s12">
+                    <label class="flex-row">
+                        <i class="fas fa-hiking prefix light-blue-text text-darken-4"></i>
+                        <span class="question">Are there enjoyable walks nearby that are dog-friendly?</span>
+                        <span class="radio-group">
+                            <label class="radio_label">
+                                <input name="nearby_walks" type="radio" value="yes" />
+                                <span>Yes</span>
+                            </label>
+                            <label>
+                                <input name="nearby_walks" type="radio" value="no" />
+                                <span>No</span>
+                            </label>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- loving_staff radio button -->
+            <div class="row margin-custom">
+                <div class="input-field col s12">
+                    <label class="flex-row">
+                        <i class="fas fa-heart prefix light-blue-text text-darken-4"></i>
+                        <span class="question"> Do the staff offer a warm and friendly welcome to dogs?</span>
+                        <span class="radio-group">
+                            <label class="radio_label">
+                                <input name="loving_staff" type="radio" value="yes" />
+                                <span>Yes</span>
+                            </label>
+                            <label>
+                                <input name="loving_staff" type="radio" value="no" />
+                                <span>No</span>
+                            </label>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+           <!-- Upload Photo -->
+            <div class="row margin-custom">
+                <div class="input-field col s12">
+                    <label class="flex-row" for="photo">
+                        <i class="fas fa-upload prefix light-blue-text text-darken-4"></i>
+                        Upload Photo:
+                    </label>
+                    <input type="file" id="photo" name="photo" class="validate">
+                </div>
+            </div>
+
+
 
             <!-- submit button -->
-            <div class="row">
+            <div class="row mt-2">
                 <div class="col s12 center-align">
                     <button type="submit" class="btn-large light-blue darken-1 text-shadow">
                         Add Pub <i class="fas fa-plus-square right"></i>

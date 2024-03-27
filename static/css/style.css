@@ -47,10 +47,20 @@
 
 
   /* radio buttons on add_pub.html */
-  .question {
+.question {
     margin-left: 2.9em; 
     margin-right: 2em;
 }
+
+.radio_label {
+    margin-right: 3em;
+    }
+
+.margin-custom {
+    margin-top: 4em;
+}
+
+
 
 
   body {
