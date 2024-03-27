@@ -19,10 +19,10 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-@app.route("/get_reviews")
-def get_reviews():
-    reviews = mongo.db.reviews.find()
-    return render_template("reviews.html", reviews=reviews)
+@app.route("/get_pubs")
+def get_pubs():
+    pubs = mongo.db.pubs.find()
+    return render_template("reviews.html", pubs=pubs)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -97,6 +97,10 @@ def logout():
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("login"))
+
+@app.route('/write_review')
+def write_review():
+    return render_template('write_review.html')
 
 
 if __name__ == "__main__":
