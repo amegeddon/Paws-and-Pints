@@ -104,9 +104,40 @@ def write_review():
     return render_template('write_review.html')
 
 
-@app.route('/add_pub')
+@app.route("/add_pub", methods=["GET", "POST"])
 def add_pub():
-    return render_template('add_pub.html')
+    if request.method == "POST":
+        
+        pub_name = request.form.get("name")
+        pub_location = request.form.get("location")
+        pub_description = request.form.get("description")
+        # Converts checkbox values to Boolean
+        food_served = request.form.get("food_served") == "yes"
+        dogs_allowed = request.form.get("dogs_allowed") == "yes"
+        water_provided = request.form.get("water_provided") == "yes"
+        dog_meals = request.form.get("dog_meals") == "yes"
+        nearby_walks = request.form.get("nearby_walks") == "yes"
+        loving_staff = request.form.get("loving_staff") == "yes"
+        
+        # Constructs dictionary
+        pub_data = {
+            "name": pub_name,
+            "location": pub_location,
+            "description": pub_description,
+            "food_served": food_served,
+            "dogs_allowed": dogs_allowed,
+            "water_provided": water_provided,
+            "dog_meals": dog_meals,
+            "nearby_walks": nearby_walks,
+            "loving_staff": loving_staff
+        }
+        
+        mongo.db.pubs.insert_one(pub_data)
+        
+        flash("Pub Successfully Added")
+        return redirect(url_for("get_pubs")) 
+    
+    return render_template("add_pub.html")
 
 
 if __name__ == "__main__":
