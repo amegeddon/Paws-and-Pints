@@ -99,9 +99,12 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route('/write_review')
+@app.route('/write_review', methods=["GET", "POST"])
 def write_review():
-    return render_template('write_review.html')
+    pub_id = request.args.get('pub_id')
+    print("Pub ID:", pub_id)  # Add this line to print the pub ID
+    return render_template("write_review.html", pub_id=pub_id)
+
 
 
 @app.route("/add_pub", methods=["GET", "POST"])
