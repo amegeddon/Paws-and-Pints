@@ -85,21 +85,20 @@
 
 ### Site User
 
-1. Comprehensible Game Instuctions: instructions that are easy to grasp, ensuring a straightforward understanding of how to play the game.
-2. Adaptable Difficulty Levels: A feature allowing me to choose from various difficulty levels, tailoring the game's challenge to my preference.
-3. A hint function that displays on the final attempt at guessing the hidden thinker. 
-4. Progress Tracking: A visual representation of my progress alongside the remaining number of attempts in each round, ensuring a clear understanding of my progress.
-5. Result Display: After successfully guessing a word, I would like to see a message of congratulations alongside a philosophical quote, adding a sense of achievement to the gameplay.
-6. After incorrectly guessing the word, I would like to immediately know what the correct answer was. 
-7. A scoreboard to track the frequency of correct answers, providing a clear record of successful guesses. 
+1. Discover dog-friendly pubs across Anglesey and explore their amenities and services.
+2. Engage with authentic reviews from fellow users to make informed decisions about pub visits.
+3. Contribute to the community by adding new dog-friendly pubs and sharing personal experiences through reviews.
+4. Enhance their experience by creating an account, enabling them to save favorite pubs for future reference on their profile page. 
+5. Enjoy the flexibility of editing their review entries to reflect updated experiences or feedback.
+6. Exercise control over their account by having the option to delete it at their discretion, ensuring user autonomy and privacy.
 
 
 
 ### Site Owner
 
-8. Clear Game Understanding and navigation: Ensuring users easily comprehend the game mechanics for a seamless and enjoyable experience.
-9. Self-Challenge Capability: Providing users with the opportunity to change the difficulty setting and enhance their skills while playing.
-10. Full Responsiveness: Designing the game to adapt effortlessly to various screen sizes and devices, ensuring accessibility for all users.
+8. Manage pub entries and reviews seamlessly with options to add, edit, or delete content effortlessly.
+9. Create an immersive and user-friendly platform with intuitive navigation, captivating visuals, and an appealing design.
+10. Ensure a seamless user experience across all devices by implementing full responsiveness, allowing the website to adapt seamlessly to different screen sizes and device types.
 11. The user to be directed to a custom 404 error page upon entering a non-existent URL, eliminating the need to rely on the browser's back button.
 
 

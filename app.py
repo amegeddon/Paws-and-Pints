@@ -134,7 +134,7 @@ def add_pub():
         
         mongo.db.pubs.insert_one(pub_data)
         
-        flash("Pub Successfully Added")
+        flash("Thankyou, Pub Successfully Added")
         return redirect(url_for("get_pubs")) 
     
     return render_template("add_pub.html")
