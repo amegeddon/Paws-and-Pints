@@ -98,9 +98,15 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
+
 @app.route('/write_review')
 def write_review():
     return render_template('write_review.html')
+
+
+@app.route('/add_pub')
+def add_pub():
+    return render_template('add_pub.html')
 
 
 if __name__ == "__main__":
