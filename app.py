@@ -101,9 +101,28 @@ def logout():
 
 @app.route('/write_review', methods=["GET", "POST"])
 def write_review():
-    pub_id = request.args.get('pub_id')
-    print("Pub ID:", pub_id)  # Add this line to print the pub ID
-    return render_template("write_review.html", pub_id=pub_id)
+    if request.method == "POST":
+        
+        title = request.form.get('title')
+        review_text = request.form.get('review_text')
+        user_rating = request.form.get('user_rating')
+        pub_id = request.form.get('pub_id')
+        
+        review_data = {
+            "title": title,
+            "review_text": review_text,
+            "user_rating": user_rating,
+            "pub_id": pub_id
+        }
+        
+        mongo.db.reviews.insert_one(review_data)
+        
+        flash("Review Successfully Added")
+        return redirect(url_for("get_pubs"))  
+        
+    else:
+        pub_id = request.args.get('pub_id')
+        return render_template("write_review.html", pub_id=pub_id)
 
 
 
