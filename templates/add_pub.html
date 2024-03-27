@@ -35,20 +35,28 @@
                     <label for="pub_description">Pub Description</label>
                 </div>
             </div>
-          
-            <!-- food served toggle -->
-			<div class="row">
-				<div class="input-field col s12">
-					<div class="switch">
+    
+         <!-- Food served radio buttons -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <label class="flex-row">
                         <i class="fas fa-utensils prefix light-blue-text text-darken-4"></i>
-						<label for="food_served">
-                            <input type="checkbox" id="food_served" name="food_served">
-                            <span class="lever"></span>
-                            Does the pub serve food?
-                        </label>
-					</div>
-				</div>
-			</div>
+                        <span class="question">Does the pub serve food?</span>
+                        <span class="radio-group">
+                            <label>
+                                <input name="food_served" type="radio" value="yes" />
+                                <span>Yes</span>
+                            </label>
+                            <label>
+                                <input name="food_served" type="radio" value="no" />
+                                <span>No</span>
+                            </label>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+
             <!-- submit button -->
             <div class="row">
                 <div class="col s12 center-align">

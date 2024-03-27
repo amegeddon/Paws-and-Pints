@@ -46,6 +46,13 @@
   }
 
 
+  /* radio buttons on add_pub.html */
+  .question {
+    margin-left: 2.9em; 
+    margin-right: 2em;
+}
+
+
   body {
     background-image: 
     background-size: cover;
