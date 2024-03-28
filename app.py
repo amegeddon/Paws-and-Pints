@@ -227,6 +227,45 @@ def add_pub():
     return render_template("add_pub.html")
 
 
+@app.route("/confirm_delete_review/<review_id>", methods=["GET", "POST"])
+def confirm_delete_review(review_id):
+    if request.method == "POST":
+        try:
+            review_id_obj = ObjectId(review_id)
+        except Exception as e:
+            flash("Invalid review ID")
+            return redirect(url_for("profile", username=session['user']))
+
+        review = mongo.db.reviews.find_one({"_id": review_id_obj})
+        if not review:
+            flash("Review not found")
+            return redirect(url_for("profile", username=session['user']))
+
+        return render_template("confirm_delete_review.html", review=review)
+
+
+
+@app.route("/delete_review/<review_id>", methods=["POST"])
+def delete_review(review_id):
+    try:
+        review_id_obj = ObjectId(review_id)
+    except Exception as e:
+        flash("Invalid review ID")
+        return redirect(url_for("profile", username=session['user']))
+
+    result = mongo.db.reviews.delete_one({"_id": review_id_obj})
+    if result.deleted_count == 0:
+        flash("Review not found")
+    else:
+        flash("Review Successfully Deleted")
+
+    return redirect(url_for("profile", username=session['user']))
+
+# Iterate over endpoint names
+for rule in app.url_map.iter_rules():
+    print(rule.endpoint)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
