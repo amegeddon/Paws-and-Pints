@@ -1,17 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
- 
 <div class="row">
     {% for pub in pubs %}
     <div class="col s12 m4">
         <div class="card" style="position: relative;">
+            <!-- Card Image and Content -->
             <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="{{ url_for('static', filename='images/bunny.jpg') }}">
             </div>
             <div class="card-content">
+                <!-- Card Title and Details -->
                 <span class="card-title activator grey-text text-darken-4">{{ pub.name }}<i class="fas fa-angle-down right"></i></span>
                 <p><i class="fas fa-map-marker-alt"></i> <strong>Location: </strong>{{ pub.location }}</p> 
                 <p>Debugging Average Rating: {{ pub.average_rating }}</p>
+                
+                <!-- Star Rating -->
                 <div class="stars">
                     <p class="rating bold">Rating: </p>
                     {% for i in range(1, 6) %}
@@ -23,19 +26,22 @@
                     {% endfor %}
                 </div>
                 
+                <!-- Description -->
                 <p>{{ pub.description }}</p><br>
             </div>
                 
+            <!-- Card Reveal Section -->
             <div class="card-reveal">
+                <!-- Card Title and Close Icon -->
                 <span class="card-title grey-text text-darken-4"><i class="fas fa-times right"></i></span>
                 
-                <!-- Print pub ID for debugging -->
+                <!-- Pub ID for Debugging -->
                 <div class=""><p>{{ pub._id }}</p></div>
                 
-                <!-- Link to write a review with the pub ID -->
+                <!-- Link to Write a Review -->
                 <a href="{{ url_for('write_review', pub_id=pub._id) }}"><i class="fas fa-pencil-alt left"></i> Write a Review</a>
     
-                <!-- Reviews for the current pub -->
+                <!-- Reviews for the Current Pub -->
                 {% for review in pub.reviews %}
                     <div class="card-panel grey lighten-5">
                         <div class="row">
@@ -44,19 +50,43 @@
                                 <p>{{ review.review_text }}</p>
                                 <p>Rating: {{ review.user_rating|int }}</p>
 
+                                <!-- Star Rating for Reviews -->
                                 <div class="stars">
                                     {% for i in range(review.user_rating|int) %}
-                                    <i class="fas fa-star"></i>
-                                  {% endfor %}
+                                        <i class="fas fa-star"></i>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
+            
+            <!-- Card Icon Section -->
+            <div class="card-icons" style="position: absolute; bottom: 0; right: 0;">
+                {% if pub.food_served %}
+                    <i class="fas fa-utensils tooltipped" data-position="bottom" data-tooltip="Serves Food"></i>
+                {% endif %}
+                
+                {% if pub.dogs_allowed %}
+                    <i class="fas fa-paw tooltipped" data-position="bottom" data-tooltip="Dogs allowed inside"></i>
+                {% endif %}
+                
+                {% if pub.water_provided %}
+                    <i class="mdi--bowl tooltipped" data-position="bottom" data-tooltip="Water provided for dogs"></i>
+                {% endif %}
+                {% if pub.dog_meals %}
+                    <i class="fa-solid fa-bowl-food tooltipped" data-position="bottom" data-tooltip="Serves dog meals"></i>
+                {% endif %}
+                {% if pub.nearby_walks %}
+                    <i class="fas fa-hiking tooltipped" data-position="bottom" data-tooltip="Beautiful walks nearby"></i>
+                {% endif %}
+                {% if pub.loving_staff %}
+                    <i class="fas fa-heart tooltipped" data-position="bottom" data-tooltip="Dog-loving pub staff"></i>
+                {% endif %}
+            </div>
         </div>
     </div>
     {% endfor %}
 </div>
-
 {% endblock %}

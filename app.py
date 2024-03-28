@@ -24,6 +24,7 @@ def get_pubs():
     pubs_cursor = mongo.db.pubs.find()
     pubs = list(pubs_cursor)
     print("Number of pubs fetched:", len(pubs))
+    print("Pubs data:", pubs)
 
     for pub in pubs:
         pub_id_str = str(pub['_id'])  
