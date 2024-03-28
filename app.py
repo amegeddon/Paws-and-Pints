@@ -104,18 +104,43 @@ def login():
             return redirect(url_for("login"))
 
     return render_template("login.html")
-
-
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    # grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+    # Grab the session user's username from db
+    session_username = mongo.db.users.find_one({"username": session["user"]})["username"]
+    print("Session Username:", session_username)
 
-    if session["user"]:
-        return render_template("profile.html", username=username)
+    if session_username:
+        print("Session user is:", session_username)
+        # Check if the user is logged in
+        if 'user' not in session or session['user'] != username:
+            print("User not logged in or session user doesn't match URL username")
+            return redirect(url_for('login'))
+
+        # Query the database for the user
+        user = mongo.db.users.find_one({"username": username})
+        print("User:", user)
+
+        if not user:
+            print("User not found")
+            return "User not found"
+
+        # Fetch the user's reviews from the database
+        user_reviews = list(mongo.db.reviews.find({"user_id": user["_id"]}))
+        print("User Reviews:", user_reviews)
+
+        # Check if user_reviews contain more than just the title
+        if user_reviews:
+            first_review = user_reviews[0]
+            print("First Review:", first_review)
+
+        # Render the profile page template with the user's reviews
+        return render_template("profile.html", username=username, user_reviews=user_reviews)
 
     return redirect(url_for("login"))
+
+
+
 
 
 @app.route("/logout")
@@ -126,22 +151,32 @@ def logout():
     return redirect(url_for("login"))
 
 
+from flask import session
+
 @app.route('/write_review', methods=["GET", "POST"])
 def write_review():
     if request.method == "POST":
+        
+        session_username = mongo.db.users.find_one({"username": session["user"]})["username"]
+        
+        if not session_username:
+            return redirect(url_for("login"))  
+        
+        # Query the database for the user
+        user = mongo.db.users.find_one({"username": session_username})
         
         title = request.form.get('title')
         review_text = request.form.get('review_text')
         user_rating = request.form.get('user_rating')
         pub_id = request.form.get('pub_id')
-        
-        
+        user_id = user["_id"]  # Store the ObjectId of the user
         
         review_data = {
             "title": title,
             "review_text": review_text,
             "user_rating": user_rating,
-            "pub_id": pub_id
+            "pub_id": pub_id,
+            "user_id": user_id 
         }
         
         mongo.db.reviews.insert_one(review_data)
@@ -152,6 +187,7 @@ def write_review():
     else:
         pub_id = request.args.get('pub_id')
         return render_template("write_review.html", pub_id=pub_id)
+
 
 
 
