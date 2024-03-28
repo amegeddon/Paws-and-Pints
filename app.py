@@ -17,12 +17,14 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-
 @app.route("/")
 @app.route("/get_pubs")
 def get_pubs():
     pubs = mongo.db.pubs.find()
-    return render_template("reviews.html", pubs=pubs)
+    reviews = mongo.db.reviews.find()
+    return render_template("reviews.html", pubs=pubs, reviews=reviews)
+
+
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -160,13 +162,6 @@ def add_pub():
         return redirect(url_for("get_pubs")) 
     
     return render_template("add_pub.html")
-
-@app.route('/display_reviews')
-def display_reviews():
-    pubs = mongo.db.pubs.find()
-    reviews = mongo.db.reviews.find()
-    return render_template("reviews.html", pubs=pubs, reviews=reviews)
-
 
 
 if __name__ == "__main__":
