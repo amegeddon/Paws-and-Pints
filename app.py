@@ -161,14 +161,11 @@ def add_pub():
     
     return render_template("add_pub.html")
 
-@app.route('/display_reviews/<pub_id>')
-def display_reviews(pub_id):
-    pub = mongo.db.pubs.find_one({'_id': pub_id}) 
-    if pub:
-        reviews = mongo.db.reviews.find({'pub_id': pub_id})
-        return render_template("reviews.html", pub=pub, reviews=reviews, pubs=None) # Pass pubs=None since it's not needed here
-    else:
-        return "Pub not found", 404
+@app.route('/display_reviews')
+def display_reviews():
+    pubs = mongo.db.pubs.find()
+    reviews = mongo.db.reviews.find()
+    return render_template("reviews.html", pubs=pubs, reviews=reviews)
 
 
 

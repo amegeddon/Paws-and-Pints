@@ -26,10 +26,16 @@
                 
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4"><i class="fas fa-times right"></i></span>
+                
                 <!-- Print pub ID for debugging -->
-                <p>{{ pub._id }}</p>
+                <div class=""><p>{{ pub._id }}</p></div>
+                
+                <!-- Link to write a review with the pub ID -->
+                <a href="{{ url_for('write_review', pub_id=pub._id) }}"><i class="fas fa-pencil-alt left"></i> Write a Review</a>
+    
                 <!-- Link to display reviews for the pub -->
                 <a href="{{ url_for('display_reviews', pub_id=pub._id) }}"><i class="fas fa-eye left"></i> Display Reviews</a>
+                
                 {% for review in reviews %}
                     <div class="card-panel grey lighten-5">
                         <div class="row">
