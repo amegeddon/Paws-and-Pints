@@ -40,7 +40,13 @@
                             <div class="col s12">
                                 <h5>{{ review.title }}</h5>
                                 <p>{{ review.review_text }}</p>
-                                <p>Rating: {{ review.user_rating }}</p>
+                                <p>Rating: {{ review.user_rating|int }}</p>
+
+                                <div class="stars">
+                                    {% for i in range(review.user_rating|int) %}
+                                    <i class="fas fa-star"></i>
+                                  {% endfor %}
+                                </div>
                             </div>
                         </div>
                     </div>
