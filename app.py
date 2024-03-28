@@ -17,6 +17,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+
 @app.route("/")
 @app.route("/get_pubs")
 def get_pubs():
@@ -27,7 +28,8 @@ def get_pubs():
 
     # For each pub, fetch the reviews and associate them with the pub
     for pub in pubs:
-        pub_reviews_cursor = mongo.db.reviews.find({'pub_id': pub['_id']})
+        pub_id_str = str(pub['_id'])  # Convert ObjectId to string
+        pub_reviews_cursor = mongo.db.reviews.find({'pub_id': pub_id_str})
         pub_reviews = list(pub_reviews_cursor)
         pub['reviews'] = pub_reviews
 
@@ -37,6 +39,7 @@ def get_pubs():
     print("Number of reviews fetched:", len(reviews))
 
     return render_template("reviews.html", pubs=pubs, reviews=reviews)
+
 
 
 
