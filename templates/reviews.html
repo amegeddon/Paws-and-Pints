@@ -11,16 +11,18 @@
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">{{ pub.name }}<i class="fas fa-angle-down right"></i></span>
                 <p><i class="fas fa-map-marker-alt"></i> <strong>Location: </strong>{{ pub.location }}</p> 
+                <p>Debugging Average Rating: {{ pub.average_rating }}</p>
                 <div class="stars">
                     <p class="rating bold">Rating: </p>
                     {% for i in range(1, 6) %}
-                        {% if pub.rating is defined and pub.rating|int >= i %}
+                        {% if average_rating is defined and average_rating|int >= i %}
                             <span class="star filled"><i class="fas fa-star"></i></span>
                         {% else %}
                             <span class="star"><i class="far fa-star"></i></span>
                         {% endif %}
                     {% endfor %}
                 </div>
+                
                 <p>{{ pub.description }}</p><br>
             </div>
                 
