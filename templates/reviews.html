@@ -15,7 +15,7 @@
                 <div class="stars">
                     <p class="rating bold">Rating: </p>
                     {% for i in range(1, 6) %}
-                        {% if average_rating is defined and average_rating|int >= i %}
+                        {% if pub.average_rating is defined and pub.average_rating|int >= i %}
                             <span class="star filled"><i class="fas fa-star"></i></span>
                         {% else %}
                             <span class="star"><i class="far fa-star"></i></span>
