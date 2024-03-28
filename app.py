@@ -21,24 +21,32 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_pubs")
 def get_pubs():
-    
     pubs_cursor = mongo.db.pubs.find()
     pubs = list(pubs_cursor)
     print("Number of pubs fetched:", len(pubs))
 
-    # For each pub, fetch the reviews and associate them with the pub
     for pub in pubs:
         pub_id_str = str(pub['_id'])  
         pub_reviews_cursor = mongo.db.reviews.find({'pub_id': pub_id_str})
         pub_reviews = list(pub_reviews_cursor)
         pub['reviews'] = pub_reviews
+        
+        total_ratings = 0
+        num_reviews = 0
+        for review in pub_reviews:
+            total_ratings += int(review['user_rating'])
+            num_reviews += 1
+        
+        if num_reviews > 0:
+            pub['average_rating'] = total_ratings / num_reviews
+        else:
+            pub['average_rating'] = 0
+        
+        print(f"Pub ID: {pub_id_str}, Total Ratings: {total_ratings}, Num Reviews: {num_reviews}, Average Rating: {pub['average_rating']}")
 
-    
-    reviews_cursor = mongo.db.reviews.find()
-    reviews = list(reviews_cursor)
-    print("Number of reviews fetched:", len(reviews))
+    return render_template("reviews.html", pubs=pubs)
 
-    return render_template("reviews.html", pubs=pubs, reviews=reviews)
+
 
 
 
