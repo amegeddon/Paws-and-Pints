@@ -20,10 +20,23 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_pubs")
 def get_pubs():
-    pubs = mongo.db.pubs.find()
-    reviews = mongo.db.reviews.find()
-    return render_template("reviews.html", pubs=pubs, reviews=reviews)
+    # Fetch the list of pubs
+    pubs_cursor = mongo.db.pubs.find()
+    pubs = list(pubs_cursor)
+    print("Number of pubs fetched:", len(pubs))
 
+    # For each pub, fetch the reviews and associate them with the pub
+    for pub in pubs:
+        pub_reviews_cursor = mongo.db.reviews.find({'pub_id': pub['_id']})
+        pub_reviews = list(pub_reviews_cursor)
+        pub['reviews'] = pub_reviews
+
+    # Pass the list of pubs with associated reviews to the template
+    reviews_cursor = mongo.db.reviews.find()
+    reviews = list(reviews_cursor)
+    print("Number of reviews fetched:", len(reviews))
+
+    return render_template("reviews.html", pubs=pubs, reviews=reviews)
 
 
 
