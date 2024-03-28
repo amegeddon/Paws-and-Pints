@@ -16,7 +16,7 @@
     color: gray;
 }
 .filled {
-    color: yellow;
+    color:  #FFA500;
 }
 
 .bold {
@@ -71,7 +71,7 @@
   }
   
   .rating-icon.filled {
-    color: #FFD700; 
+    color:  #FFD700; 
   }
   
 
