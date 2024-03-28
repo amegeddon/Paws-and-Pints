@@ -15,13 +15,19 @@
                         <h5>{{ review.title }}</h5>
                         <p>{{ review.review_text }}</p>
                         <p class="">{{ review.user_rating }}</p>
+                          <!-- Star Rating for Reviews -->
+                          <div class="stars">
+                            {% for i in range(review.user_rating|int) %}
+                                <i class="fas fa-star"></i>
+                            {% endfor %}
+                        </div>
                         <!-- Add buttons for editing or deleting the review -->
                         <div class="row">
                             <div class="col s6">
                                 <a href="" class="waves-effect waves-light btn-small">Edit</a>
                             </div>
                             <div class="col s6">
-                                <form action="" method="POST">
+                                <form action="{{ url_for('confirm_delete_review', review_id=review._id) }}" method="GET">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="waves-effect waves-light btn-small red darken-1">Delete</button>
                                 </form>
