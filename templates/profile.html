@@ -1,14 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="row">
-        <div class="col s12 m8 offset-m2">
-            <div class="card-panel">
-                <h3 class="center-align light-blue-text text-darken-4">
-                    {{ username.capitalize() }}'s Profile
-                </h3>
-            </div>
+<div class="row">
+    <div class="col s12 m8 offset-m2">
+        <div class="card-panel">
+            <h1 class="center-align light-blue-text text-darken-4">Welcome to Your Profile, {{ username.capitalize() }}</h1>
+
+            <h2>Your Reviews</h2>
+            <ul>
+                <!-- Iterate over user's reviews -->
+                {% for review in user_reviews %}
+                <li>
+                    <div class="card-panel">
+                        <h5>{{ review.title }}</h5>
+                        <p>{{ review.review_text }}</p>
+                        <p class="">{{ review.user_rating }}</p>
+                        <!-- Add buttons for editing or deleting the review -->
+                        <div class="row">
+                            <div class="col s6">
+                                <a href="" class="waves-effect waves-light btn-small">Edit</a>
+                            </div>
+                            <div class="col s6">
+                                <form action="" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="waves-effect waves-light btn-small red darken-1">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
+</div>
 
 {% endblock %}
