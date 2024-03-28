@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<h1>Confirm Deletion</h1>
+<p>Are you sure you want to delete the review titled "{{ review.title }}"?</p>
+<form action="{{ url_for('delete_review', review_id=review._id) }}" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit" class="waves-effect waves-light btn-small red darken-1">Confirm Delete</button>
+</form>
+
+{% endblock %}
