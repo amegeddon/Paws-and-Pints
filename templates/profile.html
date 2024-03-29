@@ -27,7 +27,7 @@
                                 <a href="" class="waves-effect waves-light btn-small">Edit</a>
                             </div>
                             <div class="col s6">
-                                <form action="{{ url_for('confirm_delete_review', review_id=review._id) }}" method="GET">
+                                <form action="{{ url_for('confirm_delete_review', review_id=review._id) }}" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="waves-effect waves-light btn-small red darken-1">Delete</button>
                                 </form>

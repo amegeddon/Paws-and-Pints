@@ -242,6 +242,9 @@ def confirm_delete_review(review_id):
             return redirect(url_for("profile", username=session['user']))
 
         return render_template("confirm_delete_review.html", review=review)
+    else:
+        flash("Invalid request method")
+        return redirect(url_for("profile", username=session['user']))
 
 
 
