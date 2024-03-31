@@ -104,6 +104,8 @@ def login():
             return redirect(url_for("login"))
 
     return render_template("login.html")
+
+
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # Grab the session user's username from db
@@ -267,6 +269,54 @@ def delete_review(review_id):
 # Iterate over endpoint names
 for rule in app.url_map.iter_rules():
     print(rule.endpoint)
+
+
+@app.route("/edit_review/<review_id>", methods=["GET", "POST"])
+def edit_review(review_id):
+    if request.method == "POST":
+        # Check if user is logged in
+        if "user" not in session or session["user"] is None:
+            flash("Please log in to edit a review.")
+            return redirect(url_for("login"))
+
+        
+        user = mongo.db.users.find_one({"username": session["user"]})
+        if user is None:
+            flash("User not found.")
+            return redirect(url_for("login"))
+
+        
+        title = request.form.get('title')
+        review_text = request.form.get('review_text')
+        user_rating = request.form.get('user_rating')
+        pub_id = request.form.get('pub_id')
+
+        
+        user_id = user["_id"]
+
+        
+        review_data = {
+            "title": title,
+            "review_text": review_text,
+            "user_rating": user_rating,
+            "pub_id": pub_id,
+            "user_id": user_id
+        }
+
+        
+        try:
+            mongo.db.reviews.update_one({"_id": ObjectId(review_id)}, {"$set": review_data})
+            flash("Review successfully updated.")
+            return redirect(url_for("profile<username>"))  
+        except Exception as e:
+            flash("An error occurred while updating the review.")
+            app.logger.error(f"Error updating review: {e}")
+            return redirect(url_for("profile<username>"))  
+    else:
+      
+        review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+        return render_template("edit_review.html", review=review)
+
 
 
 if __name__ == "__main__":
