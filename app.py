@@ -304,16 +304,18 @@ def edit_review(review_id):
         }
 
         
+        username = session.get("user")
         try:
             mongo.db.reviews.update_one({"_id": ObjectId(review_id)}, {"$set": review_data})
             flash("Review successfully updated.")
-            return redirect(url_for("profile<username>"))  
+            return redirect(url_for("profile", username=username))   
         except Exception as e:
             flash("An error occurred while updating the review.")
             app.logger.error(f"Error updating review: {e}")
-            return redirect(url_for("profile<username>"))  
+            return redirect(url_for("profile", username=username))
+        
     else:
-      
+            
         review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
         return render_template("edit_review.html", review=review)
 
