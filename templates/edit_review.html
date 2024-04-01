@@ -31,7 +31,7 @@
 
             <!-- Pub rating -->
 <div class="row">
-    <div class="input-field col s6">
+    <div class="input-field col s6 center-align">
         <label for="user_rating" class="rating-label validate required">How would you rate this Pub?</label>
         <div class="star-rating">
             <span class="star1">&#9733;</span>
@@ -41,21 +41,26 @@
             <span class="star1">&#9733;</span>
         </div>
     </div>
-    <div class="input-field col s6">
+    <div class="input-field col s6 center-align">
         <p>You previously rated this pub: <span id="user_rating_display">{{ review.user_rating }}</span> stars</p>
         <input id="user_rating" name="user_rating" value="{{ review.user_rating }}" type="number" style="display: none;" required>
     </div>
 </div>
 
 
-
-             <!-- submit button -->
+             <!-- submit and cancel buttons -->
              <div class="row mt-2">
                 <div class="col s12 center-align">
-                    <button type="submit" class="btn-large light-blue darken-1 text-shadow">
-                        Edit Review <i class="fas fa-edit right"></i>
-                    </button>
+                    <div class="btn-group">
+                        <button type="submit" class="btn-large light-blue darken-1 text-shadow">
+                            Edit Review <i class="fas fa-edit right"></i>
+                        </button>
+                        <form action="{{ url_for('cancel_edit_review') }}" method="GET">
+                            <button type="submit" class="btn-large red darken-1 text-shadow">Cancel</button>
+                        </form>
+                    </div>
                 </div>
+
             </div>
         </form>
     </div>

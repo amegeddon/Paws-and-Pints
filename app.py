@@ -318,6 +318,12 @@ def edit_review(review_id):
             
         review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
         return render_template("edit_review.html", review=review)
+    
+
+@app.route("/cancel_edit_review")
+def cancel_edit_review():
+    # Redirect the user to their profile page
+     return redirect(url_for("profile", username=username))
 
 
 
