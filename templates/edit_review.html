@@ -18,8 +18,6 @@
                 </div>
             </div>
 
-            
-
             <!-- Review text -->
             <div class="row">
                 <div class="input-field col s12">
@@ -32,19 +30,22 @@
 
 
             <!-- Pub rating -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <label for="user_rating"  class="rating-label validate required">How would you rate this Pub?</label>
-                    <div class="star-rating">
-                        <span class="star1">&#9733;</span>
-                        <span class="star1">&#9733;</span>
-                        <span class="star1">&#9733;</span>
-                        <span class="star1">&#9733;</span>
-                        <span class="star1">&#9733;</span>
-                    </div>
-                    <input id="user_rating" name="user_rating" value="{{ review.user_rating }}" type="number" required>
-                </div>
-            </div>
+<div class="row">
+    <div class="input-field col s6">
+        <label for="user_rating" class="rating-label validate required">How would you rate this Pub?</label>
+        <div class="star-rating">
+            <span class="star1">&#9733;</span>
+            <span class="star1">&#9733;</span>
+            <span class="star1">&#9733;</span>
+            <span class="star1">&#9733;</span>
+            <span class="star1">&#9733;</span>
+        </div>
+    </div>
+    <div class="input-field col s6">
+        <p>You previously rated this pub: <span id="user_rating_display">{{ review.user_rating }}</span> stars</p>
+        <input id="user_rating" name="user_rating" value="{{ review.user_rating }}" type="number" style="display: none;" required>
+    </div>
+</div>
 
 
 
