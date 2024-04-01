@@ -12,7 +12,7 @@
                 <!-- Card Title and Details -->
                 <span class="card-title activator grey-text text-darken-4">{{ pub.name }}<i class="fas fa-angle-down right"></i></span>
                 <p><i class="fas fa-map-marker-alt"></i> <strong>Location: </strong>{{ pub.location }}</p> 
-                <p>Debugging Average Rating: {{ pub.average_rating }}</p>
+                <p>Average Rating: {{ '%.1f' | format(pub.average_rating) }}</p>
                 
                 <!-- Star Rating -->
                 <div class="stars">
@@ -26,8 +26,14 @@
                     {% endfor %}
                 </div>
                 
-                <!-- Description -->
-                <p>{{ pub.description }}</p><br>
+
+                 <!-- Collapsible Section for Pub Description -->
+                 <ul class="collapsible mb-5">
+                    <li>
+                        <div class="collapsible-header"><i class="fas fa-info-circle"></i>Pub Description</div>
+                        <div class="collapsible-body"><span>{{ pub.description }}</span></div>
+                    </li>
+                </ul>
             </div>
                 
             <!-- Card Reveal Section -->
