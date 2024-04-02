@@ -108,15 +108,20 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    # Check if user is logged in
+    if 'user' not in session:
+        print("User not logged in")
+        return redirect(url_for('login'))
+
     # Grab the session user's username from db
     session_username = mongo.db.users.find_one({"username": session["user"]})["username"]
     print("Session Username:", session_username)
 
     if session_username:
         print("Session user is:", session_username)
-        # Check if the user is logged in
-        if 'user' not in session or session['user'] != username:
-            print("User not logged in or session user doesn't match URL username")
+        # Check if the session user matches the URL username
+        if session_username != username:
+            print("Session user doesn't match URL username")
             return redirect(url_for('login'))
 
         # Query the database for the user
@@ -127,16 +132,13 @@ def profile(username):
             print("User not found")
             return "User not found"
 
-        # Fetch the user's reviews from the database
         user_reviews = list(mongo.db.reviews.find({"user_id": user["_id"]}))
         print("User Reviews:", user_reviews)
 
-        # Check if user_reviews contain more than just the title
         if user_reviews:
             first_review = user_reviews[0]
             print("First Review:", first_review)
 
-        # Render the profile page template with the user's reviews
         return render_template("profile.html", username=username, user_reviews=user_reviews)
 
     return redirect(url_for("login"))
@@ -152,8 +154,6 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
-
-from flask import session
 
 @app.route('/write_review', methods=["GET", "POST"])
 def write_review():
@@ -372,6 +372,30 @@ def delete_pub(pub_id):
         flash("Pub Successfully Deleted")
     
     return redirect(url_for("manage_reviews"))
+
+
+@app.route("/confirm_delete_pub/<pub_id>", methods=["GET", "POST"])
+def confirm_delete_pub(pub_id):
+    print("Confirm Delete Pub route accessed.")
+    print("Pub ID:", pub_id)
+    if request.method == "POST":
+        try:
+            pub_id_obj = ObjectId(pub_id)
+        except Exception as e:
+            flash("Invalid pub ID")
+            return redirect(url_for("manage_reviews"))
+
+        pub = mongo.db.pubs.find_one({"_id": pub_id_obj})
+        if not pub:
+            flash("Pub not found")
+            return redirect(url_for("manage_reviews"))
+
+        return render_template("confirm_delete_pub.html", pub=pub)
+    else:
+        flash("Invalid request method")
+        return redirect(url_for("manage_reviews"))
+
+
 
 
 if __name__ == "__main__":
