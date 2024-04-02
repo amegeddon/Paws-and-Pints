@@ -324,7 +324,54 @@ def edit_review(review_id):
 def cancel_edit_review():
     # Redirect the user to their profile page
      return redirect(url_for("profile", username=username))
+ 
+ 
+@app.route("/manage_reviews")
+def manage_reviews():
+    print("Manage reviews route accessed.")
+    pubs_cursor = mongo.db.pubs.find()
+    pubs = list(pubs_cursor)
+    print("Number of pubs fetched:", len(pubs))
+    print("Pubs data:", pubs)
 
+    for pub in pubs:
+        pub_id_str = str(pub['_id'])  
+        pub_reviews_cursor = mongo.db.reviews.find({'pub_id': pub_id_str})
+        pub_reviews = list(pub_reviews_cursor)
+        pub['reviews'] = pub_reviews
+        
+        total_ratings = 0
+        num_reviews = 0
+        for review in pub_reviews:
+            total_ratings += int(review['user_rating'])
+            num_reviews += 1
+        
+        if num_reviews > 0:
+            pub['average_rating'] = total_ratings / num_reviews
+        else:
+            pub['average_rating'] = 0
+        
+        print(f"Pub ID: {pub_id_str}, Total Ratings: {total_ratings}, Num Reviews: {num_reviews}, Average Rating: {pub['average_rating']}")
+
+    return render_template("manage_reviews.html", pubs=pubs)
+
+
+@app.route("/delete_pub/<pub_id>", methods=["POST"])
+def delete_pub(pub_id):
+    print("Delete Pub route accessed.")
+    try:
+        pub_id_obj = ObjectId(pub_id)
+    except Exception as e:
+        flash("Invalid pub ID")
+        return redirect(url_for("manage_reviews"))
+    
+    result = mongo.db.pubs.delete_one({"_id": pub_id_obj})
+    if result.deleted_count == 0:
+        flash("Pub not found")
+    else:
+        flash("Pub Successfully Deleted")
+    
+    return redirect(url_for("manage_reviews"))
 
 
 if __name__ == "__main__":
