@@ -59,6 +59,12 @@
                     <div class="card-panel grey lighten-5">
                         <div class="row">
                             <div class="col s12">
+
+                                <form action="{{ url_for('delete_review', review_id=review._id) }}" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="waves-effect waves-light btn-small red darken-1">Delete</button>
+                                </form>
+                                
                                 <h5>{{ review.title }}</h5>
                                 <p>{{ review.review_text }}</p>
                                 <p>Rating: {{ review.user_rating|int }}</p>
