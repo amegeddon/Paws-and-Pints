@@ -195,6 +195,16 @@ def write_review():
 
 @app.route("/add_pub", methods=["GET", "POST"])
 def add_pub():
+     # Check if user is logged in
+    if "user" not in session or session["user"] is None:
+        flash("Please log in to edit a review.")
+        return redirect(url_for("login"))
+
+    user = mongo.db.users.find_one({"username": session["user"]})
+    if user is None:
+        flash("User not found.")
+        return redirect(url_for("login"))
+    
     if request.method == "POST":
         
         pub_name = request.form.get("name")
@@ -208,6 +218,7 @@ def add_pub():
         nearby_walks = request.form.get("nearby_walks") == "yes"
         loving_staff = request.form.get("loving_staff") == "yes"
         
+        user_id = user["_id"]
         # Constructs dictionary
         pub_data = {
             "name": pub_name,
@@ -218,7 +229,8 @@ def add_pub():
             "water_provided": water_provided,
             "dog_meals": dog_meals,
             "nearby_walks": nearby_walks,
-            "loving_staff": loving_staff
+            "loving_staff": loving_staff,
+            "user_id": user_id
         }
         
         mongo.db.pubs.insert_one(pub_data)
