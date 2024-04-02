@@ -157,12 +157,11 @@ def logout():
 
 @app.route('/write_review', methods=["GET", "POST"])
 def write_review():
+    if "user" not in session:
+        return redirect(url_for("login"))
+    
     if request.method == "POST":
-        
-        session_username = mongo.db.users.find_one({"username": session["user"]})["username"]
-        
-        if not session_username:
-            return redirect(url_for("login"))  
+        session_username = session["user"]
         
         # Query the database for the user
         user = mongo.db.users.find_one({"username": session_username})
@@ -189,6 +188,7 @@ def write_review():
     else:
         pub_id = request.args.get('pub_id')
         return render_template("write_review.html", pub_id=pub_id)
+
 
 
 
