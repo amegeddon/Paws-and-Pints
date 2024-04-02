@@ -273,28 +273,32 @@ for rule in app.url_map.iter_rules():
 
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
+    # Check if user is logged in
+    if "user" not in session or session["user"] is None:
+        flash("Please log in to edit a review.")
+        return redirect(url_for("login"))
+
+    user = mongo.db.users.find_one({"username": session["user"]})
+    if user is None:
+        flash("User not found.")
+        return redirect(url_for("login"))
+
     if request.method == "POST":
-        # Check if user is logged in
-        if "user" not in session or session["user"] is None:
-            flash("Please log in to edit a review.")
-            return redirect(url_for("login"))
-
+        # Retrieve the review from the database
+        review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
         
-        user = mongo.db.users.find_one({"username": session["user"]})
-        if user is None:
-            flash("User not found.")
-            return redirect(url_for("login"))
+        # Prevents unauthorized access to review editing
+        if review and user["_id"] != review["user_id"]:
+            flash("You are not authorized to edit this review.")
+            return redirect(url_for("get_pubs"))
 
-        
         title = request.form.get('title')
         review_text = request.form.get('review_text')
         user_rating = request.form.get('user_rating')
         pub_id = request.form.get('pub_id')
 
-        
         user_id = user["_id"]
 
-        
         review_data = {
             "title": title,
             "review_text": review_text,
@@ -303,21 +307,25 @@ def edit_review(review_id):
             "user_id": user_id
         }
 
-        
         username = session.get("user")
         try:
             mongo.db.reviews.update_one({"_id": ObjectId(review_id)}, {"$set": review_data})
             flash("Review successfully updated.")
-            return redirect(url_for("profile", username=username))   
+            return redirect(url_for("profile", username=username))
         except Exception as e:
             flash("An error occurred while updating the review.")
             app.logger.error(f"Error updating review: {e}")
             return redirect(url_for("profile", username=username))
-        
+
     else:
-            
+        # Retrieve the review from the database
         review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+        if review and user["_id"] != review["user_id"]:
+            flash("You are not authorized to edit this review.")
+            return redirect(url_for("get_pubs"))
+
         return render_template("edit_review.html", review=review)
+
     
 
 @app.route("/cancel_edit_review")
