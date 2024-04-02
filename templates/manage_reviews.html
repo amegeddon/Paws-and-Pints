@@ -11,7 +11,8 @@
             <div class="card-content">
 
                <!-- Delete Button --> 
-                <form action="{{ url_for('delete_pub', pub_id=pub._id) }}" method="POST">
+               <form action="{{ url_for('confirm_delete_pub', pub_id=pub._id) }}" method="POST">
+
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="waves-effect waves-light btn-small red darken-1">Delete</button>
                 </form>
@@ -60,7 +61,7 @@
                         <div class="row">
                             <div class="col s12">
 
-                                <form action="{{ url_for('delete_review', review_id=review._id) }}" method="POST">
+                                <form action="{{ url_for('confirm_delete_review', review_id=review._id) }}" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="waves-effect waves-light btn-small red darken-1">Delete</button>
                                 </form>
