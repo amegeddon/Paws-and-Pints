@@ -39,6 +39,19 @@
                 </li>
                 {% endfor %}
             </ul>
+
+            <h2>Your Pubs</h2>
+            <ul>
+                <!-- Iterate over user's pubs -->
+                {% for pub in user_pubs %}
+                <li>
+                    <div class="card-panel">
+                        <h5>{{ pub.name }}</h5>
+                        <p>{{ pub.description }}</p>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </div>
