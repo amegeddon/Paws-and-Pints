@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% block content %}
 
 <div class="row">
@@ -7,64 +6,72 @@
         <div class="card-panel">
             <h1 class="center-align light-blue-text text-darken-4">Welcome to Your Profile, {{ username.capitalize() }}</h1>
 
-            <h2>Your Reviews</h2>
-            <ul>
-                <!-- Iterate over user's reviews -->
-                {% for review in user_reviews %}
-                <li>
-                    <div class="card-panel">
-                        <h5>{{ review.title }}</h5>
-                        <p>{{ review.review_text }}</p>
-                        <p class="">{{ review.user_rating }}</p>
-                          <!-- Star Rating for Reviews -->
-                          <div class="stars">
-                            {% for i in range(review.user_rating|int) %}
-                                <i class="fas fa-star"></i>
-                            {% endfor %}
+            {% if not user_reviews %}
+                <p>You have not added any reviews yet.</p>
+            {% else %}
+                <h2>Your Reviews</h2>
+                <ul>
+                    <!-- Iterate over user's reviews -->
+                    {% for review in user_reviews %}
+                    <li>
+                        <div class="card-panel">
+                            <h5>{{ review.title }}</h5>
+                            <p>{{ review.review_text }}</p>
+                            <p class="">{{ review.user_rating }}</p>
+                              <!-- Star Rating for Reviews -->
+                              <div class="stars">
+                                {% for i in range(review.user_rating|int) %}
+                                    <i class="fas fa-star"></i>
+                                {% endfor %}
+                            </div>
+                            <!-- Buttons for editing or deleting the review -->
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col s6">
+                                        <form action="{{ url_for('edit_review', review_id=review._id) }}" method="GET">
+                                            <button type="submit" class="waves-effect waves-light btn-small">Edit</button>
+                                        </form>
+                                    </div>
+                                    <form action="{{ url_for('confirm_delete_review', review_id=review._id) }}" method="POST">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="waves-effect waves-light btn-small red darken-1">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                        <!-- Buttons for editing or deleting the review -->
-                        <div class="row">
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            
+            {% if not user_pubs %}
+                <p>You have not added any pubs yet.</p>
+            {% else %}
+                <h2>Your Pubs</h2>
+                <ul>
+                    <!-- Iterate over user's pubs -->
+                    {% for pub in user_pubs %}
+                    <li>
+                        <div class="card-panel">
+                            <h5>{{ pub.name }}</h5>
+                            <p>{{ pub.description }}</p>
+                            <!-- Buttons for editing or deleting the pub -->
                             <div class="row">
                                 <div class="col s6">
-                                    <form action="{{ url_for('edit_review', review_id=review._id) }}" method="GET">
+                                    <form action="{{ url_for('edit_pub', pub_id=pub._id) }}" method="GET">
                                         <button type="submit" class="waves-effect waves-light btn-small">Edit</button>
                                     </form>
                                 </div>
-                                <form action="{{ url_for('confirm_delete_review', review_id=review._id) }}" method="POST">
+                                <form action="{{ url_for('confirm_delete_pub', pub_id=pub._id) }}" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="waves-effect waves-light btn-small red darken-1">Delete</button>
                                 </form>
                             </div>
                         </div>
-                    </div>
-                </li>
-                {% endfor %}
-            </ul>
-
-            <h2>Your Pubs</h2>
-            <ul>
-                <!-- Iterate over user's pubs -->
-                {% for pub in user_pubs %}
-                <li>
-                    <div class="card-panel">
-                        <h5>{{ pub.name }}</h5>
-                        <p>{{ pub.description }}</p>
-                        <!-- Buttons for editing or deleting the pub -->
-                        <div class="row">
-                            <div class="col s6">
-                                <form action="" method="GET">
-                                    <button type="submit" class="waves-effect waves-light btn-small">Edit</button>
-                                </form>
-                            </div>
-                            <form action="{{ url_for('confirm_delete_pub', pub_id=pub._id) }}" method="POST">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class="waves-effect waves-light btn-small red darken-1">Delete</button>
-                            </form>
-                        </div>
-                    </div>
-                </li>
-                {% endfor %}
-            </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </div>
     </div>
 </div>
