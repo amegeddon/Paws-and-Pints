@@ -138,8 +138,11 @@ def profile(username):
         if user_reviews:
             first_review = user_reviews[0]
             print("First Review:", first_review)
+            
+        user_pubs = list(mongo.db.pubs.find({"user_id": user["_id"]}))
+        print("User Pubs:", user_pubs)   
 
-        return render_template("profile.html", username=username, user_reviews=user_reviews)
+        return render_template("profile.html", username=username, user_reviews=user_reviews, user_pubs=user_pubs)
 
     return redirect(url_for("login"))
 
@@ -195,7 +198,7 @@ def write_review():
 
 @app.route("/add_pub", methods=["GET", "POST"])
 def add_pub():
-     # Check if user is logged in
+    # Check if user is logged in
     if "user" not in session or session["user"] is None:
         flash("Please log in to edit a review.")
         return redirect(url_for("login"))
@@ -204,22 +207,28 @@ def add_pub():
     if user is None:
         flash("User not found.")
         return redirect(url_for("login"))
-    
+
+    print("User ID:", user["_id"])  # Debugging statement
+
+    # Debugging statement to retrieve pubs linked to the user ID
+    user_pubs = mongo.db.pubs.find({"user_id": user["_id"]})
+    pub_count = user_pubs.count()
+    print("Number of pubs retrieved:", pub_count)
+
     if request.method == "POST":
-        
         pub_name = request.form.get("name")
         pub_location = request.form.get("location")
         pub_description = request.form.get("description")
-        # Converts checkbox values to Boolean
         food_served = request.form.get("food_served") == "yes"
         dogs_allowed = request.form.get("dogs_allowed") == "yes"
         water_provided = request.form.get("water_provided") == "yes"
         dog_meals = request.form.get("dog_meals") == "yes"
         nearby_walks = request.form.get("nearby_walks") == "yes"
         loving_staff = request.form.get("loving_staff") == "yes"
-        
+
         user_id = user["_id"]
-        # Constructs dictionary
+        print("User ID for Pub:", user_id)  # Debugging statement
+
         pub_data = {
             "name": pub_name,
             "location": pub_location,
@@ -232,12 +241,14 @@ def add_pub():
             "loving_staff": loving_staff,
             "user_id": user_id
         }
-        
+
+        print("Pub Data:", pub_data)  # Debugging statement
+
         mongo.db.pubs.insert_one(pub_data)
-        
-        flash("Thankyou, Pub Successfully Added")
-        return redirect(url_for("get_pubs")) 
-    
+
+        flash("Thank you, Pub Successfully Added")
+        return redirect(url_for("get_pubs"))
+
     return render_template("add_pub.html")
 
 
