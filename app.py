@@ -1,8 +1,10 @@
 import os
 from flask import (
     Flask, flash, render_template,
-    redirect, request, session, url_for)
+    redirect, request, session, url_for, send_file)
 from flask_pymongo import PyMongo
+from io import BytesIO
+from bson import Binary
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -210,10 +212,7 @@ def add_pub():
 
     print("User ID:", user["_id"])  # Debugging statement
 
-    # Debugging statement to retrieve pubs linked to the user ID
-    user_pubs = mongo.db.pubs.find({"user_id": user["_id"]})
-    pub_count = user_pubs.count()
-    print("Number of pubs retrieved:", pub_count)
+
 
     if request.method == "POST":
         pub_name = request.form.get("name")
@@ -244,10 +243,20 @@ def add_pub():
 
         print("Pub Data:", pub_data)  # Debugging statement
 
-        mongo.db.pubs.insert_one(pub_data)
+          # Insert the pub into the database
+        try:
+            result = mongo.db.pubs.insert_one(pub_data)
+            pub_id = result.inserted_id
+        except Exception as e:
+            print("Error inserting pub:", e)
+            flash("Error adding pub. Please try again.")
+            return redirect(url_for("add_pub"))
 
-        flash("Thank you, Pub Successfully Added")
-        return redirect(url_for("get_pubs"))
+        if "pub_id" not in locals():
+            flash("Error adding pub. Please try again.")
+            return redirect(url_for("add_pub"))
+
+        return redirect(url_for("photo_upload", pub_id=pub_id))
 
     return render_template("add_pub.html")
 
@@ -425,7 +434,42 @@ def confirm_delete_pub(pub_id):
     else:
         flash("Invalid request method")
         return redirect(url_for("manage_reviews"))
+    
+    
+@app.route("/photo_upload/<pub_id>", methods=["GET", "POST"])
+def photo_upload(pub_id):
+    
+    pub = mongo.db.pubs.find_one({"_id": ObjectId(pub_id)})
+    
+    if request.method == "POST":
+        
+        uploaded_file = request.files.get('photo')
 
+        if uploaded_file:
+            # Read the contents of the uploaded file as binary data
+            file_data = uploaded_file.read()
+
+            photo_data = {
+                "filename": uploaded_file.filename,
+                "data": Binary(file_data),
+                "pub_id": ObjectId(pub_id)
+            }
+            mongo.db.photos.insert_one(photo_data)
+
+            return "Photo uploaded successfully!"
+
+    return render_template("photo_upload.html", pub=pub)
+
+
+@app.route("/photo/<pub_id>")
+def get_photo(pub_id):
+    
+    photo_data = mongo.db.photos.find_one({"pub_id": ObjectId(pub_id)})
+    
+    if photo_data:
+        return send_file(BytesIO(photo_data["data"]), mimetype='image/jpeg')
+    else:
+        return send_file("static/images/bunny.jpg", mimetype='image/jpeg')
 
 
 
