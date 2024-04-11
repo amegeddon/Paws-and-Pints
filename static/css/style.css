@@ -33,6 +33,13 @@
     margin-top: 2em;
 }
 
+.card-image img {
+    width: 300px; 
+    height: 225px; 
+    object-fit: cover;
+}
+
+
 
 /* Code for bowl icon taken from iconify design */
 

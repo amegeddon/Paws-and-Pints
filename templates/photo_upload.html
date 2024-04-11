@@ -7,18 +7,23 @@
         <div class="input-field col s12">
             <label class="flex-row" for="photo">
                 <i class="fas fa-upload prefix light-blue-text text-darken-4"></i>
-                Upload Photo:
+                Upload Photo (optional):
             </label>
             <input type="file" id="photo" name="photo" class="validate">
         </div>
     </div>
 
-    <!-- Submit Button -->
-    <div class="row mt-2">
-        <div class="col s12 center-align">
+     <!-- Buttons -->
+     <div class="row mt-2">
+        <div class="col s6 center-align">
             <button type="submit" class="btn-large light-blue darken-1 text-shadow">
                 Upload Photo <i class="fas fa-upload right"></i>
             </button>
+        </div>
+        <div class="col s6 center-align">
+            <a href="{{ url_for('get_pubs') }}" class="btn-large red darken-1 text-shadow">
+                Continue without uploading image <i class="fas fa-arrow-right right"></i>
+            </a>
         </div>
     </div>
 </form>
