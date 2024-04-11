@@ -25,24 +25,15 @@
                         {% endif %}
                     {% endfor %}
                 </div>
-                
-
-                 <!-- Collapsible Section for Pub Description -->
-                 <ul class="collapsible mb-5">
-                    <li>
-                        <div class="collapsible-header"><i class="fas fa-info-circle"></i>Pub Description</div>
-                        <div class="collapsible-body"><span>{{ pub.description }}</span></div>
-                    </li>
-                </ul>
             </div>
-                
+            
             <!-- Card Reveal Section -->
             <div class="card-reveal">
                 <!-- Card Title and Close Icon -->
                 <span class="card-title grey-text text-darken-4"><i class="fas fa-times right"></i></span>
                 
                 <!-- Pub ID for Debugging -->
-                <div class=""><p>{{ pub._id }}</p></div>
+                <div class=""><p>{{ pub.description }}</p></div>
                 
                 <!-- Link to Write a Review -->
                 <a href="{{ url_for('write_review', pub_id=pub._id) }}"><i class="fas fa-pencil-alt left"></i> Write a Review</a>
