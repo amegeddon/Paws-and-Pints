@@ -435,6 +435,70 @@ def confirm_delete_pub(pub_id):
         flash("Invalid request method")
         return redirect(url_for("manage_reviews"))
     
+@app.route("/edit_pub/<pub_id>", methods=["GET", "POST"])
+def edit_pub(pub_id):
+    # Check if user is logged in
+    if "user" not in session or session["user"] is None:
+        flash("Please log in to edit a pub.")
+        return redirect(url_for("login"))
+
+    user = mongo.db.users.find_one({"username": session["user"]})
+    if user is None:
+        flash("User not found.")
+        return redirect(url_for("login"))
+
+    if request.method == "POST":
+        # Retrieve the pub from the database
+        pub = mongo.db.pubs.find_one({"_id": ObjectId(pub_id)})
+        
+        # Prevents unauthorized access to pub editing
+        if pub and user["_id"] != pub["user_id"]:
+            flash("You are not authorized to edit this pub.")
+            return redirect(url_for("get_pubs"))
+
+        pub_name = request.form.get('name')
+        pub_location = request.form.get('location')
+        pub_description = request.form.get('description')
+        food_served = request.form.get('food_served') == 'yes'
+        dogs_allowed = request.form.get('dogs_allowed') == 'yes'
+        water_provided = request.form.get('water_provided') == 'yes'
+        dog_meals = request.form.get('dog_meals') == 'yes'
+        nearby_walks = request.form.get('nearby_walks') == 'yes'
+        loving_staff = request.form.get('loving_staff') == 'yes'
+
+        pub_data = {
+            "name": pub_name,
+            "location": pub_location,
+            "description": pub_description,
+            "food_served": food_served,
+            "dogs_allowed": dogs_allowed,
+            "water_provided": water_provided,
+            "dog_meals": dog_meals,
+            "nearby_walks": nearby_walks,
+            "loving_staff": loving_staff,
+            "user_id": user["_id"]
+        }
+
+        username = session.get("user")
+        try:
+            mongo.db.pubs.update_one({"_id": ObjectId(pub_id)}, {"$set": pub_data})
+            flash("Pub successfully updated.")
+            return redirect(url_for("profile", username=username))
+        except Exception as e:
+            flash("An error occurred while updating the pub.")
+            app.logger.error(f"Error updating pub: {e}")
+            return redirect(url_for("profile", username=username))
+
+    else:
+        # Retrieve the pub from the database
+        pub = mongo.db.pubs.find_one({"_id": ObjectId(pub_id)})
+        if pub and user["_id"] != pub["user_id"]:
+            flash("You are not authorized to edit this pub.")
+            return redirect(url_for("get_pubs"))
+
+        return render_template("edit_pub.html", pub=pub)
+    
+    
     
 @app.route("/photo_upload/<pub_id>", methods=["GET", "POST"])
 def photo_upload(pub_id):
