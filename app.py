@@ -435,6 +435,7 @@ def confirm_delete_pub(pub_id):
         flash("Invalid request method")
         return redirect(url_for("manage_reviews"))
     
+
 @app.route("/edit_pub/<pub_id>", methods=["GET", "POST"])
 def edit_pub(pub_id):
     # Check if user is logged in
@@ -520,7 +521,7 @@ def photo_upload(pub_id):
             }
             mongo.db.photos.insert_one(photo_data)
 
-            return "Photo uploaded successfully!"
+            return redirect(url_for("profile", username=session.get("user")))
 
     return render_template("photo_upload.html", pub=pub)
 
