@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data" action="{{ url_for('edit_photo', pub_id=pub._id) }}">
+    <!-- Reduced size image -->
+    <div class="row mt-3">
+        <div class="col s8 offset-s2">
+            <img class="activator responsive-img" src="{{ url_for('get_photo', pub_id=pub._id) }}" style="margin-top: 3rem;">
+        </div>
+    </div>
+    
+    <!-- Upload Photo Form -->
+    <div class="row margin-custom">
+        <div class="input-field col s12">
+            <label class="flex-row" for="photo">
+                <i class="fas fa-upload prefix light-blue-text text-darken-4"></i>
+                Upload Photo (optional):
+            </label>
+            <input type="file" id="photo" name="photo" class="validate">
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="row mt-2">
+        <div class="col s6 center">
+            <button type="submit" class="btn-large light-blue darken-1 text-shadow">
+                Upload new photo <i class="fas fa-upload right"></i>
+            </button>
+        </div>
+        <div class="col s6 center">
+            <a href="{{ url_for('get_pubs') }}" class="btn-large red darken-1 text-shadow">
+                Continue with original photo <i class="fas fa-arrow-right right"></i>
+            </a>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
