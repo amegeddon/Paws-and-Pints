@@ -36,7 +36,7 @@
                 <div class=""><p>{{ pub.description }}</p></div>
                 
                 <!-- Link to Write a Review -->
-                <a href="{{ url_for('write_review', pub_id=pub._id) }}"><i class="fas fa-pencil-alt left"></i> Write a Review</a>
+                <a href="{{ url_for('write_review', pub_id=pub._id) }}"><i class="fas fa-pencil-alt right"></i> <p class="right-align">Write a Review</p></a>
     
                 <!-- Reviews for the Current Pub -->
                 {% for review in pub.reviews %}
@@ -60,7 +60,7 @@
             </div>
             
             <!-- Card Icon Section -->
-            <div class="card-icons" style="position: absolute; bottom: 0; right: 0;">
+            <div class="card-icons">
                 {% if pub.food_served %}
                     <i class="fas fa-utensils tooltipped" data-position="bottom" data-tooltip="Serves Food"></i>
                 {% endif %}
