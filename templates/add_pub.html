@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% block content %}
 
     <h3 class="light-blue-text text-darken-4 center-align">Add Pub</h3>
@@ -9,49 +10,33 @@
             <!-- Pub name -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
-                    <input id="name" name="name" minlength="3" maxlength="50"
-                        type="text" class="validate" required>
                     <label for="name">Pub Name</label>
+                    <input id="name" name="name" minlength="3" maxlength="50" type="text" class="validate" required>
                 </div>
             </div>
 
              <!-- Pub location -->
              <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-map-marker-alt prefix light-blue-text text-darken-4"></i>
-                    <input id="location" name="location" minlength="3" maxlength="50"
-                        type="text" class="validate" required>
                     <label for="location">Pub Location</label>
+                    <input id="location" name="location" minlength="3" maxlength="50" type="text" class="validate" required>
                 </div>
             </div>
 
             <!-- Pub description -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
-                    <textarea id="description" name="description" minlength="5"
-                        maxlength="1000" class="materialize-textarea validate" required></textarea>
                     <label for="description">Pub Description</label>
+                    <textarea id="description" name="description" minlength="5" maxlength="1000" class="materialize-textarea validate" required></textarea>
                 </div>
             </div>
     
          <!-- Food served radio button -->
             <div class="row">
                 <div class="input-field col s12">
-                    <label class="flex-row">
-                        <i class="fas fa-utensils prefix light-blue-text text-darken-4"></i>
-                        <span class="question">Does the pub serve food?</span>
-                        <span class="radio-group">
-                            <label class="radio_label">
-                                <input name="food_served" type="radio" value="yes" required/>
-                                <span>Yes</span>
-                            </label>
-                            <label>
-                                <input name="food_served" type="radio" value="no" required/>
-                                <span>No</span>
-                            </label>
-                        </span>
+                    <label>
+                        <input name="food_served" type="checkbox" value="yes" required>
+                        <span>Does the pub serve food?</span>
                     </label>
                 </div>
             </div>
@@ -59,19 +44,9 @@
         <!-- Dogs allowed inside radio button -->
             <div class="row margin-custom">
                 <div class="input-field col s12">
-                    <label class="flex-row">
-                        <i class="fas fa-paw prefix light-blue-text text-darken-4"></i>
-                        <span class="question">Are dogs allowed inside the Pub?</span>
-                        <span class="radio-group">
-                            <label class="radio_label">
-                                <input name="dogs_allowed" type="radio" value="yes" required/>
-                                <span>Yes</span>
-                            </label>
-                            <label>
-                                <input name="dogs_allowed" type="radio" value="no" required />
-                                <span>No</span>
-                            </label>
-                        </span>
+                    <label>
+                        <input name="dogs_allowed" type="checkbox" value="yes" required>
+                        <span>Are dogs allowed inside the Pub?</span>
                     </label>
                 </div>
             </div>
@@ -79,19 +54,9 @@
              <!-- Dogs water provided radio button -->
              <div class="row margin-custom">
                 <div class="input-field col s12">
-                    <label class="flex-row">
-                        <i class="mdi--bowl prefix light-blue-text text-darken-4"></i>
-                        <span class="question">Does the Pub provide drinking water for dogs?</span>
-                        <span class="radio-group">
-                            <label class="radio_label">
-                                <input name="water_provided" type="radio" value="yes" required />
-                                <span>Yes</span>
-                            </label>
-                            <label>
-                                <input name="water_provided" type="radio" value="no" required />
-                                <span>No</span>
-                            </label>
-                        </span>
+                    <label>
+                        <input name="water_provided" type="checkbox" value="yes" required>
+                        <span>Does the Pub provide drinking water for dogs?</span>
                     </label>
                 </div>
             </div>
@@ -99,19 +64,9 @@
              <!-- Dog meals offered radio button -->
              <div class="row margin-custom">
                 <div class="input-field col s12">
-                    <label class="flex-row">
-                        <i class="fa-solid fa-bowl-food prefix light-blue-text text-darken-4"></i>
-                        <span class="question">Does the Pub offer Dog meals?</span>
-                        <span class="radio-group">
-                            <label class="radio_label">
-                                <input name="dog_meals" type="radio" value="yes" required/>
-                                <span>Yes</span>
-                            </label>
-                            <label>
-                                <input name="dog_meals" type="radio" value="no" required/>
-                                <span>No</span>
-                            </label>
-                        </span>
+                    <label>
+                        <input name="dog_meals" type="checkbox" value="yes" required>
+                        <span>Does the Pub offer Dog meals?</span>
                     </label>
                 </div>
             </div>
@@ -119,19 +74,9 @@
              <!-- Enjoyable walks nearby radio button -->
              <div class="row margin-custom">
                 <div class="input-field col s12">
-                    <label class="flex-row">
-                        <i class="fas fa-hiking prefix light-blue-text text-darken-4"></i>
-                        <span class="question">Are there enjoyable walks nearby that are dog-friendly?</span>
-                        <span class="radio-group">
-                            <label class="radio_label">
-                                <input name="nearby_walks" type="radio" value="yes" required />
-                                <span>Yes</span>
-                            </label>
-                            <label>
-                                <input name="nearby_walks" type="radio" value="no" required/>
-                                <span>No</span>
-                            </label>
-                        </span>
+                    <label>
+                        <input name="nearby_walks" type="checkbox" value="yes" required>
+                        <span>Are there enjoyable walks nearby that are dog-friendly?</span>
                     </label>
                 </div>
             </div>
@@ -139,19 +84,9 @@
             <!-- loving_staff radio button -->
             <div class="row margin-custom">
                 <div class="input-field col s12">
-                    <label class="flex-row">
-                        <i class="fas fa-heart prefix light-blue-text text-darken-4"></i>
-                        <span class="question"> Do the staff offer a warm and friendly welcome to dogs?</span>
-                        <span class="radio-group">
-                            <label class="radio_label">
-                                <input name="loving_staff" type="radio" value="yes" required />
-                                <span>Yes</span>
-                            </label>
-                            <label>
-                                <input name="loving_staff" type="radio" value="no" required/>
-                                <span>No</span>
-                            </label>
-                        </span>
+                    <label>
+                        <input name="loving_staff" type="checkbox" value="yes" required>
+                        <span>Do the staff offer a warm and friendly welcome to dogs?</span>
                     </label>
                 </div>
             </div>
@@ -168,4 +103,3 @@
     </div>
 
 {% endblock %}
-
