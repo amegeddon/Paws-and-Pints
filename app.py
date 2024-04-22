@@ -210,10 +210,6 @@ def add_pub():
         flash("User not found.")
         return redirect(url_for("login"))
 
-    print("User ID:", user["_id"])  # Debugging statement
-
-
-
     if request.method == "POST":
         pub_name = request.form.get("name")
         pub_location = request.form.get("location")
@@ -224,9 +220,6 @@ def add_pub():
         dog_meals = request.form.get("dog_meals") == "yes"
         nearby_walks = request.form.get("nearby_walks") == "yes"
         loving_staff = request.form.get("loving_staff") == "yes"
-
-        user_id = user["_id"]
-        print("User ID for Pub:", user_id)  # Debugging statement
 
         pub_data = {
             "name": pub_name,
@@ -240,8 +233,6 @@ def add_pub():
             "loving_staff": loving_staff,
             "user_id": user_id
         }
-
-        print("Pub Data:", pub_data)  # Debugging statement
 
           # Insert the pub into the database
         try:
@@ -457,15 +448,16 @@ def edit_pub(pub_id):
             flash("You are not authorized to edit this pub.")
             return redirect(url_for("get_pubs"))
 
-        pub_name = request.form.get('name')
-        pub_location = request.form.get('location')
-        pub_description = request.form.get('description')
-        food_served = request.form.get('food_served') == 'yes'
-        dogs_allowed = request.form.get('dogs_allowed') == 'yes'
-        water_provided = request.form.get('water_provided') == 'yes'
-        dog_meals = request.form.get('dog_meals') == 'yes'
-        nearby_walks = request.form.get('nearby_walks') == 'yes'
-        loving_staff = request.form.get('loving_staff') == 'yes'
+        # Update pub details
+        pub_name = request.form.get("name")
+        pub_location = request.form.get("location")
+        pub_description = request.form.get("description")
+        food_served = request.form.get("food_served") == "yes"
+        dogs_allowed = request.form.get("dogs_allowed") == "yes"
+        water_provided = request.form.get("water_provided") == "yes"
+        dog_meals = request.form.get("dog_meals") == "yes"
+        nearby_walks = request.form.get("nearby_walks") == "yes"
+        loving_staff = request.form.get("loving_staff") == "yes"
 
         pub_data = {
             "name": pub_name,
@@ -484,11 +476,13 @@ def edit_pub(pub_id):
         try:
             mongo.db.pubs.update_one({"_id": ObjectId(pub_id)}, {"$set": pub_data})
             flash("Pub successfully updated.")
-            return redirect(url_for("profile", username=username))
         except Exception as e:
             flash("An error occurred while updating the pub.")
             app.logger.error(f"Error updating pub: {e}")
             return redirect(url_for("profile", username=username))
+
+        # Redirect to page for editing photo
+        return redirect(url_for("edit_photo", pub_id=pub_id))
 
     else:
         # Retrieve the pub from the database
@@ -498,8 +492,7 @@ def edit_pub(pub_id):
             return redirect(url_for("get_pubs"))
 
         return render_template("edit_pub.html", pub=pub)
-    
-    
+
     
 @app.route("/photo_upload/<pub_id>", methods=["GET", "POST"])
 def photo_upload(pub_id):
@@ -537,6 +530,28 @@ def get_photo(pub_id):
         return send_file("static/images/bunny.jpg", mimetype='image/jpeg')
 
 
+@app.route("/edit_photo/<pub_id>", methods=["GET", "POST"])
+def edit_photo(pub_id):
+    pub = mongo.db.pubs.find_one({"_id": ObjectId(pub_id)})
+    
+    if request.method == "POST":
+        uploaded_file = request.files.get('photo')
+
+        if uploaded_file:
+            # Read the contents of the uploaded file as binary data
+            file_data = uploaded_file.read()
+
+            photo_data = {
+                "filename": uploaded_file.filename,
+                "data": Binary(file_data),
+                "pub_id": ObjectId(pub_id)
+            }
+
+            result = mongo.db.photos.update_one({"pub_id": ObjectId(pub_id)}, {"$set": photo_data}, upsert=True)
+
+            return redirect(url_for("profile", username=session.get("user")))
+    
+    return render_template("edit_photo.html", pub=pub)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
