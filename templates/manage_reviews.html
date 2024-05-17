@@ -9,11 +9,14 @@
                 <img class="activator" src="{{ url_for('get_photo', pub_id=pub._id) }}">
             </div>
             <div class="card-content">
+                
                 <!-- Delete Button -->
+            <div class="right-align">
                 <form action="{{ url_for('confirm_delete_pub', pub_id=pub._id) }}" method="POST">
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="waves-effect waves-light btn-small red darken-1">Delete</button>
                 </form>
+            </div>
 
                 <!-- Card Title and Details -->
                 <span class="card-title activator grey-text text-darken-4">{{ pub.name }}<i class="fas fa-angle-down right"></i></span>
@@ -55,10 +58,12 @@
                                 </div>
 
                                 <!-- Delete Review Button -->
+                                <div class="mt-3">
                                 <form action="{{ url_for('confirm_delete_review', review_id=review._id) }}" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="waves-effect waves-light btn-small red darken-1">Delete</button>
                                 </form>
+                                </div>
                             </div>
                         </div>
                     </div>
