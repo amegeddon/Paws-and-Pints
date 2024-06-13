@@ -35,7 +35,19 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('user_rating').value = index + 1;
       });
     });
-  });
   
-
+  
+  /* Search function */
+  $('#search').on('keyup', function() {
+    var searchText = $(this).val().toLowerCase();
+    $('#cardContainer .card').each(function() { 
+        var cardText = $(this).text().toLowerCase();
+        if (cardText.indexOf(searchText) === -1) {
+            $(this).hide();
+        } else {
+            $(this).show();
+        }
+    });
+});
+});
   

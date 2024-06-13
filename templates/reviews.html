@@ -1,6 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="row">
+
+
+    <!-- Search Bar -->
+    <div class="row">
+        <div class="col s12">
+            <div class="input-field">
+                <input type="text" id="search" placeholder="Search...">
+                <label for="search">Search for keywords</label>
+            </div>
+        </div>
+    </div>
+    
+<div class="row"  id="cardContainer">
     {% for pub in pubs %}
     <div class="col s12 m4">
         <div class="card" style="position: relative;">
