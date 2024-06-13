@@ -1,3 +1,14 @@
+nav .brand-logo {
+    margin-left: 2%;
+}
+
+nav ul li:last-child a {
+    margin-right: 1.5em;
+}
+
+
+
+
 .text-shadow {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -115,3 +126,8 @@
 .mt-3 { margin-top: 24px; }
 .mt-4 { margin-top: 32px; }
 .mt-5 { margin-top: 40px; }
+
+/* this needs to go in a media query for larger devices */
+.row .col:nth-child(-n+3) .card {
+    margin-top: 20%; 
+}
