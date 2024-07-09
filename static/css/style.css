@@ -136,3 +136,9 @@ nav ul li:last-child a {
 .searchbar {
     margin-top: 5%;
 }
+
+/* float right */
+.float-right {
+    float: right;
+    margin-left: auto; 
+}
