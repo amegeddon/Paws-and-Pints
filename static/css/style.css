@@ -129,5 +129,10 @@ nav ul li:last-child a {
 
 /* this needs to go in a media query for larger devices */
 .row .col:nth-child(-n+3) .card {
-    margin-top: 20%; 
+    margin-top: 10%; 
+}
+
+
+.searchbar {
+    margin-top: 5%;
 }

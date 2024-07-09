@@ -45,12 +45,12 @@ def get_pubs():
                     num_reviews += 1
                 except ValueError:
                     print(f"Invalid rating value: {user_rating}")
-                    # Optionally, you can log this or handle it as needed
+                   
         
         avg_rating = total_ratings / num_reviews if num_reviews > 0 else 0
-        pub['average_rating'] = avg_rating  # Add average rating to the pub data
+        pub['average_rating'] = avg_rating  
         
-    return render_template("reviews.html", pubs=pubs)  # Corrected indentation
+    return render_template("reviews.html", pubs=pubs)  
 
 
 
