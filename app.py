@@ -36,18 +36,22 @@ def get_pubs():
         
         total_ratings = 0
         num_reviews = 0
+        
         for review in pub_reviews:
-            total_ratings += int(review['user_rating'])
-            num_reviews += 1
+            user_rating = review.get('user_rating')
+            if user_rating is not None:
+                try:
+                    total_ratings += int(user_rating)
+                    num_reviews += 1
+                except ValueError:
+                    print(f"Invalid rating value: {user_rating}")
+                    # Optionally, you can log this or handle it as needed
         
-        if num_reviews > 0:
-            pub['average_rating'] = total_ratings / num_reviews
-        else:
-            pub['average_rating'] = 0
+        avg_rating = total_ratings / num_reviews if num_reviews > 0 else 0
+        pub['average_rating'] = avg_rating  # Add average rating to the pub data
         
-        print(f"Pub ID: {pub_id_str}, Total Ratings: {total_ratings}, Num Reviews: {num_reviews}, Average Rating: {pub['average_rating']}")
+    return render_template("reviews.html", pubs=pubs)  # Corrected indentation
 
-    return render_template("reviews.html", pubs=pubs)
 
 
 
@@ -209,6 +213,8 @@ def add_pub():
     if user is None:
         flash("User not found.")
         return redirect(url_for("login"))
+    
+    user_id = user.get('_id') 
 
     if request.method == "POST":
         pub_name = request.form.get("name")
