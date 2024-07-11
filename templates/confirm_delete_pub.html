@@ -1,15 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
-
-<h1>Confirm Deletion</h1>
-<p>Are you sure you want to delete the Pub entry titled "{{ pub.name }}"?</p>
-<form action="{{ url_for('delete_pub', pub_id=pub._id) }}" method="post">
-    <input type="hidden" name="_method" value="DELETE">
-    <button type="submit" class="waves-effect waves-light btn-small red darken-1">Confirm Delete</button>
-    <a href="{{ url_for('manage_reviews') }}" class="waves-effect waves-light btn-small">Cancel</a>
-
-
-</form>
+<div class = "center-align">
+    <h1>Confirm Deletion</h1>
+    <p>Are you sure you want to delete the Pub entry titled "{{ pub.name }}"?</p>
+    <form action="{{ url_for('delete_pub', pub_id=pub._id) }}" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit" class="waves-effect waves-light btn-small red darken-1">Confirm Delete</button>
+        <a href="{{ url_for('manage_reviews') }}" class="waves-effect waves-light btn-small">Cancel</a>
+    </form>
+</div>
 
 {% endblock %}
