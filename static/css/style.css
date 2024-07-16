@@ -181,3 +181,25 @@ label {
     float: right;
     margin-left: auto; 
 }
+
+@media (max-width: 600px) {
+    .password-label {
+        margin: 10px; /* Adjust margin */
+        text-align: center;
+    }
+    .login-button, .add-pub-button {
+        margin-top: 20%;
+    }
+    .full-width-btn {
+        width: 100%;
+        margin-bottom: 10px;
+        align-items: center;
+    }
+    .btn-large {
+        font-size: 13px; /* Adjust font size as needed */
+      
+    }
+    .hide {
+        display: none;
+    }
+}
