@@ -53,8 +53,6 @@
 - Support Local Businesses: Users can support local pubs that cater to dog owners by promoting and patronizing these establishments, thereby contributing to the local economy.
 
 
-
-
 ### Site Owner Goals
 
 - Develop an entertaining and engaging platform that allows users to contribute to a growing database of dog-friendly pubs by submitting reviews, ratings, and photos, enriching the platform for the benefit of all users. 
@@ -106,48 +104,88 @@
 
 ### Colour Scheme
 
-- Consistency was maintained in the color scheme across all screens, with the primary background color being #daa520. This choice was made as the vibrant orange was a good compliment to the images used, creating a cohesive and aesthetically pleasing visual experience.
-- The background color for the heading, #e5d6c2, was deliberately selected for its ability to complement the vibrant orange whilst also maintaining a good contrast with the black text color for readability.
+- Consistency was maintained in the color scheme across all screens, with the primary background color being #e8f5e9. This choice was made as the light green color gives excellent readability for black text and gives a calm, fresh appearance to the site. The dark blue of the nav bar, #1e3a5f, compliments this background color well and looks quite stark against it. The most important element in considering the design of this site is that it is simple, clear and straightfoward to navigate. 
+
+
 
 ### Fonts
 
-- Google Fonts were  integrated into the website, with Lato as the primary font, accompanied by a sans-serif fallback for optimal readability across all screens. To inject a stylish but playful touch, Poiret One with its art deco easthetic was selected for the game title and headings, this font pairs nicely with Lato. 
+- Google Fonts were  integrated into the website, with Lora as the primary font, accompanied by a sans-serif fallback for optimal readability across all screens. To inject a stylish but playful touch, Pacifico was selected for the headings, this font pairs nicely with Lato. 
 
 ### Structure
 
-- The website structure has been designed for user-friendliness, emphasizing easy learning and navigation. Key components of the game include:
+- The website structure has been designed for user-friendliness, emphasizing easy navigation. Key components of the game include:
  
-  1.  Home Page / Start Screen: 
-      - Features game title and instructions for guidance.
-      - Game difficulty button select, allowing users to select their preferred difficulty level.
+  1.  Home Page / Pub Directory: 
+      - Title: Dog Friendly Pubs in Anglesey - provides context for the directory and lets the user know immediately if the content is for them or not. 
+      - displays all the Pubs listed in the directory using cards that display a photo of the pub, pub name, pub location and the average rating of the pub. Clicking on the reveal button displays a description of the pub alongside all the pub reviews. Users are here invited to elave their own reviews. 
+      - icons at the very bottom of the card lets users know whether the pub serves food, whether dogs are allowed inside, is water provided for dogs, are meals offered for dogs, is there beautiful walks nearby and, finally, whether the staff were friendly. These aspects were focused on as research revealed that these are the most important consideration for those that like to include their dogs on adventures. 
+      
 
-  2.  Main Game Screen:
+  2.  login Page:
 
-      - Reveals a hidden name with underscores for each letter.
-      - Highlights the number of remaining guesses in the round.
-      - Clear representation of advancement throughout the gaming experience through the use of a progress bar
-      - Scoreboard showing current score. 
-      - A "Back" button is included for users to easily return to the home page/start sceren at their convenience.
+      - Short explaination for user that instructs them of the need to log in to be able to leave a review or add a pub. 
+      - hyper link that user can click and be redirected to if they dont already have an account and need to register.
+      - username and password input boxes. 
+      - show password clickbox that can be toggled to reveal the inputted password. 
 
-  3. Correct guess screen: 
+  3. Registration page: 
       - Reveals congratulations message alongside a philosophical quote. 
       - Features background image of euripides in the bath shouting eureka. 
       - Displays scoreboard showing total number of correct guesses.
       - This screen also features convenient options with a "Play Another Round" button and a "Quit" button for seamless navigation and user control.
 
-   4. Incorrect guess screen:   
-      - Reveals incorrect message alongside correct answer to enahance user's learning experience.
-      - Features background image of Freud 
-      - Displays scoreboard showing total number of correct guesses.
-      - Like the correct guess screen there are the options to "Play another round" or "quit" and return to the start screen. 
+      The above three pages are displayed regardless of whether or not the user has created an account. Logging in reveals the follwing additional pages. 
+
+   4. Profile Page:   
+      - brief flash message saying welcome back
+      - Displays the users reviews with edit and delete buttons allowing for changes and permenant deletion if necessary 
+      - Displays the pubs added by the user with edit and delete buttons allowing for changes and permenant deletion if necessary 
+
+   5. Add Pub Page: 
+      - reveals a basic form that asks user to fill in various details about the pub (name, location, description). Questions are then asked using check boxes, these then correspond to the icons that are displayed on the cards (meals served, dogs allowed inside, water provided, dog meals offered, beautiful walks nearby and friendly staff).
+      - clicking on the add pub button then takes the user to a page where they can either upload a photo of the pub or continue without uploading an image. If an image isnt chosen, a default image of a beautiful whippet will be used so as there is always an image of some sorts with the pub information, maintaining the site design aesthetic. 
+  
+   6. Logout Page:
+      - clicking on this logs the user out. A brief flash message is displayed letting the user know they have been logged out displays the login page, should the user then want to log back in again. 
+
+      The following page is only for the administrator. Username: admin / password: bunnyrabbit. This allows the administrator full control of all the content of the website. 
+
+   7. Manage reviews: 
+      - this is essentially a duplicate of the homepage that displays all the pubs in the directory except there is a delete button on each and every one of the cards that allows admin to delete individual pubs. 
+      - delete buttons are also utilised on all reviews associated with each pub, again allowing admin to delete individual reviews. 
+      - so as content is not deleted by accident a confirm delete button is always displayed asking for confirmation of intent.    
+
+   |**Navbar?**| **Logged Out** | **Logged In (non-admin)** | **Logged In (admin)** |
+| ----------| -------------- | ------------------------- | --------------------- |
+| Yes       | Home           | ----                      | ----                  |
+| Yes       | ---            | Profile                   | Profile               |
+| yes       | ---            | Add Pub                   | Add Pub               |
+| yes       | ---            | ---                       | Manage Reviews        |
+| Yes       | log In         | ---                       | ---                   |
+| Yes       | Register       | ---                       | ---                   |
+| Yes       | ---            | Log out                   | Log out               |
+
+
+<details><summary>Logged Out Navbar</summary>
+<img src="ADD HERE" alt="Navbar for logged out users: Home, Log In, Register.">
+</details>
+
+<details><summary>Logged In Navbar</summary>
+<img src="ADD HERE " alt="Navbar for logged in users: Home, Profile, Add Pub, Log Out. ">
+</details>
+
+<details><summary>Admin Navbar</summary>
+<img src="ADDHERE " alt="Navbar for admin: Home, Profile, Add Pub, Manage Reviews, Log out.">
+</details>
 
 ### Wireframes
 
 <details><summary>Laptop & desktop</summary>
-<img src="docs/desktopwireframe.jpg">
+<img src="ADD HERE ">
 </details>
 <details><summary>Mobile</summary>
-<img src="docs/mobilewireframes">
+<img src="ADD HERE ">
 </details>
 
 ## Technologies Used
@@ -157,10 +195,13 @@
 - HTML
 - CSS
 - JavaScript
+- Jquery
+- Python
 
 ### Frameworks, Libraries & Tools
 
-- [Bootstrap v5.1.3](https://getbootstrap.com/)
+- [Flask](https://pypi.org/project/Flask/) - Micro framework for site templating.
+- [Materialize v1.0.0](https://materializecss.com) - The framework for the website.
 - [Git](https://git-scm.com/)
 - [GitHub](https://github.com/) was used as a remote repository to store project code and host the webpage 
 - [Chrome dev tools](https://developers.google.com/web/tools/chrome-devtools)
@@ -169,6 +210,10 @@
 - [Font Awesome](https://fontawesome.com/)
 - [Google Fonts](https://fonts.google.com/)
 - [WC3 Validator](https://validator.w3.org/), [Jigsaw W3 Validator](https://jigsaw.w3.org/css-validator/), [JShint](https://jshint.com/), [Wave Validator](https://wave.webaim.org/), [Lighthouse](https://developers.google.com/web/tools/lighthouse/) and [Am I Responsive](http://ami.responsivedesign.is/) were all used to validate the website
+- [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) - Templating engine.
+- [Heroku](https://www.heroku.com) - For website deployment.
+- [MongoDB](https://www.mongodb.com) - The database used for storing information for the site.
+- [Pip](https://pypi.org/project/pip/) - To install Python packages.
 
 ## Features
 

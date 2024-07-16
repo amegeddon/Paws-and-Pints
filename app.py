@@ -25,8 +25,6 @@ mongo = PyMongo(app)
 def get_pubs():
     pubs_cursor = mongo.db.pubs.find()
     pubs = list(pubs_cursor)
-    print("Number of pubs fetched:", len(pubs))
-    print("Pubs data:", pubs)
 
     for pub in pubs:
         pub_id_str = str(pub['_id'])  
@@ -95,7 +93,7 @@ def login():
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                         session["user"] = request.form.get("username").lower()
-                        flash("Welcome, {}".format(
+                        flash("Welcome back, {}".format(
                              request.form.get("username").capitalize())) 
                         return redirect(url_for(
                             "profile", username=session["user"]))
