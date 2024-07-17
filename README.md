@@ -17,6 +17,9 @@
 - [User Stories](#user-stories)
   - [Site User](#site-user)
   - [Site Owner](#site-owner)
+- [Structure](#structure)
+  - [Site Structure](#site-structure)
+  - [Database Structure](#database-structure)
 - [Design](#design)
   - [Colour Scheme](#colour-scheme)
   - [Fonts](#fonts)
@@ -99,62 +102,12 @@
 10. Ensure a seamless user experience across all devices by implementing full responsiveness, allowing the website to adapt seamlessly to different screen sizes and device types.
 11. The user to be directed to a custom 404 error page upon entering a non-existent URL, eliminating the need to rely on the browser's back button.
 
+## Structure
 
-## Design
+### Site Structure 
 
-### Colour Scheme
-
-- Consistency was maintained in the color scheme across all screens, with the primary background color being #e8f5e9. This choice was made as the light green color gives excellent readability for black text and gives a calm, fresh appearance to the site. The dark blue of the nav bar, #1e3a5f, compliments this background color well and looks quite stark against it. The most important element in considering the design of this site is that it is simple, clear and straightfoward to navigate. 
-
-
-
-### Fonts
-
-- Google Fonts were  integrated into the website, with Lora as the primary font, accompanied by a sans-serif fallback for optimal readability across all screens. To inject a stylish but playful touch, Pacifico was selected for the headings, this font pairs nicely with Lato. 
-
-### Structure
-
-- The website structure has been designed for user-friendliness, emphasizing easy navigation. Key components of the game include:
- 
-  1.  Home Page / Pub Directory: 
-      - Title: Dog Friendly Pubs in Anglesey - provides context for the directory and lets the user know immediately if the content is for them or not. 
-      - displays all the Pubs listed in the directory using cards that display a photo of the pub, pub name, pub location and the average rating of the pub. Clicking on the reveal button displays a description of the pub alongside all the pub reviews. Users are here invited to elave their own reviews. 
-      - icons at the very bottom of the card lets users know whether the pub serves food, whether dogs are allowed inside, is water provided for dogs, are meals offered for dogs, is there beautiful walks nearby and, finally, whether the staff were friendly. These aspects were focused on as research revealed that these are the most important consideration for those that like to include their dogs on adventures. 
-      
-
-  2.  login Page:
-
-      - Short explaination for user that instructs them of the need to log in to be able to leave a review or add a pub. 
-      - hyper link that user can click and be redirected to if they dont already have an account and need to register.
-      - username and password input boxes. 
-      - show password clickbox that can be toggled to reveal the inputted password. 
-
-  3. Registration page: 
-      - Reveals congratulations message alongside a philosophical quote. 
-      - Features background image of euripides in the bath shouting eureka. 
-      - Displays scoreboard showing total number of correct guesses.
-      - This screen also features convenient options with a "Play Another Round" button and a "Quit" button for seamless navigation and user control.
-
-      The above three pages are displayed regardless of whether or not the user has created an account. Logging in reveals the follwing additional pages. 
-
-   4. Profile Page:   
-      - brief flash message saying welcome back
-      - Displays the users reviews with edit and delete buttons allowing for changes and permenant deletion if necessary 
-      - Displays the pubs added by the user with edit and delete buttons allowing for changes and permenant deletion if necessary 
-
-   5. Add Pub Page: 
-      - reveals a basic form that asks user to fill in various details about the pub (name, location, description). Questions are then asked using check boxes, these then correspond to the icons that are displayed on the cards (meals served, dogs allowed inside, water provided, dog meals offered, beautiful walks nearby and friendly staff).
-      - clicking on the add pub button then takes the user to a page where they can either upload a photo of the pub or continue without uploading an image. If an image isnt chosen, a default image of a beautiful whippet will be used so as there is always an image of some sorts with the pub information, maintaining the site design aesthetic. 
-  
-   6. Logout Page:
-      - clicking on this logs the user out. A brief flash message is displayed letting the user know they have been logged out displays the login page, should the user then want to log back in again. 
-
-      The following page is only for the administrator. Username: admin / password: bunnyrabbit. This allows the administrator full control of all the content of the website. 
-
-   7. Manage reviews: 
-      - this is essentially a duplicate of the homepage that displays all the pubs in the directory except there is a delete button on each and every one of the cards that allows admin to delete individual pubs. 
-      - delete buttons are also utilised on all reviews associated with each pub, again allowing admin to delete individual reviews. 
-      - so as content is not deleted by accident a confirm delete button is always displayed asking for confirmation of intent.    
+- The site's navigation bar provides access to all main sections, along with additional links for adding or editing content, which are available to logged-in users.
+   
 
    |**Navbar?**| **Logged Out** | **Logged In (non-admin)** | **Logged In (admin)** |
 | ----------| -------------- | ------------------------- | --------------------- |
@@ -178,6 +131,29 @@
 <details><summary>Admin Navbar</summary>
 <img src="ADDHERE " alt="Navbar for admin: Home, Profile, Add Pub, Manage Reviews, Log out.">
 </details>
+
+
+#### Database Structure
+
+For this dog-friendly pub review site, I've opted to use MongoDB for its non-relational database capabilities. This choice supports dynamic inputs across collections, facilitating diverse data storage such as user reviews, pub details, and photos.
+
+
+<img src="ADD HERE ">
+
+## Design
+
+### Colour Scheme
+
+- Consistency was maintained in the color scheme across all screens, with the primary background color being #e8f5e9. This choice was made as the light green color gives excellent readability for black text and gives a calm, fresh appearance to the site. The dark blue of the nav bar, #1e3a5f, compliments this background color well and looks quite stark against it. The most important element in considering the design of this site is that it is simple, clear and straightfoward to navigate. 
+
+
+
+### Fonts
+
+- Google Fonts were  integrated into the website, with Lora as the primary font, accompanied by a sans-serif fallback for optimal readability across all screens. To inject a stylish but playful touch, Pacifico was selected for the headings, this font pairs nicely with Lato. 
+
+
+
 
 ### Wireframes
 
@@ -217,62 +193,65 @@
 
 ## Features
 
-The website has just the one webpage and utilises a hide or Display function to toggle between the three game sections: Home page/Start Screen, Main Game Screen and End Screen. The game incorporates the following features:
+### NavBar 
 
+The top navigation bar includes the site name and adapts its links based on the user's login status. On smaller screens, the navbar collapses into a sidebar.
 
-### Home screen/Start Screen
-
-- Game title 
-- Game instructions
-- Three difficulty level buttons (easy, medium, and hard) enabling users to choose their preferred level of challenge.
-
-- User stories covered: 1, 2, 8, 9 
+For non-logged-in users, links to the home, sign-in, and register pages are available. Once logged in, users gain access to their personal profile, the option to add new pubs, and the ability to write reviews.
 
 <details><summary>See feature</summary>
-<img src="docs/startscreen.png">
+<img src="ADD HERE ">
+</details>
+
+### Home screen
+
+- Title: Dog Friendly Pubs in Anglesey - provides context for the directory and lets the user know immediately if the content is for them or not. 
+ - displays all the Pubs listed in the directory using cards that display a photo of the pub, pub name, pub location and the average rating of the pub. Clicking on the reveal button displays a description of the pub alongside all the pub reviews. Users are here invited to leave their own reviews. 
+- icons at the very bottom of the card lets users know whether the pub serves food, whether dogs are allowed inside, is water provided for dogs, are meals offered for dogs, is there beautiful walks nearby and, finally, whether the staff were friendly. These aspects were focused on as research revealed that these are the most important consideration for those that like to include their dogs on adventures. 
+- Visual feedback on the pub's rating is provided through an average rating, represented by colored stars corresponding to the average rating
+
+- User stories covered:  
+
+<details><summary>See feature</summary>
+<img src="ADD HERE">
 </details>
 
 
-### Game screen
+### login Page
 
-- Underscores for each letter of the hidden phrase
-- Input area for letters that can be submitted through either mouse click or the enter button, enhancing the game's pace for a faster and more fluid playing experience. 
-- Remaining guess attempts in the current round.
-- Visual progress bar indicating the proximity of the user to correctly guessing the concealed thinker.
-- Current user score 
+- Short explaination for user that instructs them of the need to log in to be able to leave a review or add a pub. 
+- hyper link that user can click and be redirected to if they dont already have an account and need to register.
+- username and password input boxes. 
+- show password clickbox that can be toggled to reveal the inputted password.
+- flash message to let user know that login has been sucessful.
 
-- User stories covered: 3, 4, 7
+- User stories covered: 
 
 <details><summary>See feature</summary>
-<img src="docs/main game screen.png">
+<img src="ADD HERE">
 </details>
 
 
-### Correct Guess Screen
+### Registration page
+     
+- Redirection if user needs to simply login with link that can be clicked and redirected appropiately.
+- Username and password input boxes.  
+- show password clickbox that can be toggled to reveal the inputted password.
+- flash message that appears to let user know that registration has been successful
 
-- A congratulatory message is relayed to the user, affirming that their guess was accurate, and they have successfully identified the hidden thinker.
-- Includes an image of Archimedes in the bath, exclaiming "Eureka, to infuse the game with a fun and captivating ambiance.
-- Rewards players with "Wisdom Winnings" in the form of a profound philosophical quote to instill a sense of achievement and the feeling of winning a prize.
-- Incorporation of a "Play Another Round" button for seamless navigation and continuous gameplay.
-- Displays the user's current score prominently for immediate reference.
-- Integration of a "Quit" button for users to exit the game at their discretion.
-
-- User stories covered: 5, 11, 8, 7
+- User stories covered: 
 
 <details><summary>See feature</summary>
-<img src="docs/correct answer screen.png">
+<img src="">
 </details>
 
+### Profile Page   
 
-### Wrong Guess Screen
+- brief flash message saying welcome back.
+- Displays the users reviews with edit and delete buttons allowing for changes and permanent deletion if necessary.
+- Displays the pubs added by the user with edit and delete buttons allowing for changes and permanent deletion if necessary 
 
-- A commiserations message is conveyed to the user, sharing the correct answer they missed in the guessing game.
-- an image of Freud smoking a cigar as a background accompaniment to the message, enriching the game's aesthetics for a more immersive experience.
-- Incorporation of a "Play Another Round" button for seamless navigation and continuous gameplay.
-- Displays the user's current score prominently for immediate reference.
-- Integration of a "Quit" button for users to exit the game at their discretion.
-
-- User stories covered: 6, 11, 9, 7
+- User stories covered: 
 
 <details><summary>See feature</summary>
 <img src="docs/incorrect answer screen.png">
@@ -282,13 +261,140 @@ The website has just the one webpage and utilises a hide or Display function to 
 ### 404 error page
 
 - A 404 error page is presented when users enter a non-existent URL.
-- Users are redirected to the main page with the option to continue playing via the "Let's Play the Game" button.
+
 
 - User stories covered: 12
 
 <details><summary>See feature</summary>
 <img src="docs/404 error page.png">
 </details>
+
+
+## Defensive Programming
+
+Defensive programming is implemented in order to ensure secure access control. Conditional checks verify user permissions, ensuring only admins can edit any user's posts or access admin areas. For regular users, they can only edit their own posts. Unauthorized users are redirected to the login page.
+
+Specifically, the profile route includes several security measures:
+
+Session Check: If session["user"] is not set, the user is redirected to the login page.
+Session Username Validation: The session username is retrieved from the database to confirm it matches the current session’s username.
+URL Username Match: It ensures the session username matches the username in the URL. If they don’t match, access is denied, and the user is redirected to the login page.
+These checks prevent unauthorized access and ensure that users can only access their own profiles.
+
+<details><summary>Returns User to login page</summary>
+<img src="ADD HERE " alt="The please log in message.">
+</details>
+
+## Future Implementations
+
+- Allowing the user to upload their own image and have this stored in mongoDb was a challenge, more defensive programming is needed for this function and also further research into the scaleability of storing images in this way is required, as this could become a problematic area in the future. Also, when a pub is deleted from the database the corresponding image is not being deleted, if I had more time this is something I would want to remedy immediately as this is going to add towards the strain on storage. 
+
+- a sort by function that would arrange pubs in order of highest average reviews would be beneficial as the site grew in numbers of pubs added, alongside the number of reviews. 
+
+- the search bar is operational but clumsy, it does not arrange searches from the top of the page, rather they seem to stay where they are on the page. Whilst various fixes were attempted to remedy the appearence of the search results this is a problem that remains unsolved for now. This is definetely an area to look at in the future, particularly as the number of pub entries grows as currently users are required to scroll down pass empty space to find their search results.
+
+## Deployment & Local Development
+
+### MongoDB Non-Relational Database
+
+This project uses [MongoDB](https://www.mongodb.com) for the Non-Relational Database.
+
+To obtain your own MongoDB Database URI, sign-up on their site, then follow these steps:
+
+- The name of the database on MongoDB should be called "__pub_reviews__".
+- The collection(s) needed for this database should be "__photos__", "__pubs__",__users__ and "__reviews__.
+- Click on the __pub_reviews__ name created for the project.
+- Click on the __Connect__ button.
+- Click __Connect Your Application__.
+- Copy the connection string, and replace `password` with your own password (also remove the angle-brackets).
+
+### Heroku Deployment
+
+This project uses [Heroku](https://www.heroku.com), a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
+
+Deployment steps are as follows, after account setup:
+
+- Select __New__ in the top-right corner of your Heroku Dashboard, and select __Create new app__ from the dropdown menu.
+- Your app name must be unique, and then choose a region closest to you (EU or USA), and finally, select __Create App__.
+- From the new app __Settings__, click __Reveal Config Vars__, and set your environment variables.
+
+| Key | Value |
+| --- | --- |
+| `DATABASE_URL` | user's own value |
+| `IP` | 0.0.0.0 |
+| `MONGO_DBNAME` | user's own value |
+| `MONGO_URI` | user's own value |
+| `PORT` | 5000 |
+| `SECRET_KEY` | user's own value |
+
+Heroku needs two additional files in order to deploy properly.
+
+- requirements.txt
+- Procfile
+
+You can install this project's __requirements__ (where applicable) using:
+
+- `pip3 install -r requirements.txt`
+
+If you have your own packages that have been installed, then the requirements file needs updated using:
+
+- `pip3 freeze --local > requirements.txt`
+
+The **Procfile** can be created with the following command:
+
+- `echo web: python app.py > Procfile`
+- *replace __app.py__ with the name of your primary Flask app name; the one at the root-level*
+
+NOTE: The Procfile uses a capital P and doesn't have a file extension on the end.
+
+For Heroku deployment, follow these steps to connect your own GitHub repository to the newly created app:
+
+Either:
+
+- Select __Automatic Deployment__ from the Heroku app.
+
+Or:
+
+- In the Terminal/CLI, connect to Heroku using this command: `heroku login -i`
+- Set the remote for Heroku: `heroku git:remote -a app_name` (replace *app_name* with your app name)
+- After performing the standard Git `add`, `commit`, and `push` to GitHub, you can now type:
+	- `git push heroku main`
+
+The project should now be connected and deployed to Heroku!
+
+### Local Deployment
+
+This project can be cloned or forked in order to make a local copy on your own system.
+
+For either method, you will need to install any applicable packages found within the *requirements.txt* file.
+
+- `pip3 install -r requirements.txt`.
+
+#### How to Fork
+
+By forking the GitHub Repository, we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original owner's repository.
+You can fork this repository by using the following steps:
+
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/Melody-Lisa/blissboost)
+2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
+3. Once clicked, you should now have a copy of the original repository in your own GitHub account!
+
+#### How to Clone
+
+You can clone the repository by following these steps:
+
+1. Go to the [GitHub repository](https://github.com/amegeddon/Paws-and-Pints) 
+2. Locate the Code button above the list of files and click it 
+3. Select if you prefer to clone using HTTPS, SSH, or GitHub CLI and click the copy button to copy the URL to your clipboard
+4. Open Git shell or Terminal
+5. Change the current working directory to the one where you want the cloned directory
+6. In your IDE Terminal, type the following command to clone my repository:
+	- `git clone https://github.com/amegeddon/Paws-and-Pints.git`
+7. Press Enter to create your local clone.
+
+<sup><sub>[*Back to top*](#contents)</sup></sub>
+
+-----
 
 
 ## Validation
