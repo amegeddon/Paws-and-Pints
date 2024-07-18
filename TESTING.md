@@ -48,6 +48,8 @@ Manual testing was performed continuously during development to ensure the funct
 
 The HTML on all pages of the site was validated using the W3C validator, and the CSS was also validated through the same tool. The HTML was checked by inputting the URL of the deployed site to avoid errors related to Jinja templating, while the CSS was validated via direct input.
 
+All errors flagged on this page relate to the user uploaded images, these do not have an alt tag and therefore are being raised as errors. Having looked into this issue on the slackforum it seems that users of screen readers advise to not use an alt over using a default alt that simply says "user uploaded image". Whilst this might be acceptable given that the image is decorative and supplements the pub information and reviews, it would have been more appropiate to have added an alt description to the upload photo form and encouraged users to be as descriptive as possible. This is a real limitation in terms of accessibility of this app and something to be implemented in the future. 
+
 <details><summary>Index HTML</summary>
 <img src="static/images/html-index.png">
 </details>
@@ -78,9 +80,9 @@ The HTML on all pages of the site was validated using the W3C validator, and the
 </details>
 
 >Note:
-> The 404 page was also tested via manual input and returned no errors outside of the jinja templating.
+> The 404 page was manually tested by inputting the code directly into the validator and no errors were found except for those related to the Jinja templating.
 ><details><summary>Code input for 404 here.</summary>
-><img src="static/documents/w3validated_404.png" alt="Jinja templating warnings.">
+><img src="ADD PAGE ">
 ></details>
 
 <sup><sub>[*Back to top*](#contents)</sup></sub>
@@ -89,10 +91,10 @@ The HTML on all pages of the site was validated using the W3C validator, and the
 
 ### Javascript Validation
 
-[JS Hint](https://jshint.com) has been used to test the vanilla javascript on the site. This flagged no major errors, but there were some warnings for undefined and unused variables. Both undefined variable errors are from code that has been copied from Materialize and all variables have been used within HTML files.
+[JS Hint](https://jshint.com) The JavaScript on the site was tested and no major errors were found. However, some warnings for undefined and an unused variable were flagged. The undefined variable warnings stem from code copied from Materialize, and all variables are used within HTML files.
 
 <details><summary>Vanilla Javascript</summary>
-<img src="static/documents/blissboost_jshint.png" alt="Javascript Validation with js hint">
+<img src="static/images/js-validator.png">
 </details>
 
 <sup><sub>[*Back to top*](#contents)</sup></sub>
@@ -101,10 +103,10 @@ The HTML on all pages of the site was validated using the W3C validator, and the
 
 ### Python Validation
 
-[CI Python Linter](https://pep8ci.herokuapp.com) has been used to validate all python code on the site and ensure it is pep8 compliant. This has flagged no errors with the current code.
+[CI Python Linter](https://pep8ci.herokuapp.com) has been utilized to validate Python code on the site, ensuring it complies with PEP 8 standards. Initially, this highlighted numerous whitespace errors, but these have been resolved, and the current code is now PEP 8 compliant.
 
 <details><summary>Python</summary>
-<img src="static/documents/blissboost_pythonvalidation.png" alt="Javascript Validation with js hint">
+<img src="static/images/python-validator.png">
 </details>
 
 <sup><sub>[*Back to top*](#contents)</sup></sub>

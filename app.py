@@ -27,14 +27,13 @@ def get_pubs():
     pubs = list(pubs_cursor)
 
     for pub in pubs:
-        pub_id_str = str(pub['_id'])  
+        pub_id_str = str(pub['_id'])
         pub_reviews_cursor = mongo.db.reviews.find({'pub_id': pub_id_str})
         pub_reviews = list(pub_reviews_cursor)
         pub['reviews'] = pub_reviews
-        
         total_ratings = 0
         num_reviews = 0
-        
+
         for review in pub_reviews:
             user_rating = review.get('user_rating')
             if user_rating is not None:
@@ -43,17 +42,12 @@ def get_pubs():
                     num_reviews += 1
                 except ValueError:
                     print(f"Invalid rating value: {user_rating}")
-                   
-        
+
         avg_rating = total_ratings / num_reviews if num_reviews > 0 else 0
-        pub['average_rating'] = avg_rating  
-        
-    return render_template("reviews.html", pubs=pubs)  
+        pub['average_rating'] = avg_rating
 
 
-
-
-
+    return render_template("reviews.html", pubs=pubs)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -91,11 +85,11 @@ def login():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-                    existing_user["password"], request.form.get("password")):
-                        session["user"] = request.form.get("username").lower()
-                        flash("Welcome back, {}".format(
-                             request.form.get("username").capitalize())) 
-                        return redirect(url_for(
+                 existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome back, {}".format(
+                 request.form.get("username").capitalize()))
+                return redirect(url_for(
                             "profile", username=session["user"]))
             else:
                 # invalid password match
@@ -142,16 +136,17 @@ def profile(username):
         if user_reviews:
             first_review = user_reviews[0]
             print("First Review:", first_review)
-            
         user_pubs = list(mongo.db.pubs.find({"user_id": user["_id"]}))
-        print("User Pubs:", user_pubs)   
+        print("User Pubs:", user_pubs)
 
-        return render_template("profile.html", username=username, user_reviews=user_reviews, user_pubs=user_pubs)
+        return render_template(
+         "profile.html",
+         username=username,
+         user_reviews=user_reviews,
+         user_pubs=user_pubs
+        )
 
     return redirect(url_for("login"))
-
-
-
 
 
 @app.route("/logout")
@@ -166,53 +161,43 @@ def logout():
 def write_review():
     if "user" not in session:
         return redirect(url_for("login"))
-    
+
     if request.method == "POST":
         session_username = session["user"]
-        
         # Query the database for the user
         user = mongo.db.users.find_one({"username": session_username})
-        
         title = request.form.get('title')
         review_text = request.form.get('review_text')
         user_rating = request.form.get('user_rating')
         pub_id = request.form.get('pub_id')
         user_id = user["_id"]  # Store the ObjectId of the user
-        
         review_data = {
             "title": title,
             "review_text": review_text,
             "user_rating": user_rating,
             "pub_id": pub_id,
-            "user_id": user_id 
+            "user_id": user_id
         }
-        
         mongo.db.reviews.insert_one(review_data)
-        
         flash("Review Successfully Added")
-        return redirect(url_for("get_pubs"))  
-        
+        return redirect(url_for("get_pubs"))
     else:
         pub_id = request.args.get('pub_id')
         return render_template("write_review.html", pub_id=pub_id)
-
-
-
 
 
 @app.route("/add_pub", methods=["GET", "POST"])
 def add_pub():
     # Check if user is logged in
     if "user" not in session or session["user"] is None:
-        flash("Please log in to edit a review.")
+        flash("Please log in to add a pub.")
         return redirect(url_for("login"))
 
     user = mongo.db.users.find_one({"username": session["user"]})
     if user is None:
         flash("User not found.")
         return redirect(url_for("login"))
-    
-    user_id = user.get('_id') 
+    user_id = user.get('_id')
 
     if request.method == "POST":
         pub_name = request.form.get("name")
@@ -238,16 +223,12 @@ def add_pub():
             "user_id": user_id
         }
 
-          # Insert the pub into the database
+        # Insert the pub into the database
         try:
             result = mongo.db.pubs.insert_one(pub_data)
             pub_id = result.inserted_id
         except Exception as e:
             print("Error inserting pub:", e)
-            flash("Error adding pub. Please try again.")
-            return redirect(url_for("add_pub"))
-
-        if "pub_id" not in locals():
             flash("Error adding pub. Please try again.")
             return redirect(url_for("add_pub"))
 
@@ -276,7 +257,6 @@ def confirm_delete_review(review_id):
         return redirect(url_for("profile", username=session['user']))
 
 
-
 @app.route("/delete_review/<review_id>", methods=["POST"])
 def delete_review(review_id):
     try:
@@ -292,6 +272,7 @@ def delete_review(review_id):
         flash("Review Successfully Deleted")
 
     return redirect(url_for("profile", username=session['user']))
+
 
 # Iterate over endpoint names
 for rule in app.url_map.iter_rules():
@@ -313,8 +294,7 @@ def edit_review(review_id):
     if request.method == "POST":
         # Retrieve the review from the database
         review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
-        
-        # Prevents unauthorized access to review editing
+        # Prevent unauthorized access to review editing
         if review and user["_id"] != review["user_id"]:
             flash("You are not authorized to edit this review.")
             return redirect(url_for("get_pubs"))
@@ -336,15 +316,19 @@ def edit_review(review_id):
 
         username = session.get("user")
         try:
-            mongo.db.reviews.update_one({"_id": ObjectId(review_id)}, {"$set": review_data})
+            mongo.db.reviews.update_one(
+                {"_id": ObjectId(review_id)},
+                {"$set": review_data}
+            )
             flash("Review successfully updated.")
             return redirect(url_for("profile", username=username))
+
         except Exception as e:
             flash("An error occurred while updating the review.")
             app.logger.error(f"Error updating review: {e}")
             return redirect(url_for("profile", username=username))
 
-    else:
+    else:  # GET request for editing review
         # Retrieve the review from the database
         review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
         if review and user["_id"] != review["user_id"]:
@@ -352,9 +336,7 @@ def edit_review(review_id):
             return redirect(url_for("get_pubs"))
 
         return render_template("edit_review.html", review=review)
-
     
-
 @app.route("/cancel_edit_review")
 def cancel_edit_review():
     # Redirect the user to their profile page
@@ -399,13 +381,12 @@ def delete_pub(pub_id):
     except Exception as e:
         flash("Invalid pub ID")
         return redirect(url_for("manage_reviews"))
-    
+
     result = mongo.db.pubs.delete_one({"_id": pub_id_obj})
     if result.deleted_count == 0:
         flash("Pub not found")
     else:
         flash("Pub Successfully Deleted")
-    
     return redirect(url_for("manage_reviews"))
 
 
@@ -429,7 +410,7 @@ def confirm_delete_pub(pub_id):
     else:
         flash("Invalid request method")
         return redirect(url_for("manage_reviews"))
-    
+
 
 @app.route("/edit_pub/<pub_id>", methods=["GET", "POST"])
 def edit_pub(pub_id):
@@ -446,7 +427,6 @@ def edit_pub(pub_id):
     if request.method == "POST":
         # Retrieve the pub from the database
         pub = mongo.db.pubs.find_one({"_id": ObjectId(pub_id)})
-        
         # Prevents unauthorized access to pub editing
         if pub and user["_id"] != pub["user_id"]:
             flash("You are not authorized to edit this pub.")
@@ -478,7 +458,11 @@ def edit_pub(pub_id):
 
         username = session.get("user")
         try:
-            mongo.db.pubs.update_one({"_id": ObjectId(pub_id)}, {"$set": pub_data})
+            mongo.db.pubs.update_one(
+             {"_id": ObjectId(pub_id)},
+             {"$set": pub_data}
+            )
+
             flash("Pub successfully updated.")
         except Exception as e:
             flash("An error occurred while updating the pub.")
@@ -497,14 +481,12 @@ def edit_pub(pub_id):
 
         return render_template("edit_pub.html", pub=pub)
 
-    
+
 @app.route("/photo_upload/<pub_id>", methods=["GET", "POST"])
 def photo_upload(pub_id):
-    
     pub = mongo.db.pubs.find_one({"_id": ObjectId(pub_id)})
-    
+
     if request.method == "POST":
-        
         uploaded_file = request.files.get('photo')
 
         if uploaded_file:
@@ -525,9 +507,9 @@ def photo_upload(pub_id):
 
 @app.route("/photo/<pub_id>")
 def get_photo(pub_id):
-    
+
     photo_data = mongo.db.photos.find_one({"pub_id": ObjectId(pub_id)})
-    
+
     if photo_data:
         return send_file(BytesIO(photo_data["data"]), mimetype='image/jpeg')
     else:
@@ -537,7 +519,7 @@ def get_photo(pub_id):
 @app.route("/edit_photo/<pub_id>", methods=["GET", "POST"])
 def edit_photo(pub_id):
     pub = mongo.db.pubs.find_one({"_id": ObjectId(pub_id)})
-    
+
     if request.method == "POST":
         uploaded_file = request.files.get('photo')
 
@@ -551,14 +533,15 @@ def edit_photo(pub_id):
                 "pub_id": ObjectId(pub_id)
             }
 
-            result = mongo.db.photos.update_one({"pub_id": ObjectId(pub_id)}, {"$set": photo_data}, upsert=True)
+        result = mongo.db.photos.update_one({"pub_id": ObjectId(pub_id)}, {
+            "$set": photo_data},
+            upsert=True)
+        return redirect(url_for("profile", username=session.get("user")))
 
-            return redirect(url_for("profile", username=session.get("user")))
-    
     return render_template("edit_photo.html", pub=pub)
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=True)
-    

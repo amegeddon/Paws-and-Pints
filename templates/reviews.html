@@ -13,13 +13,13 @@
         </div>
     </div>
     
-<div class="row"  id="cardContainer">
+<div class="row"  id="cardContainer"> 
     {% for pub in pubs %}
     <div class="col s12 m4">
         <div class="card" style="position: relative;">
             <!-- Card Image and Content -->
             <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="{{ url_for('get_photo', pub_id=pub._id) }}" alt="user uploaded photo">
+                <img class="activator" src="{{ url_for('get_photo', pub_id=pub._id) }}" alt="user uploaded image">
             </div>
             <div class="card-content">
                 <!-- Card Title and Details -->
