@@ -467,137 +467,6 @@ The website was tested on the following devices:
   - Googe Chrome Version 120.0.6099.199
   - Firefox Browser 121.0
 
-### Testing user stories
-
-1. Comprehensible Game Instuctions: instructions that are easy to grasp, ensuring a straightforward understanding of how to play the game.
-
-| **Feature**       | **Action**        | **Expected Result**                  | **Actual Result** |
-| ----------------- | ----------------- | ------------------------------------ | ----------------- |
-|Game instructions button| Click on Instructions button | Modal with game instructions pops up. Click on close button to close modal or click game instructions again to close | Works as expected |
-
-<details><summary>Screenshot</summary>
-<img src="docs/instructionsbutton1.png">
-<img src="docs/instructionbutton2.png">
-</details>
-
-2. Adaptable Difficulty Levels: A feature allowing me to choose from various difficulty levels, tailoring the game's challenge to my preference.
-
-| **Feature**    | **Action**                                                           | **Expected Result**                               | **Actual Result** |
-| -------------- | -------------------------------------------------------------------- | ------------------------------------------------- | ----------------- |
-| Difficulty select buttons  | Select preferred difficulty using the options of easy, medium and difficult buttons| Attempts left will adjust accordingly (easy=8, medium=6 hard=4) | Works as expected |
-
-<details><summary>Screenshot</summary>
-<img src="docs/levelselect1.png">
-<img src="docs/level2.png">
-<img src="docs/level3.png">
-<img src="docs/level4.png">
-</details>
-
-3. A hint function that displays on the final attempt at guessing the hidden thinker. 
-
-| **Feature**             | **Action**                                                             | **Expected Result**                                                                                     | **Actual Result** |
-| ----------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------------- |
-| Provide hint function  | When attempts left equals one a hint is provided that gives a clue as to the hidden thinks identity | Hint is correctly displayed at last attempt | Works as expected |
-
-<details><summary>Screenshot</summary>
-<img src="docs/hint.png">
-</details>
-
-4. Progress Tracking: A visual representation of my progress alongside the remaining number of attempts in each round, ensuring a clear understanding of my progress.
-
-| **Feature**                           | **Action**                               | **Expected Result**                                                       | **Actual Result** |
-| ------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------- | ----------------- |
-| Progress bar |The progress bar fills as the user inputs correct letters, visually illustrating their proximity to correctly guessing the philosopher| The progress bar is displayed below the letter submit button and fills according to how many letters are left to guess | Works as expected |
-
-<details><summary>Screenshot</summary>
-<img src="docs/progress1.png">
-<img src="docs/progress2.png">
-<img src="docs/progress3.png">
-<img src="docs/progress4.png">
-</details>
-
-5. Result Display: After successfully guessing a word, I would like to see a message of congratulations alongside a philosophical quote, adding a sense of achievement to the gameplay.
-
-| **Feature** | **Action**                                                               | **Expected Result**                                                                        | **Actual Result** |
-| ----------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ----------------- |
-| End Game screen | Guess the hidden thinker within the given number of attempts | Congratulations screen displays with a picture of Euripides and a philosophical quote | Works as expected |
-
-<details><summary>Screenshot</summary>
-<img src="docs/correctscreen.png">
-</details>
-
-6.  After incorrectly guessing the word, I would like to immediately know what the correct answer was. 
-
-| **Feature** | **Action**                                                               | **Expected Result**                                                                                              | **Actual Result** |
-| ----------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- | ----------------- |
-| End Game Screen | When all guess attempts have been used and the hidden thinker has not been identified | The correct answer is displayed | Works as expected |
-
-<details><summary>Screenshot</summary>
-<img src="docs/incorrectScreen.png">
-</details>
-
-7.  A scoreboard to track the frequency of correct answers, providing a clear record of successful guesses. 
-
-| **Feature**          | **Action**                                                                            | **Expected Result**                                             | **Actual Result** |
-| -------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------- |
-| Scoreboard | Correctly guess the hidden thinker | The amount of correct guesses is saved on the scoreboard displayed on both the main game and end game section | Works as expected |
-
-<details><summary>Screenshot</summary>
-<img src="docs/scoreboard1.png">
-<img src="docs/scoreboard2.png">
-</details>
-
-8. Clear Game Understanding and navigation: Ensuring users easily comprehend the game mechanics for a seamless and enjoyable experience.
-
-| **Feature**        | **Action**                                                  | **Expected Result**             | **Actual Result** |
-| ------------------ | ----------------------------------------------------------- | ------------------------------- | ----------------- |
-| Simple navigation buttons | 1. User wants to return to the start screen during game play to change difficulty setting 2. Upon end of game user wants to quit/ or play again. | 1. "back" button returns user to start screen 2.  User can choose to either "play again" or "quit" by pressing the relevant button on the end game screen  | Works as expected |
-
-<details><summary>Screenshot</summary>
-<img src="docs/backbutton1.png">
-<img src="docs/quitbutton.png">
-</details>
-
-9. Self-Challenge Capability: Providing users with the opportunity to change the difficulty setting and enhance their skills while playing.
-
-| **Feature**    | **Action**                                                           | **Expected Result**                               | **Actual Result** |
-| -------------- | -------------------------------------------------------------------- | ------------------------------------------------- | ----------------- |
-| Difficulty select buttons  | Select preferred difficulty using the options of easy, medium and difficult buttons| Attempts left will adjust accordingly (easy=8, medium=6 hard=4) | Works as expected |
-
-<details><summary>Screenshot</summary>
-<img src="docs/levelselect1.png">
-<img src="docs/level2.png">
-<img src="docs/level3.png">
-<img src="docs/level4.png">
-</details>
-
-10. Full Responsiveness: Designing the game to adapt effortlessly to various screen sizes and devices, ensuring accessibility for all users.
-
-| **Feature**  | **Action**                               | **Expected Result**       | **Actual Result** |
-| ------------ | ---------------------------------------- | ------------------------- | ----------------- |
-| Responsive design used throughout project | Change device or screen size | Displays correctly without layout issues | Works as expected |
-
-<details><summary>Screenshot</summary>
-<img src="docs/galaxy fold.png">
-<img src="docs/ipad pro.png">
-<img src="docs/iphone SE.png">
-<img src="docs/iphone_se_landscape.png">
-<img src="docs/iphone12_landscape.png">
-<img src="docs/nesthub.png">
-<img src="docs/surfaceduo.png">
-<img src="docs/surfacepro7.png">
-</details>
-
-11. The user to be directed to a custom 404 error page upon entering a non-existent URL, eliminating the need to rely on the browser's back button.
-
-| **Feature**                      | **Action**                                           | **Expected Result**                        | **Actual Result** |
-| -------------------------------- | ---------------------------------------------------- | ------------------------------------------ | ----------------- |
-| 404 error page | Page cannnot be found |  Directs user back to the game via 404 error page if they type a url that doesnt exist| Works as expected |
-
-<details><summary>Screenshot</summary>
-<img src="docs/404test.png">
-</details>
-
 
 ## Bugs
 
@@ -657,26 +526,23 @@ The website was deployed using GitHub Pages by following these steps:
 6. Type git clone and paste the URL from the clipboard ($ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY)
 7. Press Enter to create your local clone
 
-## Credits
+## Testing
 
-### Images
+Please see [TESTING.md](TESTING.md) for all testing elements of this site.
 
-- arrow used on back button was taken from [Fontawesome](https://fontawesome.com/)
-- The four images used all come from Adobe Stock images and have been licensed for use [Adobe Stock Images](https://stock.adobe.com/uk)
-- Images edited to remove background and resized using adobe Photoshop 
+<sup><sub>[*Back to top*](#contents)</sup></sub>
 
+### Credits
 
-### Code
-
-- [Instructions Modal](https://getbootstrap.com/docs/5.1/components/modal) was built using the Bootstrap v5.1.3 documentation
-- https://codepen.io/cathydutton/pen/JjpxMm was used for guidance only in putting together the basic guessing game.
-- For direction regarding readme structure and markdown formatting I referred to (https://aleksandracodes.github.io/CI_PP2_SunshineGuessing) by Aleksandra. 
--  [w3schools](https://www.w3schools.com/js/js_timing.asp) was consulted to target media query at mobiles in landscape orientation. 
+- The Code Institute's module on Non-relational Database Management Systems was instrumental in setting up this app. The Taskmaster project, in particular, served as a foundation for building the Dog Friendly Pub Directory. Revisiting this module was essential to ensure comprehensive CRUD functionality throughout the site.
+-  [w3schools](https://www.w3schools.com) provided code to toggle show password. 
+-  [GeeksforGeeks](https://www.geeksforgeeks.org) code adapted to build interactive star rating system
+-  [Stackoverflow](https://stackoverflow.com/) code adapted to build search bar facility. 
+- Materialise: Code utilised from Materialised to initialise the side navbar function, the tooltip function and the collapsable component. 
 
 ## Acknowledgements
 
-Thanks in plentiful supply for everyone who has put up with me cursing javascript. 
+Thanks in plentiful supply for everyone who has put up with me recently in frustrated coder mode.
 
-- to my mentor Richard for reminding me at every mentor meeting that Javascript is brilliant
-- and to everyone else that I have hounded into playing the game and giving me feedback
-- finally, thanks to the slack community for their encouragement and advice. 
+- to my mentor Richard for patiently steering me in the right direction
+- to everyone on the course with me, as always, making me feel so much less alone in all this. 

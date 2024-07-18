@@ -15,7 +15,7 @@ function togglePasswordVisibility() {
     }
 }
 
-/* Interactive star rating system used in write_review.html */
+/* Interactive star rating system used in write_review.html, adapted from geeksforgeeks.org */
 document.addEventListener('DOMContentLoaded', function() {
     const ratingIcons = document.querySelectorAll('.star1');
   
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   
   
-  /* Search function */
+  /* Search function, adapted from StackOverflow */
   $('#search').on('keyup', function() {
     var searchText = $(this).val().toLowerCase();
     $('#cardContainer .card').each(function() { 
