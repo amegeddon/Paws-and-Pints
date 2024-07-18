@@ -74,7 +74,7 @@ The HTML on all pages of the site was validated using the W3C validator, and the
 
 
 <details><summary>CSS</summary>
-<img src="ADD HERE">
+<img src="static/images/css-validator.png">
 </details>
 
 >Note:
