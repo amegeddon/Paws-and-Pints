@@ -49,27 +49,27 @@ Manual testing was performed continuously during development to ensure the funct
 The HTML on all pages of the site was validated using the W3C validator, and the CSS was also validated through the same tool. The HTML was checked by inputting the URL of the deployed site to avoid errors related to Jinja templating, while the CSS was validated via direct input.
 
 <details><summary>Index HTML</summary>
-<img src="ADD HERE ">
+<img src="static/images/html-index.png">
 </details>
 
 <details><summary>Register HTML</summary>
-<img src="ADD HERE">
+<img src="static/images/html-register.png">
 </details>
 
 <details><summary>Log In HTML</summary>
-<img src="ADD HERE ">
+<img src="static/images/html-login.png">
 </details>
 
 <details><summary>Profile HTML</summary>
-<img src="ADD HERE">
+<img src="static/images/html-profile.png">
 </details>
 
 <details><summary>Add Pub HTML</summary>
-<img src="ADD HERE">
+<img src="static/images/html-add_pub.png">
 </details>
 
 <details><summary>Manage Reviews HTML</summary>
-<img src="ADD HERE">
+<img src="static/images/html-admin.png">
 </details>
 
 
