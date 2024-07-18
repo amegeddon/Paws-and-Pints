@@ -65,7 +65,7 @@ The HTML on all pages of the site was validated using the W3C validator, and the
 </details>
 
 <details><summary>Add Pub HTML</summary>
-<img src="static/images/html-add_pub.png">
+<img src="static/images/html_add_pub.png">
 </details>
 
 <details><summary>Manage Reviews HTML</summary>
