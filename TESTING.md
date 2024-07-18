@@ -115,7 +115,7 @@ All errors flagged on this page relate to the user uploaded images, these do not
 
 ### Lighthouse
 
-The lighthouse tool within the chrome developer tools has been used to test performance, best practices, accessibility, and SEO. Desktop and mobile tests have been run for each page.
+The Lighthouse tool in Chrome Developer Tools has been used to test performance, best practices, accessibility, and SEO. Both desktop and mobile tests have been conducted for each page.
 
 <details><summary>Index</summary>
 <img src="static/documents/lighthouse_index_desktop.png" alt="Desktop test for index page">
