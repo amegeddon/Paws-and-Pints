@@ -193,7 +193,7 @@ The Lighthouse tool in Chrome Developer Tools has been used to test performance,
 
 ### WAVE Testing
 
-Testing with [WAVE](https://wave.webaim.org) has identified issues with the img alt tags, indicating they are duplicate and potentially insufficient. To improve accessibility, users should be able to provide their own descriptive alt text. The default "user uploaded image" is not adequate.
+Testing with [WAVE](https://wave.webaim.org) has identified issues with the img alt tags, indicating they are duplicate and potentially insufficient. To improve accessibility, users should be able to provide their own descriptive alt text. The default "user uploaded image" is not adequate. Dynamically adding the {{pub.name}} has made the alt tag more meaningful but further work here is required. 
 
 
 <sup><sub>[*Back to top*](#contents)</sup></sub>
@@ -323,6 +323,7 @@ Log in | Flash message indicates success and redirects to profile | Enter correc
 | Submit Button Functional | Displays upload photo page | Click the Submit Button | Upload photo page is correctly displayed | __PASS__ |
 | Upload Button Functional | Returns user to their profile with a flash message | Uploads photo | Flash message appears and user is redirected to profile | __PASS__ |
 | Continue Without Uploading Button Functional | Returns user to their profile page | Click the Continue Without Uploading Button | User is redirected to profile page | __PASS__ |
+| get_photo flask route correctly display default image is no image is uploaded | New pub entry are given a default image of my lovely whippet dog | Adds new pub without uploading an image | Default image of lovely whippet correctly displayed | __PASS__ |
 
 
 #### Manage Reviews
