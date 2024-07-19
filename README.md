@@ -96,17 +96,17 @@
 ### Site Structure 
 
 - The site's navigation bar provides access to all main sections, along with additional links for adding or editing content, which are available to logged-in users.
-   
 
-   |**Navbar?**| **Logged Out** | **Logged In (non-admin)** | **Logged In (admin)** |
-| ----------| -------------- | ------------------------- | --------------------- |
-| Yes       | Home           | ----                      | ----                  |
-| Yes       | ---            | Profile                   | Profile               |
-| yes       | ---            | Add Pub                   | Add Pub               |
-| yes       | ---            | ---                       | Manage Reviews        |
-| Yes       | log In         | ---                       | ---                   |
-| Yes       | Register       | ---                       | ---                   |
-| Yes       | ---            | Log out                   | Log out               |
+| **Navbar?** | **Logged Out** | **Logged In (non-admin)** | **Logged In (admin)** |
+| ----------- | -------------- | ------------------------- | --------------------- |
+| Yes         | Home           | Home                      | Home                  |
+| Yes         | ---            | Profile                   | Profile               |
+| Yes         | ---            | Add Pub                   | Add Pub               |
+| Yes         | ---            | ---                       | Manage Reviews        |
+| Yes         | Log In         | ---                       | ---                   |
+| Yes         | Register       | ---                       | ---                   |
+| Yes         | ---            | Log Out                   | Log Out               |
+
 
 
 <details><summary>Logged Out Navbar</summary>
