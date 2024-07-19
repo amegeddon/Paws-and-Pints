@@ -4,7 +4,7 @@
 
 [Visit live website](https://paws-and-pints-9f68e52a491c.herokuapp.com/)
 
-![Mockup image](docs/)
+![Mockup image](<img src="static/images/responsive.png")
 
 ## Table of Content
 
@@ -62,6 +62,7 @@
 - Implement simple and intutive navigation throughout the website.
 - Craft a visually appealing design for enhanced user experience.
 - Ensure a fully responsive and accessible website.
+- A custom 404 page that redirects the user to the home screen. 
 
 
 ## User Experience
@@ -119,15 +120,15 @@
 
 
 <details><summary>Logged Out Navbar</summary>
-<img src="ADD HERE" alt="Navbar for logged out users: Home, Log In, Register.">
+<img src="static/images/loggedout.png">
 </details>
 
 <details><summary>Logged In Navbar</summary>
-<img src="ADD HERE " alt="Navbar for logged in users: Home, Profile, Add Pub, Log Out. ">
+<img src="static/images/loggedin.png">
 </details>
 
 <details><summary>Admin Navbar</summary>
-<img src="ADDHERE " alt="Navbar for admin: Home, Profile, Add Pub, Manage Reviews, Log out.">
+<img src="static/images/loggedin-admin.png">
 </details>
 
 
@@ -197,8 +198,8 @@ The top navigation bar includes the site name and adapts its links based on the 
 
 For non-logged-in users, links to the home, sign-in, and register pages are available. Once logged in, users gain access to their personal profile, the option to add new pubs, and the ability to write reviews.
 
-<details><summary>See feature</summary>
-<img src="ADD HERE ">
+<details><summary>Nav sidebar</summary>
+<img src= "static/images/sidebar.png">
 </details>
 
 ### Home screen
