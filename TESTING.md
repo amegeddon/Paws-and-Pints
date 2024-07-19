@@ -48,10 +48,8 @@ Manual testing was performed continuously during development to ensure the funct
 
 The HTML on all pages of the site was validated using the W3C validator, and the CSS was also validated through the same tool. The HTML was checked by inputting the URL of the deployed site to avoid errors related to Jinja templating, while the CSS was validated via direct input.
 
-All errors flagged on this page relate to the user uploaded images, these do not have an alt tag and therefore are being raised as errors. Having looked into this issue on the slackforum it seems that users of screen readers advise to not use an alt over using a default alt that simply says "user uploaded image". Whilst this might be acceptable given that the image is decorative and supplements the pub information and reviews, it would have been more appropiate to have added an alt description to the upload photo form and encouraged users to be as descriptive as possible. This is a real limitation in terms of accessibility of this app and something to be implemented in the future. 
-
 <details><summary>Index HTML</summary>
-<img src="static/images/html-index.png">
+<img src="static/images/html-home.png">
 </details>
 
 <details><summary>Register HTML</summary>
@@ -118,144 +116,77 @@ All errors flagged on this page relate to the user uploaded images, these do not
 The Lighthouse tool in Chrome Developer Tools has been used to test performance, best practices, accessibility, and SEO. Both desktop and mobile tests have been conducted for each page.
 
 <details><summary>Index</summary>
-<img src="static/documents/lighthouse_index_desktop.png" alt="Desktop test for index page">
+<img src="static/images/home-desktop.png">
 
-<img src="static/documents/lighthouse_index_mobile.png" alt="Mobile test for index page">
+<img src="static/images/home-mobile.png">
 </details>
 
 | | Performance | Accessibility | Best Practice | SEO |
 | :---: | :---: | :---: | :---: | :---: |
-| Desktop | 99 | 100 | 96 | 100 |
-| Mobile | 96 | 100 | 96 | 100 |
+| Desktop | 99 | 100 | 100 | 100 |
+| Mobile | 90 | 100 | 100 | 100 |
 
 <details><summary>Register</summary>
-<img src="static/documents/lighthouse_register_desktop.png" alt="Desktop test for register page">
+<img src="static/images/register-desktop.png"
 
-<img src="static/documents/lighthouse_register_mobile.png" alt="Mobile test for register page">
+<img src="static/images/register-mobile.png">
 </details>
 
 | | Performance | Accessibility | Best Practice | SEO |
 | :---: | :---: | :---: | :---: | :---: |
-| Desktop | 100 | 95 | 96 | 100 |
-| Mobile | 96 | 95 | 96 | 92 |
+| Desktop | 100 | 100 | 100| 100 |
+| Mobile | 99 | 100 | 100 | 100 |
 
 <details><summary>Log In</summary>
-<img src="static/documents/lighthouse_login_desktop.png" alt="Desktop test for log in page">
+<img src="static/images/login-desktop.png"
 
-<img src="static/documents/lighthouse_login_mobile.png" alt="Mobile test for log in page">
+<img src="static/images/login-mobile.png">
 </details>
 
 | | Performance | Accessibility | Best Practice | SEO |
 | :---: | :---: | :---: | :---: | :---: |
-| Desktop | 99 | 95 | 96 | 100 |
-| Mobile | 97 | 95 | 96 | 100 |
+| Desktop | 100 | 100 | 100 | 100 |
+| Mobile | 98 | 100 | 100 | 100 |
 
 <details><summary>Profile</summary>
-<img src="static/documents/lighthouse_profile_desktop.png" alt="Desktop test for profile page">
+<img src="static/images/profile-desktop.png>
 
-<img src="static/documents/lighthouse_profile_mobile.png" alt="Mobile test for profile page">
+<img src="static/images/profile-mobile.png">
 </details>
 
 | | Performance | Accessibility | Best Practice | SEO |
 | :---: | :---: | :---: | :---: | :---: |
-| Desktop | 94 | 100 | 74 | 90 |
-| Mobile | 86 | 100 | 96 | 92 |
+| Desktop | 100| 100 | 100 | 100 |
+| Mobile | 98 | 100 | 100 | 100 |
 
-<details><summary>Edit Profile</summary>
-<img src="static/documents/lighthouse_editprofile_desktop.png" alt="Desktop test for edit profile page">
+<details><summary>Add Pub</summary>
+<img src="static/images/add-pub-desktop.png>
 
-<img src="static/documents/lighthouse_editprofile_mobile.png" alt="Mobile test for edit profile page">
+<img src="static/images/add-pub-mobile.png">
 </details>
 
 | | Performance | Accessibility | Best Practice | SEO |
 | :---: | :---: | :---: | :---: | :---: |
-| Desktop | 100 | 95 | 96 | 100 |
-| Mobile | 93 | 95 | 96 | 100 |
+| Desktop | 100 | 100 | 100 | 100 |
+| Mobile | 98 | 100 | 100 | 100 |
 
-<details><summary>Community Posts</summary>
-<img src="static/documents/lighthouse_communityposts_desktop.png" alt="Desktop test for community posts page">
+<details><summary>Manage Reviews</summary>
+<img src="static/images/admin-desktop.png">
 
-<img src="static/documents/lighthouse_communityposts_mobile.png" alt="Mobile test for community posts page">
+<img src="static/images/mobile-admin.png">
 </details>
 
 | | Performance | Accessibility | Best Practice | SEO |
 | :---: | :---: | :---: | :---: | :---: |
-| Desktop | 84 | 96 | 96 | 90 |
-| Mobile | 62 | 96 | 96 | 92 |
+| Desktop | 99 | 95 | 100 | 100 |
+| Mobile | 91 | 95 | 100 | 100 |
 
-<details><summary>Add Post</summary>
-<img src="static/documents/lighthouse_addpost_destktop.png" alt="Desktop test for add post page">
-
-<img src="static/documents/lighthouse_addpost_mobile.png" alt="Mobile test for add post page">
-</details>
-
-| | Performance | Accessibility | Best Practice | SEO |
-| :---: | :---: | :---: | :---: | :---: |
-| Desktop | 91 | 90 | 96 | 100 |
-| Mobile | 91 | 90 | 96 | 100 |
-
-<details><summary>Edit Post</summary>
-<img src="static/documents/lighthouse_editpost_desktop.png" alt="Desktop test for edit post page">
-
-<img src="static/documents/lighthouse_editpost_mobile.png" alt="Mobile test for edit post page">
-</details>
-
-| | Performance | Accessibility | Best Practice | SEO |
-| :---: | :---: | :---: | :---: | :---: |
-| Desktop | 90 | 90 | 96 | 90 |
-| Mobile | 88 | 90 | 96 | 92 |
-
-<details><summary>Manage Themes</summary>
-<img src="static/documents/lighthouse_managethemes_desktop.png" alt="Desktop test for manage themes page">
-
-<img src="static/documents/lighthouse_managethemes_mobile.png" alt="Mobile test for manage themes page">
-</details>
-
-| | Performance | Accessibility | Best Practice | SEO |
-| :---: | :---: | :---: | :---: | :---: |
-| Desktop | 90 | 100 | 93 | 100 |
-| Mobile | 72 | 100 | 96 | 100 |
-
-<details><summary>Add Theme</summary>
-<img src="static/documents/lighthouse_addtheme_desktop.png" alt="Desktop test for add theme page">
-
-<img src="static/documents/lighthouse_addtheme_mobile.png" alt="Mobile test for add theme page">
-</details>
-
-| | Performance | Accessibility | Best Practice | SEO |
-| :---: | :---: | :---: | :---: | :---: |
-| Desktop | 95 | 95 | 96 | 100 |
-| Mobile | 86 | 95 | 96 | 100 |
-
-<details><summary>Edit Theme</summary>
-<img src="static/documents/lighthouse_edittheme_desktop.png" alt="Desktop test for edit theme page">
-
-<img src="static/documents/lighthouse_edittheme_mobile.png" alt="Mobile test for edit theme page">
-</details>
-
-| | Performance | Accessibility | Best Practice | SEO |
-| :---: | :---: | :---: | :---: | :---: |
-| Desktop | 94 | 95 | 96 | 90 |
-| Mobile | 70 | 95 | 96 | 92 |
-
-<details><summary>404 Page</summary>
-<img src="static/documents/lighthouse_404_desktop.png" alt="Desktop test for 404 page">
-
-<img src="static/documents/lighthouse_404_mobile.png" alt="Mobile test for 404 page">
-</details>
-
-| | Performance | Accessibility | Best Practice | SEO |
-| :---: | :---: | :---: | :---: | :---: |
-| Desktop | 100 | 100 | 93 | 90 |
-| Mobile | 88 | 100 | 93 | 92 |
 
 > Notes for Lighthouse Testing:
+
+>* The accessibility score is lower on the admin's Manage Reviews page due to the delete button. This button uses Materialize classes, and despite efforts, it has not been possible to adjust the red background and white text enough to provide sufficient contrast.
 >
->* Best practices has been pulled down to 96 across the site due to the site logo being in png. The logo was originally converted to webp but presented issues with rendering correctly and therefore has been left as it for the time being. Future versions of the site may either find a fix for the formatting issue, or a new logo.
->
->* Accessibility score is pulled down on all pages with forms due to poor contrast on form labels using materialize's default form styling. Further exploration with styling frameworks may be required.
->
->* Performance and best practices is pulled down on all pages with images that have been uploaded to the site via url upload. Future versions of the site look to implement image file uploads and compare performance with current results.
+>* Performance scores on mobile devices can be improved by reducing image sizes. This can be achieved by adding a function to the photo upload Flask route that automatically resizes images upon upload.
 
 <sup><sub>[*Back to top*](#contents)</sup></sub>
 
@@ -263,7 +194,8 @@ The Lighthouse tool in Chrome Developer Tools has been used to test performance,
 
 ### WAVE Testing
 
-Parts of the site have been tested for accessibility with [WAVE](https://wave.webaim.org), however, areas of the site that require log in details would return the log in page only. The index, register, and log in pages returned no errors, but picked up the same contrasting issues on the materialize form labels as lighthouse.
+Testing with [WAVE](https://wave.webaim.org) has identified issues with the img alt tags, indicating they are duplicate and potentially insufficient. To improve accessibility, users should be able to provide their own descriptive alt text. The default "user uploaded image" is not adequate.
+
 
 <sup><sub>[*Back to top*](#contents)</sup></sub>
 
@@ -275,30 +207,33 @@ Parts of the site have been tested for accessibility with [WAVE](https://wave.we
 
 >#### User Goals
 >
->- Create an account on the site.
->- Add personal details and information onto a personal profile.
->- View and create posts on the community page.
->- Edit or delete personal posts.
->- Like posts from the community page to view on their profile.
->- Delete personal account when no longer in use.
+>- Discover dog-friendly pubs across Anglesey and explore their amenities and services.
+>- Engage with authentic reviews from fellow users to make informed decisions about pub visits.
+>- Contribute to the community by adding new dog-friendly pubs and sharing personal experiences through reviews.
+>- THe ability to edit their review entries to reflect updated experiences or feedback.
+>- The ability to add pubs to the site and uploaded a photo to accompany the pub details. 
+>- The ability for the user to delete pubs and reviews that they themselves have added.
 >
+
 >#### Site Admin Goals
 >
 >In addition to user goals:
 >
->- Edit or delete any post from the community page.
->- Add, edit or delete post themes from the theme management page.
+>-  Manage pub entries and reviews seamlessly with options to edit or delete content effortlessly
+>- Create an immersive and user-friendly platform with intuitive navigation, captivating visuals, and an appealing design.
+>-  Ensure a seamless user experience across all devices by implementing full responsiveness, allowing the website to adapt seamlessly to different screen sizes and device types.
+>- The user to be directed to a custom 404 error page upon entering a non-existent URL.
 
 | Goal | Implementation | Image |
 | :---: | :---: | :---: |
-| Create an account on the site. | Users can create an account with the register page | <img src="static/documents/blissboost_register.png" style="width: 400px; height: auto;"> |
-| Add personal details and information onto a personal profile. | Users can edit their profile from the edit profile page | <img src="static/documents/blissboost_editprofile.png" style="width: 400px; height: auto;"> |
-| View and create posts on the community page. | Users can view all posts on the community page and add their own using the FAB | <img src="static/documents/blissboost_communityposts.png" style="width: 400px; height: auto;"> |
-| Edit or delete personal posts. | Users can edit their own post from the community page | <img src="static/documents/blissboost_editpost.png" style="width: 400px; height: auto;"> |
-| Like posts from the community page to view on their profile. | Users can like any post from the community page and view them on their profile |  <img src="static/documents/blissbooost_liked.png" style="width: 400px; height: auto;"> |
-| Delete personal account when no longer in use. | Users can delete their account from the profile page | <img src="static/documents/blissboost_deleteaccount.png" style="width: 400px; height: auto;"> |
-| Edit or delete any post from the community page. | Admin can edit or delete any post from the community page | <img src="static/documents/blissboost_adminposts.png" style="width: 400px; height: auto;"> |
-| Add, edit or delete post themes from the theme management page. | Admin can access the themes page in order to manage themes users can post under | <img src="static/documents/blissboost_getthemes.png" style="width: 400px; height: auto;">
+|  Discover dog-friendly pubs across Anglesey and explore their amenities and services.| Pubs are showcased in cards that reveal descriptions and reviews upon clicking. Icons highlight pub amenities, and tooltips provide detailed descriptions when hovered over | <img src="static/images/user-story1.png" style="width: 400px; height: auto;"> |
+| Engage with authentic reviews from fellow users to make informed decisions about pub visits. | Reviews are displayed when clicking on a pub, with a star system visually representing the pub's rating. Additionally, each pub's location includes an average rating, also depicted with star | <img src="static/images/user-story2.png" style="width: 400px; height: auto;"> |
+| Contribute to the community by adding new dog-friendly pubs and sharing personal experiences through reviews. | Users can add their own review of any of the pubs listed| <img src="tatic/images/user-story3.png" style="width: 400px; height: auto;"> |
+| THe ability to edit their review entries to reflect updated experiences or feedback. |Users can edit their reviews directly from their profile page. | <img src="static/images/user-story4.png" style="width: 400px; height: auto;"> |
+| The ability to add pubs to the site and uploaded a photo to accompany the pub details.  | Logged-in users can add a pub through the 'Add Pub' tab.|  <img src="static/images/user-story5.png" style="width: 400px; height: auto;"> |
+| The ability for the user to delete pubs and reviews that they themselves have added. | Logged in users can delete their reviews and pubs from the 'Profile' tab. | <img src="static/images/user-story6.png" style="width: 400px; height: auto;"> |
+| Manage pub entries and reviews seamlessly with options to edit or delete content effortlessly | Admin can edit or delete any post from the 'Manage Reviews' tab. | <img src="static/images/user-story7.png" style="width: 400px; height: auto;"> |
+|  Create an immersive and user-friendly platform with intuitive navigation, captivating visuals, and an appealing design. | The site offers a simple, straightforward design that ensures ease of use, while the photo upload feature enhances its visual appeal.| <img src="static/images/user-story8.png" style="width: 400px; height: auto;"> | Ensure a seamless user experience across all devices by implementing full responsiveness, allowing the website to adapt seamlessly to different screen sizes and device types. | The site offers full responsive design. | <img src="static/images/user-story9.png" style="width: 400px; height: auto;"> | The user to be directed to a custom 404 error page upon entering a non-existent URL.| The 404 error page features a 'Home' button that directs users back to the main page when clicked | <img src="static/images/user-story10.png" style="width: 400px; height: auto;">
 
 <sup><sub>[*Back to top*](#contents)</sup></sub>
 
@@ -309,161 +244,92 @@ Parts of the site have been tested for accessibility with [WAVE](https://wave.we
 Full testing was performed on the following devices:
 
 * Laptop
-  * Lenovo IDEAPAD Flex 5i
+  * Lenovo IDEAPAD 
 
 * Mobile
-  * Samsung Galaxy S20 FE 5G
+  * iphone 12
  
  Desktop device tested the site using the following browsers:
  
  * Google Chrome
  * Mozilla Firefox
- * Opera
  * Microsoft Edge
-
-Additional testing has been carried out by friends and colleagues including on apple devices and safari.
+ * Safari 
 
 #### Site-Wide
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
-| Navbar Links | View Different navbar links based on logged out/logged in user/logged in admin | Viewed site based on different logged in status | Links appear based on each status | __PASS__ |
-| Brand Logo | Takes you to index or profile home depending on whether you are logged in | Clicked logo | Redirected accordingly | __PASS__ |
-| Footer Links | Links open in new tabs to github and linked in | Clicked links | Links open in new tabs to github and linked in | __PASS__ |
+| Navbar Links | Display different navigation bar links based on whether the user is logged out, logged in, or an admin. | View the site based on different login statuses. | Links are displayed according to each status | __PASS__ |
+| Brand Logo | Directs user back to the home page | Clicked logo | Taken back to the home page | __PASS__ |
 
 #### Index Home
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
-| Register Button in call to action | To be taken to the register page | Clicked button | Taken to register page | __PASS__ |
-| Log in Button in call to action | To be taken to the log in page | Clicked button | Taken to log in page | __PASS__ |
+| Search Bar operational| Returns relevant search results | Entered text | Shown correct search resuts | __PASS__ |
+| Write a review link actionable (logged in) | User to be directed to 'Write a review' page | Clicked link | Taken to write review, review submitted succesfully | __PASS__ |
+| Write a review link actionable (logged out) | User to be directed to 'Login' page | Clicked link | Redirected to the login page | __PASS__ |
+| Register nav link actionable  | Returns sign up form | clicked link |Taken to Sign up page | __PASS__ |
+| Login nav link actionable  | Returns login form | clicked link |Taken to Login page | __PASS__ |
 
 #### Register Page
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
-| Form validation | Tooltip appears if input doesn't match the requested format | Input incorrect format | Tooltip appears and suggests longer password if too short | __PASS__ |
-| Password Confirmation | Flash message if passwords do not match | input unmatched passwords | Flash message appears | __PASS__ |
-| View password input | Password becomes visible | Click eye icons with password input | Passwords become visible | __PASS__ |
-| Username exists | Flash message in username exists | Enter existing username | Flash message appears | __PASS__ |
-| Register account | Flash message indicating success and redirect to profile | Register account | Flash message appears and redirected to profile | __PASS__ |
+| Login link actionable | Redirects already registered users to the login page | Clicked link | Taken to login page | __PASS__ |
+| Form validation | Error message appears to let user know they have not matched the required format | Input incorrect format | Helper text turns red and error message appears | __PASS__ |
+| Username already taken  | Flash message if username is already in use | Attempt to sign up with the same username | Flash message appears | __PASS__ |
+| View password Text | Password text revealed when user toggles 'show password' box | Clicks box | Password text becomes visible | __PASS__ |
+| Register account | Flash message indicating registrationsuccess and user redirected to their profile | Register new account | Flash message appears and user redirected to profile | __PASS__ |
 
 #### Log In Page
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
-| Form validation | Tooltip appears if input doesn't match the requested format | Input incorrect format | Tooltip appears and suggests longer password if too short | __PASS__ |
-| View password input | Password becomes visible | Click eye icon with password input | Password become visible | __PASS__ |
-| Incorrect username or password | Flash message incorrect username or password | Enter incorrect username and password | Flash message appears | __PASS__ |
-| Log in | Flash message indicating success and redirect to profile | Log in correctly | Flash message appears and redirected to profile | __PASS__ |
+| View password Text | Password text revealed when user toggles 'show password' box | Clicks box | Password text becomes visible | __PASS__ |
+| Flash Message: Incorrect Username or Password | Test with incorrect username and password | Flash message appears | PASS |
+Log in | Flash message indicates success and redirects to profile | Enter correct login credentials | Flash message appears and redirects to profile __PASS__ |
 
 #### Profile
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
-| User must exist | Flash message user not found if incorrect user and redirected home | Enter incorrect user into url | Message flashes user is directed to their profile if logged in or index if logged out | __PASS__ | 
-| View Liked posts | Collapsible expands to view posts details | Click collapsible | Post details appear | __PASS__ |
-| Unlike posts from collapsible | Post is removed | Click orange bin icon | Post is removed | __PASS__ |
-| Only view your own profile | Flash message "you can not view this page" | Enter another user in url | Flash message appears | __PASS__ |
-| Upload Photo - modal | Opens upload modal | Click FAB icon | Modal appears | __PASS__ |
-| Upload Photo - cancel | Closes modal | Click cancel link | Modal closes | __PASS__ |
-| Upload Photo | Photo appears on profile | Enter photo url in modal | Photo uploads | __PASS__ |
-| Edit profile | Taken to edit profile page | Click FAB icon | Redirected to edit profile page | __PASS__ |
-| Delete Profile -modal | Modal opens to confirm deletion | Click FAB icon | Modal opens | __PASS__ |
-| Delete Profile - cancel | Closes modal and returns to profile | Click cancel link | Modal closes | __PASS__ |
-| Delete profile | Deleted user from the database and returns to home | Click delete button | User is deleted and redirected home | __PASS__ |
 
-#### Edit Profile
+| User Profile Accessible Only to the Logged-In User | Redirects Unauthorized Access to Login Page | Enter Incorrect Username in URL | Redirects User to Login Page | PASS |
+| User Review Edit Button Functional on Profile page| Displays the user's full review with options to edit or cancel | Click the edit button | Full review details are shown |
+| Edit Button on Review Page Functional | Allows input of revised details and provides a flash message | Click the edit button | Details are updated and a flash message is displayed |
+| Cancel Edit Review Button Functional | Redirects User to Profile | Click Cancel Button | User Redirected to Profile | PASS |
+| Delete Review Button Functional | Redirects to Confirm Deletion Page | Click Delete Button | Displays Confirm Deletion Page | PASS |
+| Cancel Delete Review Button Functional | Cancels Deletion and Redirects to Profile Page | Click Cancel Button | Deletion Canceled and Redirected to Profile Page | PASS |
+| Edit Pub Details Button Operational | Shows Pub form pre-filled with the user's previous input | Click the Edit button to modify pub information | Updates pub details, displays a flash message, and user directed to upload photo page | PASS |
+| Edit Pub Details Button Operational | Shows Pub form pre-filled with the user's previous input | Click the Edit button to modify pub information | Updates pub details, displays a flash message, and user directed to upload photo page | PASS |
+| Upload new photo button functional | Updates image and redirects user to their profile page | Click button and upload new image | Updates pub image, displays flash message and redirects to profile page | PASS |
+| Continue without uploading image button | Directs user back to their profile page | Click button | User redirected to profile page | PASS |
 
-| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
-| --- | --- | --- | --- | --- |
-| Enter details as you wish | Details updated in profile and flash message for success | Enter details in some fields | Flash message appears and details updated | __PASS__ |
-| Cancel edit | Return to profile page | Click cancel link | Returned to profile | __PASS__ |
-| Only edit your own profile | Flash unauthorized message and redirect to profile | Entered another username in url | Flash message appears and redirected | __PASS__ |
 
-#### Community Posts
+#### Add Pub
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
-| Must be logged in to view this page | Flash message log in to continue, redirect to login | Access by url entry | Flash message appears, redirected to log in | __PASS__ |
-| Search Posts | Show posts based on title, theme or author | Entered various titles, themes and users into search bar | Relevant posts appear | __PASS__ |
-| Clear search | Return to view all posts on page | Clicked clear search button | All posts return | __PASS__ |
-| View post description | Show post description on click | Click card action or theme image | Post description appears | __PASS__ |
-| Like post | Heart icon changes and add one to like count | Click heart icon | Icon and like count change | __PASS__ |
-| Add post | Directs to add post page | Click FAB icon | Derected to add post page | __PASS__ |
-| Edit post | Icon appears only on users' own posts (Admin can edit all posts), directs to edit post page | Click edit icon | Directed to edit post page | __PASS__ |
 
-#### Add Post
+| Submission blocked if inputs are left empty | Submission of partially completed forms blocked with an error message instructing the user to complete the required fields | Enter information in some but not all fields | An error message appears, and submission prevented | PASS |
+| Submit button functional | Displays upload photo page | Click button | Upload photo page correctly displayed | __PASS__ |
+| Upload button functional | Returns user to their profile and flash message appears  | uploads photo | Flash message appears and user redirected to profile | __PASS__ |
+| Continue without uploading button functional | Returns user to their profile page | Clicks button | User redirected to profile page  | __PASS__ |
 
-| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
-| --- | --- | --- | --- | --- |
-| Must be logged in to view this page | Flash message log in to continue, redirect to login | Access by url entry | Flash message appears, redirected to log in | __PASS__ |
-| Form Validation | Tooltip appears to inform you to input into all fields | Tried posting with empty fields | Tooltip appears | __PASS__ |
-| Cancel add post | Return to community page | Click cancel link | Returned to posts page | __PASS__ |
-| Add Post | Post added to community page with flash message | Input correctly and click add post button | Post added and flash message appears | __PASS__ |
 
-#### Edit Post
+#### Manage Reviews
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
-| Must be logged in to view this page | Flash message log in to continue, redirect to login | Access by url entry | Flash message appears, redirected to log in | __PASS__ |
-| Must be the author to edit post | Flash unauthorized message, redirect to community page | Access by url entry | Message flashed and redirected | __PASS__ |
-| Form Validation | Tooltip appears to inform you to input into all fields | Tried updating with empty fields | Tooltip appears | __PASS__ |
-| Cancel Edit post | Return to community page | Click cancel link | Returned to posts page | __PASS__ |
-| Edit Post | Post updated to community page with flash message | Input correctly and click add post button | Post updated and flash message appears | __PASS__ |
-| Edit Any Post - Admin | Post updated to community page with flash message | Input correctly and click add post button | Post updated and flash message appears | __PASS__ |
-| Delete Post - modal | Modal opens for confirmation | Click delete link | Modal opens | __PASS__ |
-| Delete Post - cancel | Modal closes without deletion | Click cancel link | Modal closes | __PASS__ |
-| Delete Post | Post deleted from database and no longer appears in community page | Click delete button | Post is deleted and does not appear | __PASS__ |
-
-#### Get Themes
-
-| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
-| --- | --- | --- | --- | --- |
-| Must be logged in to view this page | Flash message log in to continue, redirect to login | Access by url entry | Flash message appears, redirected to log in | __PASS__ |
-| Must be Admin to view this page | Flash unauthorized message, redirect to profile page | Access by url entry | Message flashed and redirected | __PASS__ |
-| Add Theme | Directed to add theme page | Click add theme button | Directed to add theme page | __PASS__ |
-| Edit Theme | Directed to edit theme page | Click edit theme button | Directed to edit theme page | __PASS__ |
-
-#### Add Theme
-
-| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
-| --- | --- | --- | --- | --- |
-| Must be logged in to view this page | Flash message log in to continue, redirect to login | Access by url entry | Flash message appears, redirected to log in | __PASS__ |
-| Must be Admin to view this page | Flash unauthorized message, redirect to profile page | Access by url entry | Message flashed and redirected | __PASS__ |
-| Form Validation | Tooltip appears to inform you to input into all fields | Tried updating with empty fields | Tooltip appears | __PASS__ |
-| Cancel Add Theme | Return to themes page | Click cancel link | Returned to themes page | __PASS__ |
-| Add Theme | Theme added to themes page with flash message | Input correctly and click add post button | Theme updated and flash message appears | __PASS__ |
-
-#### Edit Theme
-
-| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
-| --- | --- | --- | --- | --- |
-| Must be logged in to view this page | Flash message log in to continue, redirect to login | Access by url entry | Flash message appears, redirected to log in | __PASS__ |
-| Must be Admin to view this page | Flash unauthorized message, redirect to profile page | Access by url entry | Message flashed and redirected | __PASS__ |
-| Form Validation | Tooltip appears to inform you to input into all fields | Tried updating with empty fields | Tooltip appears | __PASS__ |
-| Cancel Edit Theme | Return to themes page | Click cancel link | Returned to themes page | __PASS__ |
-| Edit Theme | Theme updated to themes page with flash message | Input correctly and click add post button | Theme updated and flash message appears | __PASS__ |
-| Delete Theme - modal | Modal appears for confirmation | Click delete link | Modal appears | __PASS__ |
-| Delete Theme - cancel | Modal closes without deletion | Click cancel link | Modal closes | __PASS__ |
-| Delete Theme | Theme is deleted from the database and no longer appears on theme page | Click delete button | Theme is deleted and no longer appears | __PASS__ |
-
-#### 404 Page
-
-| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
-| --- | --- | --- | --- | --- |
-| Appears when incorrect url entered | View 404 page | Input incorrect url path | Page appears | __PASS__ |
-| Home button | User is returned to index if logged out or their profile if logged in | Click Home button | Redirected accordingly | __PASS__ |
-
-<sup><sub>[*Back to top*](#contents)</sup></sub>
-
------
-
-### Accessibility Testing
-
-Accessibility has been tested via narrator for windows and talkback on android. This has highlighted issues with focusing on the floating action button on mobile. Alternative hidden nav links have been added to the navbar for editing profile and adding posts to enable talkback users to access the site fully without impacting the original styling of the site until a solution can be found.
-
-<sup><sub>[*Back to top*](#contents)</sup></sub>
+| User must be logged in to access this page | Redirects to the login page if not authenticated | Access via direct URL entry | Redirects to login page | PASS |
+| Delete Review Button Functional | Redirects to Confirm Deletion Page | Click Delete Button | Displays Confirm Deletion Page | PASS |
+| Confirm Delete Review Button Functional | Review deleted, flash message displayed and user redirected to manage reviews page | Click confirm deletion Button | 'Review sucessfully deleted' message displayed, user returned to manage reviews page.| PASS |
+| Cancel Delete Review Button Functional | Cancels Deletion, user returned to manage reviews page | Click Cancel Button | Deletion Canceled and Redirected to Manage Reviews Page | PASS |
+| Delete Pub Button Operational | Redirects to confirm deletion page | Click button | Confirm deletion page displayed. | PASS |
+| Confirm Delete Pub Button Functional | Pub deleted, flash message displayed and user redirected to manage reviews page | Click confirm deletion Button | 'Pub sucessfully deleted' message displayed, user returned to manage reviews page.| PASS |
+ |
 
 -----
 
@@ -471,11 +337,30 @@ Accessibility has been tested via narrator for windows and talkback on android. 
 
 ### Solved Bugs
 
-| # | Issue | Details | What was done | Fixed? |
-| --- | --- | --- | --- | --- |
-| 1 | Unlike Post icons on profile not rendering | When viewing the liked posts collapsible on the profile page, the icons for removing the posts would not appear on the page | Removed "{% if post._id\|string in session["liked] %}" from above the icons. This would have been redundant code as the post has to be liked in order for it to be viewed on the profile. | __YES__ |
-| 2 | Upload image files | The site was originally going to allow users to upload image files to use for their profile page. The functionality appeared to work but the image would not render on the page. |  This has now been moved to the future features section to be explored later. | __REMOVED__ |
-| 3 | Searching by post title | When using the search bar on the community page, posts were not being found when a search was conducted for specific post titles | The issue seemed to resolve itself after a day. | __???__ |
+| Bug                                                                                                                                         | Fix                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Initial rendering of reviews.html failed with a cursor object error.  | The problem arose from using 'reviews.pub_name' to access database information. However, 'reviews' represents the entire cursor object retrieved from MongoDB, while 'pub_name' is an attribute of each individual document (review) within the cursor. Changing 'reviews' to 'review' in the iteration loop resolved the error.   | 
+
+ Side navbar mobile function not working, 404 error on js file being returned  | A simple typo had caused this error, the Javascript folder had been named 'jss'. Correcting it to 'js', resolved the issue and the scripts.js file was able to be located and executed    | 
+
+
+
+Encountered a type error while attempting to implement a visual star rating system based on the users rating.   | The issue stemmed from comparing a string to an integer, resulting in a TypeError. Resolution involved converting the rating to an integer using the int() function before comparison, thereby rectifying the issue."   | 
+
+Resolved an issue where the food bowl icon failed to display in the review card main panel.  | The problem stemmed from a typo in the MongoDB naming pairs, where 'dog_meals=True' was incorrectly written as 'dog_meals=:True'. By removing the erroneous '=', the fontawesome food bowl icon now displays correctly.  | 
+
+After implementing a for loop in the get_pubs application to fetch and render reviews associated with pub IDs, only pubs were displayed on the homepage without any reviews |   To address this, debugging statements were integrated into the route function, revealing that although both pubs and reviews were retrieved from the database, there were no reviews associated with pub IDs. A thorough examination of the MongoDB collections highlighted a data type discrepancy: the reviews collection utilized "pub_id" as a string, while the pubs collection employed ObjectId. This mismatch prevented proper association between pubs and reviews.
+
+Resolution: To resolve the issue, code was added to convert ObjectId to a string format when retrieving data from the pubs collection. This adjustment ensured compatibility between the pub IDs in both collections, enabling accurate linkage between pubs and their associated reviews. With the data type mismatch rectified, the reviews were successfully associated with the corresponding pubs, allowing them to be displayed on the homepage as intended.   | 
+
+Issue around displaying user_rating within the reviews visually as stars, despite converting to integers within the write_review route there was still a type error being displayed.  |  It appears that the issue is not with the conversion of user_rating to an integer in the route function but rather with how it's being used in the template. The error message indicated that a string object cannot be interpreted as an integer, which suggests that user_rating is still a string when it's being used in the template. Further investigation revealed that the error specifically occured on the line where user_rating was being used in the range function.
+This was resolved by adding |int after review.user_rating, which ensured that user_rating was intepreted as an integer before being used in the range function.   | 
+
+
+After creating the Flask route for editing reviews, an issue arose where the edit_review.html template failed to render. No error messages were displayed, and upon introducing print statements to the route for debugging, it became apparent that the route wasn't being called at all.Further investigation revealed a simple error in the edit_review.html template. The "Edit" button was not enclosed within a form element, preventing the GET request to the edit_review URL from being sent.   | Correcting this oversight by ensuring the "Edit" button was appropriately placed within a form element with the method set to "GET" enabled the Flask route to handle the GET request effectively, resulting in the expected rendering of the edit_review.html template
+
+
+
 
 <sup><sub>[*Back to top*](#contents)</sup></sub>
 
@@ -483,10 +368,7 @@ Accessibility has been tested via narrator for windows and talkback on android. 
 
 ### Known Bugs
 
-| # | Issue | Details | Next Steps |
-| --- | --- | --- | --- |
-| 1 | Like post icons | When liking posts on the community page the icon changes and the like count goes up, however, if a user leaves the site and returns the like post icons return to unliked status until the user likes another post. The like count remains correct. This appears to be a random occurance that does not happen every time. | This issue may be linked to the solved issue of rendering unlike icons on the profile page. The next steps in addressing this is to explore possible alternatives to the if statement within the jinja templating and test for any caching issues in the browser. |
-| 2 | Floating action buttons can not be focused on in talkback | When testing accessibility features on mobile, it was brought to my attention that the floating action buttons could not be focused on by the talkback feature. Hidden navbar links have been added to enable users to access the add post and edit profile pages but further refactoring is needed to ensure full functionality with the use of accessibility tools. | Conduct further research into floating action buttons and accessibility issues and explore alternative layouts to ensure full accessibility. |
+
 
 <sup><sub>[*Back to top*](#contents)</sup></sub>
 

@@ -88,19 +88,17 @@
 
 1. Discover dog-friendly pubs across Anglesey and explore their amenities and services.
 2. Engage with authentic reviews from fellow users to make informed decisions about pub visits.
-3. Contribute to the community by adding new dog-friendly pubs and sharing personal experiences through reviews.
-4. Enhance their experience by creating an account, enabling them to save favorite pubs for future reference on their profile page. 
-5. Enjoy the flexibility of editing their review entries to reflect updated experiences or feedback.
-6. Exercise control over their account by having the option to delete it at their discretion, ensuring user autonomy and privacy.
-
-
+3. Contribute to the community by adding new dog-friendly pubs and sharing personal experiences through reviews. 
+4. The ability to edit their review entries to reflect updated experiences or feedback.
+5. The ability to add pubs to the site and uploaded a photo to accompany the pub details. 
+6. The ability for the user to delete pubs and reviews that they themselves have added. 
 
 ### Site Owner
 
-8. Manage pub entries and reviews seamlessly with options to add, edit, or delete content effortlessly.
-9. Create an immersive and user-friendly platform with intuitive navigation, captivating visuals, and an appealing design.
-10. Ensure a seamless user experience across all devices by implementing full responsiveness, allowing the website to adapt seamlessly to different screen sizes and device types.
-11. The user to be directed to a custom 404 error page upon entering a non-existent URL, eliminating the need to rely on the browser's back button.
+7. Manage pub entries and reviews seamlessly with options to edit or delete content effortlessly.
+8. Create an immersive and user-friendly platform with intuitive navigation, captivating visuals, and an appealing design.
+9. Ensure a seamless user experience across all devices by implementing full responsiveness, allowing the website to adapt seamlessly to different screen sizes and device types.
+10. The user to be directed to a custom 404 error page upon entering a non-existent URL.
 
 ## Structure
 
@@ -396,108 +394,6 @@ You can clone the repository by following these steps:
 
 -----
 
-
-## Validation
-
-### HTML Validation
-
-The website's HTML was validated using the W3C Markup Validation Service, with all pages passing without errors.
-
-<details><summary>index.html</summary>
-<img src="docs/w3html.png">
-</details>
-
-<details><summary>404 error page</summary>
-<img src="docs/404validator.png">
-</details>
-
-### CSS Validation
-
-The W3C Jigsaw CSS Validation Service was used to validate the CSS of the website. Upon validation
-When validating all website,
-
-<details><summary>All site</summary>
-<img src="docs/w3c_css.png">
-</details>
-<details><summary>Style.css</summary>
-<img src="docs/w3cStyles.css.png">
-<img src="docs/">
-</details>
-
-### JavaScript Validation
-
-JavaScript files were validated using the JSHint JS Validation Service, revealing no significant issues.
-
-<details><summary>game.js</summary><img src="docs/jsHint.png"></details>
-
-### Accessibility
-
-The WAVE WebAIM accessibility evaluation tool was utilized to ensure compliance with accessibility standards. No errors were identified, affirming the website's accessibility. An alert was identified, suggesting that the hidden word might be mistakenly perceived as a header. To enhance accessibility, an ARIA role of "text" and an ARIA level of "0" were implemented, ensuring that the hidden word is explicitly recognized as non-header content. However, the evaulation tool contiuned to flag the alert, therefore I changed from div to a h3 element to resolve the issue.
-
-<details><summary>index.html</summary><img src="docs/wave.png"></details>
-<details><summary>404 error page</summary><img src="docs/wave404.png"></details>
-
-### Performance
-
-Google Lighthouse within Google Chrome Developer Tools served as the performance testing tool for the website, providing insights into various aspects such as performance, accessibility, SEO, and best practices. The performance scores for desktop mode were consistently excellent across all testing parameters. However, during mobile testing, the performance score registered at 63. In an effort to enhance this score, all image files underwent resizing, compression, and conversion to webp format. Additionally, to further boost performance, the CSS was minified. The combined effect of these two measures resulted in an improved performance score of 84.
-
-<details><summary>Home page desktop </summary><img src="docs/lighthouse-desktop.png"></details>
-<details><summary>Home page mobile </summary><img src="docs/mobileLighthouse.png"></details>
-<details><summary>404 page</summary><img src="docs/404 lighthouse .png"></details>
-
-
-## Testing
-
-### Performing tests on various devices
-
-The website underwent testing with Google Chrome Developer Tools, utilizing the Toggle Device Toolbar to simulate various device viewport sizes.
-
-The website was tested on the following devices:
-
-- lenovo Ideapad L340 (laptop screen)
-- Windows Surface pro 5 (small laptop screen size)
-- Ipad (tablet screen)
-- Huawei P30 (mobile screen)
-- Apple 10 (mobile screen)
-- Samsung galaxy 21 (mobile screen)
-
-### Browser compatibility
-
-- Testing has been carried out on the following browsers:
-  - Googe Chrome Version 120.0.6099.199
-  - Firefox Browser 121.0
-
-
-## Bugs
-
-| Bug                                                                                                                                         | Fix                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| Initial rendering of reviews.html failed with a cursor object error.  | The problem arose from using 'reviews.pub_name' to access database information. However, 'reviews' represents the entire cursor object retrieved from MongoDB, while 'pub_name' is an attribute of each individual document (review) within the cursor. Changing 'reviews' to 'review' in the iteration loop resolved the error.   | 
-
- Side navbar mobile function not working, 404 error on js file being returned  | A simple typo had caused this error, the Javascript folder had been named 'jss'. Correcting it to 'js', resolved the issue and the scripts.js file was able to be located and executed    | 
-
-
-
-Encountered a type error while attempting to implement a visual star rating system based on the users rating.   | The issue stemmed from comparing a string to an integer, resulting in a TypeError. Resolution involved converting the rating to an integer using the int() function before comparison, thereby rectifying the issue."   | 
-
-Resolved an issue where the food bowl icon failed to display in the review card main panel.  | The problem stemmed from a typo in the MongoDB naming pairs, where 'dog_meals=True' was incorrectly written as 'dog_meals=:True'. By removing the erroneous '=', the fontawesome food bowl icon now displays correctly.  | 
-
-After implementing a for loop in the get_pubs application to fetch and render reviews associated with pub IDs, only pubs were displayed on the homepage without any reviews |   To address this, debugging statements were integrated into the route function, revealing that although both pubs and reviews were retrieved from the database, there were no reviews associated with pub IDs. A thorough examination of the MongoDB collections highlighted a data type discrepancy: the reviews collection utilized "pub_id" as a string, while the pubs collection employed ObjectId. This mismatch prevented proper association between pubs and reviews.
-
-Resolution: To resolve the issue, code was added to convert ObjectId to a string format when retrieving data from the pubs collection. This adjustment ensured compatibility between the pub IDs in both collections, enabling accurate linkage between pubs and their associated reviews. With the data type mismatch rectified, the reviews were successfully associated with the corresponding pubs, allowing them to be displayed on the homepage as intended.   | 
-
-Issue around displaying user_rating within the reviews visually as stars, despite converting to integers within the write_review route there was still a type error being displayed.  |  It appears that the issue is not with the conversion of user_rating to an integer in the route function but rather with how it's being used in the template. The error message indicated that a string object cannot be interpreted as an integer, which suggests that user_rating is still a string when it's being used in the template. Further investigation revealed that the error specifically occured on the line where user_rating was being used in the range function.
-This was resolved by adding |int after review.user_rating, which ensured that user_rating was intepreted as an integer before being used in the range function.   | 
-
-
-After creating the Flask route for editing reviews, an issue arose where the edit_review.html template failed to render. No error messages were displayed, and upon introducing print statements to the route for debugging, it became apparent that the route wasn't being called at all.Further investigation revealed a simple error in the edit_review.html template. The "Edit" button was not enclosed within a form element, preventing the GET request to the edit_review URL from being sent.   | Correcting this oversight by ensuring the "Edit" button was appropriately placed within a form element with the method set to "GET" enabled the Flask route to handle the GET request effectively, resulting in the expected rendering of the edit_review.html template
-
-
-
-
-
-
-             |
 
 ## Deployment
 
