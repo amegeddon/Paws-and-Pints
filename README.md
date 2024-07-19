@@ -23,24 +23,14 @@
 - [Design](#design)
   - [Colour Scheme](#colour-scheme)
   - [Fonts](#fonts)
-  - [Structure](#structure)
   - [Wireframes](#wireframes)
 - [Technologies Used](#technologies-used)
   - [Languages](#languages)
   - [Frameworks, Libraries & Tools](#frameworks-libraries--tools)
 - [Features](#features)
-- [Validation](#validation)
-  - [HTML Validation](#html-validation)
-  - [CSS Validation](#css-validation)
-  - [JavaScript Validation](#javascript-validation)
-  - [Accessibility](#accessibility)
-  - [Performance](#performance)
-- [Testing](#testing)
-  - [Performing tests on various devices](#performing-tests-on-various-devices)
-  - [Browser compatibility](#browser-compatibility)
-  - [Testing user stories](#testing-user-stories)
-- [Bugs](#bugs)
+- [Future Implementations](#future-implementations)
 - [Deployment](#deployment)
+- [Testing](#testing)
 - [Credits](#credits)
 - [Acknowledgements](#acknowledgements)
 
@@ -170,7 +160,6 @@ For this dog-friendly pub review site, I've opted to use MongoDB for its non-rel
 - HTML
 - CSS
 - JavaScript
-- Jquery
 - Python
 
 ### Frameworks, Libraries & Tools
@@ -189,6 +178,7 @@ For this dog-friendly pub review site, I've opted to use MongoDB for its non-rel
 - [Heroku](https://www.heroku.com) - For website deployment.
 - [MongoDB](https://www.mongodb.com) - The database used for storing information for the site.
 - [Pip](https://pypi.org/project/pip/) - To install Python packages.
+- Jquery
 
 ## Features
 
@@ -209,10 +199,13 @@ For non-logged-in users, links to the home, sign-in, and register pages are avai
 - icons at the very bottom of the card lets users know whether the pub serves food, whether dogs are allowed inside, is water provided for dogs, are meals offered for dogs, is there beautiful walks nearby and, finally, whether the staff were friendly. These aspects were focused on as research revealed that these are the most important consideration for those that like to include their dogs on adventures. 
 - Visual feedback on the pub's rating is provided through an average rating, represented by colored stars corresponding to the average rating
 
-- User stories covered:  
 
 <details><summary>See feature</summary>
-<img src="ADD HERE">
+<img src="static/images/homescreen.png">
+</details>
+
+<details><summary>See feature</summary>
+<img src="static/images/homescreen-detail.png">
 </details>
 
 
@@ -224,10 +217,8 @@ For non-logged-in users, links to the home, sign-in, and register pages are avai
 - show password clickbox that can be toggled to reveal the inputted password.
 - flash message to let user know that login has been sucessful.
 
-- User stories covered: 
-
 <details><summary>See feature</summary>
-<img src="ADD HERE">
+<img src="static/images/login.png">
 </details>
 
 
@@ -238,10 +229,8 @@ For non-logged-in users, links to the home, sign-in, and register pages are avai
 - show password clickbox that can be toggled to reveal the inputted password.
 - flash message that appears to let user know that registration has been successful
 
-- User stories covered: 
-
 <details><summary>See feature</summary>
-<img src="">
+<img src="static/images/register.png">
 </details>
 
 ### Profile Page   
@@ -250,10 +239,20 @@ For non-logged-in users, links to the home, sign-in, and register pages are avai
 - Displays the users reviews with edit and delete buttons allowing for changes and permanent deletion if necessary.
 - Displays the pubs added by the user with edit and delete buttons allowing for changes and permanent deletion if necessary 
 
-- User stories covered: 
 
 <details><summary>See feature</summary>
-<img src="docs/incorrect answer screen.png">
+<img src="static/images/profile.png">
+</details>
+
+### Manage Reviews page    
+
+- This is only accessible to the administrator.
+- Displays all users reviews with delete buttons allowing for permanent deletion if necessary.
+- Displays all users pubs with delete buttons allowing for permanent deletion if necessary. 
+
+
+<details><summary>See feature</summary>
+<img src="static/images/admin-page.png">
 </details>
 
 
@@ -262,10 +261,8 @@ For non-logged-in users, links to the home, sign-in, and register pages are avai
 - A 404 error page is presented when users enter a non-existent URL.
 
 
-- User stories covered: 12
-
 <details><summary>See feature</summary>
-<img src="docs/404 error page.png">
+<img src="static/images/404.png">
 </details>
 
 
@@ -277,20 +274,22 @@ Specifically, the profile route includes several security measures:
 
 Session Check: If session["user"] is not set, the user is redirected to the login page.
 Session Username Validation: The session username is retrieved from the database to confirm it matches the current session’s username.
-URL Username Match: It ensures the session username matches the username in the URL. If they don’t match, access is denied, and the user is redirected to the login page.
+
+URL Username Match: It ensures the session username matches the username in the URL. If they don’t match, access is denied, a flash message reads 'You need to be logged in to view this page' and the user is redirected to the login page.
+
 These checks prevent unauthorized access and ensure that users can only access their own profiles.
 
 <details><summary>Returns User to login page</summary>
-<img src="ADD HERE " alt="The please log in message.">
+<img src="static/images/restricting-access.png">
 </details>
 
 ## Future Implementations
 
-- Allowing the user to upload their own image and have this stored in mongoDb was a challenge, more defensive programming is needed for this function and also further research into the scaleability of storing images in this way is required, as this could become a problematic area in the future. Also, when a pub is deleted from the database the corresponding image is not being deleted, if I had more time this is something I would want to remedy immediately as this is going to add towards the strain on storage. 
+- Enabling users to upload their own images and store them in MongoDB was a challenging task. This function requires more defensive programming to ensure robustness, and further research is needed to evaluate the scalability of storing images in this manner, as it may become problematic in the future. Additionally, when a pub is deleted from the database, the corresponding image is not being removed. If I had more time, addressing this issue would be a priority, as it contributes to unnecessary storage strain. One potential solution is to incorporate a function into the photo upload route that reduces image size, which could help conserve storage space.
 
-- a sort by function that would arrange pubs in order of highest average reviews would be beneficial as the site grew in numbers of pubs added, alongside the number of reviews. 
+- A sort-by function that arranges pubs by highest average reviews would be beneficial as the site grows in the number of pubs and reviews. This feature would enhance user experience by allowing visitors to easily find the most highly-rated pubs.
 
-- the search bar is operational but clumsy, it does not arrange searches from the top of the page, rather they seem to stay where they are on the page. Whilst various fixes were attempted to remedy the appearence of the search results this is a problem that remains unsolved for now. This is definetely an area to look at in the future, particularly as the number of pub entries grows as currently users are required to scroll down pass empty space to find their search results.
+- The search bar is functional but lacks polish; search results do not appear at the top of the page but remain in their original positions, creating a disorganized appearance. Despite various attempts to fix this issue, it remains unresolved. Addressing this problem will be crucial as the number of pub entries increases, as users currently need to scroll past empty space to find their search results. This area definitely needs improvement in the future.
 
 ## Deployment & Local Development
 
@@ -436,6 +435,9 @@ Please see [TESTING.md](TESTING.md) for all testing elements of this site.
 -  [GeeksforGeeks](https://www.geeksforgeeks.org) code adapted to build interactive star rating system
 -  [Stackoverflow](https://stackoverflow.com/) code adapted to build search bar facility. 
 - Materialise: Code utilised from Materialised to initialise the side navbar function, the tooltip function and the collapsable component. 
+- Information for pub descriptions has been sourced from the official websites of the establishments.
+- Photos have been obtained from Google.
+- [Heroku](https://heroku.com/) the use of this app is being provided by Code Institute. 
 
 ## Acknowledgements
 

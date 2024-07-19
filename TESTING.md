@@ -16,7 +16,7 @@ Manual testing was performed continuously during development to ensure the funct
 
 ## CONTENTS
 
-* [AUTOMATED TESTING](#automated-testing)
+* [CODE VALIDATION](#code-validation)
   * [W3C Validator](#w3c-validator)
   * [JavaScript Validator](#javascript-validation)
   * [Python Validator](#python-validation)
@@ -41,7 +41,7 @@ Manual testing was performed continuously during development to ensure the funct
 
 -----
 
-## AUTOMATED TESTING
+## CODE VALIDATION 
 
 ### W3C Validator
 
