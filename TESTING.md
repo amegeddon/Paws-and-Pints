@@ -6,7 +6,7 @@
 
 </div>
 
-<img src="ADD HERE">
+<img src="static/images/responsive.png">
 
 [View the live project here.](https://paws-and-pints-9f68e52a491c.herokuapp.com/get_pubs)
 
@@ -33,7 +33,6 @@ Manual testing was performed continuously during development to ensure the funct
     * [Add Pub](#edit-profile)
     * [Manage Reviewss](#manage-reviews)
     * [404 Page](#404-page)
-  * [Accessibility Testing](#accessibility-testing)
 * [BUGS](#bugs)
   * [Solved Bugs](#solved-bugs)
   * [Known Bugs](#known-bugs)
@@ -79,8 +78,8 @@ The HTML on all pages of the site was validated using the W3C validator, and the
 
 >Note:
 > The 404 page was manually tested by inputting the code directly into the validator and no errors were found except for those related to the Jinja templating.
-><details><summary>Code input for 404 here.</summary>
-><img src="ADD PAGE ">
+><details><summary>404 Error Page.</summary>
+><img src="static/images/404-validator.png">
 ></details>
 
 <sup><sub>[*Back to top*](#contents)</sup></sub>
@@ -367,6 +366,13 @@ After creating the Flask route for editing reviews, an issue arose where the edi
 -----
 
 ### Known Bugs
+
+       | Fix                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Search Results Display Unpredictably | Despite various attempts to style the search results with CSS, they do not consistently appear at the top of the page as expected. Further investigation is needed to determine if the issue is related to the use of Materialize for card layouts. |
+
+| Database Photos Not Deleted with Pubs | Photos stored in the database are not being removed when corresponding pubs are deleted, leading to increased storage use. This issue needs urgent attention. The current approach, which stores images as binary data, raises scalability concerns. Storing images separately via URLs could be a more efficient solution. The fact that images remain in the database even after the related pubs are deleted is not sustainable. |
+
 
 
 
