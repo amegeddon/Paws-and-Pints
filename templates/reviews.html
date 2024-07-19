@@ -21,7 +21,7 @@
             <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="{{ url_for('get_photo', pub_id=pub._id) }}" alt="User uploaded image: {{ pub.name }} ">
             </div>
-            <div class="card-content">
+            <div class="card-content trim">
                 <!-- Card Title and Details -->
                 <span class="card-title activator grey-text text-darken-4 lora-headings">{{ pub.name }}<i class="fas fa-angle-down right"></i></span>
                 <p><i class="fas fa-map-marker-alt"></i> <strong>Location: </strong>{{ pub.location }}</p> 

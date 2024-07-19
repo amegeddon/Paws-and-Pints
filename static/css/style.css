@@ -167,6 +167,13 @@ label {
     margin-top: 5%;
 }
 
+.trim {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 /* float right */
 .float-right {
     float: right;
