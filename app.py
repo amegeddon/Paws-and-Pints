@@ -126,6 +126,7 @@ def profile(username):
         # Check if the session user matches the URL username
         if session_username != username:
             print("Session user doesn't match URL username")
+            flash('Please log in to view this page', 'warning')
             return redirect(url_for('login'))
 
         # Query the database for the user
