@@ -4,7 +4,7 @@
 
 [Visit live website](https://paws-and-pints-9f68e52a491c.herokuapp.com/)
 
-![Mockup image](<img src="static/images/responsive.png")
+<img src="static/images/responsive.png">
 
 ## Table of Content
 
