@@ -193,4 +193,11 @@ label {
     .hide {
         display: none;
     }
+    .star-rating {
+        font-size: 10px;
+        padding-top: 50px;
+    }
+    .mobile-margin {
+        margin: 15px;;
+    }
 }
