@@ -23,12 +23,18 @@ mongo = PyMongo(app)
 # Code taken from Stackoverflow
 @app.errorhandler(404)
 def page_not_found(error):
-    
+    """
+    Handles 404 errors and renders the 404 page.
+    """
     return render_template('404.html'), 404
+
 
 @app.route("/")
 @app.route("/get_pubs")
 def get_pubs():
+    """
+    Retrieves and displays a list of pubs with their reviews and average ratings.
+    """
     pubs_cursor = mongo.db.pubs.find()
     pubs = list(pubs_cursor)
 
@@ -52,12 +58,16 @@ def get_pubs():
         avg_rating = total_ratings / num_reviews if num_reviews > 0 else 0
         pub['average_rating'] = avg_rating
 
-
     return render_template("reviews.html", pubs=pubs)
+
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    """
+    Handles user registration, including checking for existing usernames,
+    creating new user accounts, and redirecting to the profile page.
+    """
     if request.method == "POST":
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
@@ -81,8 +91,13 @@ def register():
     return render_template("register.html")
 
 
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """
+    Handles user login, verifying credentials and redirecting to the profile page
+    upon successful login or displaying an error message for invalid credentials.
+    """
     if request.method == "POST":
         # check if username exists in db
         existing_user = mongo.db.users.find_one(
@@ -110,8 +125,14 @@ def login():
     return render_template("login.html")
 
 
+
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    """
+    Displays the profile page for the specified username if the user is logged in.
+    Redirects to the login page if the user is not logged in or if the session user
+    does not match the URL username.
+    """
     # Check if user is logged in
     if 'user' not in session:
         print("User not logged in")
@@ -141,7 +162,6 @@ def profile(username):
             first_review = user_reviews[0]
         user_pubs = list(mongo.db.pubs.find({"user_id": user["_id"]}))
         
-
         return render_template(
          "profile.html",
          username=username,
@@ -154,6 +174,10 @@ def profile(username):
 
 @app.route("/logout")
 def logout():
+    """
+    Logs out the current user by removing them from the session cookie.
+    Redirects to the login page with a logout confirmation message.
+    """
     # remove user from session cookie
     flash("You have been logged out")
     session.pop("user")
@@ -162,6 +186,11 @@ def logout():
 
 @app.route('/write_review', methods=["GET", "POST"])
 def write_review():
+    """
+    Handles review submission for logged-in users. 
+    - POST: Adds the review to the database and redirects to the pubs page.
+    - GET: Renders the review form with the pub ID.
+    """
     if "user" not in session:
         return redirect(url_for("login"))
 
@@ -191,6 +220,11 @@ def write_review():
 
 @app.route("/add_pub", methods=["GET", "POST"])
 def add_pub():
+    """
+    Handles adding a new pub for logged-in users.
+    - POST: Validates and saves pub details to the database; redirects to photo upload page.
+    - GET: Renders the pub addition form.
+    """
     # Check if user is logged in
     if "user" not in session or session["user"] is None:
         flash("Please log in to add a pub.")
@@ -242,6 +276,11 @@ def add_pub():
 
 @app.route("/confirm_delete_review/<review_id>", methods=["GET", "POST"])
 def confirm_delete_review(review_id):
+    """
+    Handles review deletion confirmation.
+    - POST: Validates review ID, retrieves review, and renders confirmation page.
+    - GET: Returns an error if accessed with GET method.
+    """
     if request.method == "POST":
         try:
             review_id_obj = ObjectId(review_id)
@@ -262,6 +301,13 @@ def confirm_delete_review(review_id):
 
 @app.route("/delete_review/<review_id>", methods=["POST"])
 def delete_review(review_id):
+    """
+    Deletes a review based on the provided review ID.
+    - Validates the review ID.
+    - Attempts to delete the review from the database.
+    - Provides feedback on success or failure.
+    - Redirects to the user's profile page.
+    """
     try:
         review_id_obj = ObjectId(review_id)
     except Exception as e:
@@ -277,8 +323,15 @@ def delete_review(review_id):
     return redirect(url_for("profile", username=session['user']))
 
 
+
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
+    """
+    Allows users to edit their own reviews.
+    - Checks if the user is logged in and authorized.
+    - Handles both GET (for displaying the review form) and POST (for updating the review).
+    - Provides feedback on success or failure and redirects to the user's profile.
+    """
     # Check if user is logged in
     if "user" not in session or session["user"] is None:
         flash("Please log in to edit a review.")
@@ -334,15 +387,22 @@ def edit_review(review_id):
             return redirect(url_for("get_pubs"))
 
         return render_template("edit_review.html", review=review)
+
     
 @app.route("/cancel_edit_review")
 def cancel_edit_review():
+    """
+    Redirects the user to their profile page when canceling an edit review action.
+    """
     # Redirect the user to their profile page
-     return redirect(url_for("profile", username=username))
- 
+    return redirect(url_for("profile", username=username))
+
  
 @app.route("/manage_reviews")
 def manage_reviews():
+    """
+    Retrieves and displays a list of pubs along with their reviews and average ratings.
+    """
     pubs_cursor = mongo.db.pubs.find()
     pubs = list(pubs_cursor)
 
@@ -368,6 +428,10 @@ def manage_reviews():
 
 @app.route("/delete_pub/<pub_id>", methods=["POST"])
 def delete_pub(pub_id):
+    """
+    Deletes a pub from the database based on the provided pub ID.
+    Redirects to the manage reviews page with a success or error message.
+    """
     print("Delete Pub route accessed.")
     try:
         pub_id_obj = ObjectId(pub_id)
@@ -385,6 +449,11 @@ def delete_pub(pub_id):
 
 @app.route("/confirm_delete_pub/<pub_id>", methods=["GET", "POST"])
 def confirm_delete_pub(pub_id):
+    """
+    Displays a confirmation page for deleting a pub.
+    If the request method is POST, validates the pub ID and retrieves the pub details.
+    Redirects to the manage reviews page on invalid requests or errors.
+    """
     print("Confirm Delete Pub route accessed.")
     print("Pub ID:", pub_id)
     if request.method == "POST":
@@ -407,6 +476,11 @@ def confirm_delete_pub(pub_id):
 
 @app.route("/edit_pub/<pub_id>", methods=["GET", "POST"])
 def edit_pub(pub_id):
+    """
+    Allows a logged-in user to edit a pub's details.
+    On POST request, updates pub information and redirects to photo editing.
+    On GET request, displays the current pub details for editing.
+    """
     # Check if user is logged in
     if "user" not in session or session["user"] is None:
         flash("Please log in to edit a pub.")
@@ -477,6 +551,11 @@ def edit_pub(pub_id):
 
 @app.route("/photo_upload/<pub_id>", methods=["GET", "POST"])
 def photo_upload(pub_id):
+    """
+    Handles photo upload for a specific pub.
+    On POST request, saves the uploaded image to the database and redirects to the user profile.
+    On GET request, displays the photo upload form.
+    """
     pub = mongo.db.pubs.find_one({"_id": ObjectId(pub_id)})
 
     if request.method == "POST":
@@ -502,7 +581,10 @@ def photo_upload(pub_id):
 
 @app.route("/photo/<pub_id>")
 def get_photo(pub_id):
-
+    """
+    Retrieves and serves the photo associated with a specific pub ID.
+    If no photo is found, serves a default image instead.
+    """
     photo_data = mongo.db.photos.find_one({"pub_id": ObjectId(pub_id)})
 
     if photo_data:
@@ -513,6 +595,10 @@ def get_photo(pub_id):
 
 @app.route("/edit_photo/<pub_id>", methods=["GET", "POST"])
 def edit_photo(pub_id):
+    """
+    Allows users to upload or update a photo for a specific pub.
+    If a photo is uploaded, it replaces the existing photo or adds a new one.
+    """
     pub = mongo.db.pubs.find_one({"_id": ObjectId(pub_id)})
 
     if request.method == "POST":
