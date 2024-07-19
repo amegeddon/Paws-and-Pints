@@ -505,6 +505,8 @@ def photo_upload(pub_id):
                 "pub_id": ObjectId(pub_id)
             }
             mongo.db.photos.insert_one(photo_data)
+            
+            flash('Image successfully uploaded!', 'success')
 
             return redirect(url_for("profile", username=session.get("user")))
 
