@@ -148,7 +148,7 @@ The Lighthouse tool in Chrome Developer Tools has been used to test performance,
 | Mobile | 98 | 100 | 100 | 100 |
 
 <details><summary>Profile</summary>
-<img src="static/images/profile-desktop.png>
+<img src="static/images/profile-desktop.png">
 
 <img src="static/images/profile-mobile.png">
 </details>
@@ -159,7 +159,7 @@ The Lighthouse tool in Chrome Developer Tools has been used to test performance,
 | Mobile | 98 | 100 | 100 | 100 |
 
 <details><summary>Add Pub</summary>
-<img src="static/images/add-pub-desktop.png>
+<img src="static/images/add-pub-desktop.png">
 
 <img src="static/images/add-pub-mobile.png">
 </details>
@@ -227,7 +227,7 @@ Testing with [WAVE](https://wave.webaim.org) has identified issues with the img 
 | :---: | :---: | :---: |
 |  Discover dog-friendly pubs across Anglesey and explore their amenities and services.| Pubs are showcased in cards that reveal descriptions and reviews upon clicking. Icons highlight pub amenities, and tooltips provide detailed descriptions when hovered over | <img src="static/images/user-story1.png" style="width: 400px; height: auto;"> |
 | Engage with authentic reviews from fellow users to make informed decisions about pub visits. | Reviews are displayed when clicking on a pub, with a star system visually representing the pub's rating. Additionally, each pub's location includes an average rating, also depicted with star | <img src="static/images/user-story2.png" style="width: 400px; height: auto;"> |
-| Contribute to the community by adding new dog-friendly pubs and sharing personal experiences through reviews. | Users can add their own review of any of the pubs listed| <img src="tatic/images/user-story3.png" style="width: 400px; height: auto;"> |
+| Contribute to the community by adding new dog-friendly pubs and sharing personal experiences through reviews. | Users can add their own review of any of the pubs listed| <img src="static/images/user-story3.png" style="width: 400px; height: auto;"> |
 | THe ability to edit their review entries to reflect updated experiences or feedback. |Users can edit their reviews directly from their profile page. | <img src="static/images/user-story4.png" style="width: 400px; height: auto;"> |
 | The ability to add pubs to the site and uploaded a photo to accompany the pub details.  | Logged-in users can add a pub through the 'Add Pub' tab.|  <img src="static/images/user-story5.png" style="width: 400px; height: auto;"> |
 | The ability for the user to delete pubs and reviews that they themselves have added. | Logged in users can delete their reviews and pubs from the 'Profile' tab. | <img src="static/images/user-story6.png" style="width: 400px; height: auto;"> |
@@ -257,12 +257,15 @@ Full testing was performed on the following devices:
 
 #### Site-Wide
 
+
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
 | Navbar Links | Display different navigation bar links based on whether the user is logged out, logged in, or an admin. | View the site based on different login statuses. | Links are displayed according to each status | __PASS__ |
 | Brand Logo | Directs user back to the home page | Clicked logo | Taken back to the home page | __PASS__ |
 
+
 #### Index Home
+
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
@@ -272,7 +275,9 @@ Full testing was performed on the following devices:
 | Register nav link actionable  | Returns sign up form | clicked link |Taken to Sign up page | __PASS__ |
 | Login nav link actionable  | Returns login form | clicked link |Taken to Login page | __PASS__ |
 
+
 #### Register Page
+
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
@@ -282,7 +287,9 @@ Full testing was performed on the following devices:
 | View password Text | Password text revealed when user toggles 'show password' box | Clicks box | Password text becomes visible | __PASS__ |
 | Register account | Flash message indicating registrationsuccess and user redirected to their profile | Register new account | Flash message appears and user redirected to profile | __PASS__ |
 
+
 #### Log In Page
+
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
@@ -290,11 +297,12 @@ Full testing was performed on the following devices:
 | Flash Message: Incorrect Username or Password | Test with incorrect username and password | Flash message appears | PASS |
 Log in | Flash message indicates success and redirects to profile | Enter correct login credentials | Flash message appears and redirects to profile __PASS__ |
 
+
 #### Profile
+
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
-
 | User Profile Accessible Only to the Logged-In User | Redirects Unauthorized Access to Login Page | Enter Incorrect Username in URL | Redirects User to Login Page | PASS |
 | User Review Edit Button Functional on Profile page| Displays the user's full review with options to edit or cancel | Click the edit button | Full review details are shown |
 | Edit Button on Review Page Functional | Allows input of revised details and provides a flash message | Click the edit button | Details are updated and a flash message is displayed |
@@ -311,24 +319,22 @@ Log in | Flash message indicates success and redirects to profile | Enter correc
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
-
-| Submission blocked if inputs are left empty | Submission of partially completed forms blocked with an error message instructing the user to complete the required fields | Enter information in some but not all fields | An error message appears, and submission prevented | PASS |
-| Submit button functional | Displays upload photo page | Click button | Upload photo page correctly displayed | __PASS__ |
-| Upload button functional | Returns user to their profile and flash message appears  | uploads photo | Flash message appears and user redirected to profile | __PASS__ |
-| Continue without uploading button functional | Returns user to their profile page | Clicks button | User redirected to profile page  | __PASS__ |
+| Submission Blocked if Inputs Are Left Empty | Submission of incomplete forms is blocked with an error message instructing the user to complete all required fields | Enter information in some but not all fields | An error message appears, and submission is prevented | PASS |
+| Submit Button Functional | Displays upload photo page | Click the Submit Button | Upload photo page is correctly displayed | __PASS__ |
+| Upload Button Functional | Returns user to their profile with a flash message | Uploads photo | Flash message appears and user is redirected to profile | __PASS__ |
+| Continue Without Uploading Button Functional | Returns user to their profile page | Click the Continue Without Uploading Button | User is redirected to profile page | __PASS__ |
 
 
 #### Manage Reviews
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
-| User must be logged in to access this page | Redirects to the login page if not authenticated | Access via direct URL entry | Redirects to login page | PASS |
+| User Must Be Logged In to Access This Page | Redirects to the login page if not authenticated | Access via direct URL entry | Redirects to login page | PASS |
 | Delete Review Button Functional | Redirects to Confirm Deletion Page | Click Delete Button | Displays Confirm Deletion Page | PASS |
-| Confirm Delete Review Button Functional | Review deleted, flash message displayed and user redirected to manage reviews page | Click confirm deletion Button | 'Review sucessfully deleted' message displayed, user returned to manage reviews page.| PASS |
-| Cancel Delete Review Button Functional | Cancels Deletion, user returned to manage reviews page | Click Cancel Button | Deletion Canceled and Redirected to Manage Reviews Page | PASS |
-| Delete Pub Button Operational | Redirects to confirm deletion page | Click button | Confirm deletion page displayed. | PASS |
-| Confirm Delete Pub Button Functional | Pub deleted, flash message displayed and user redirected to manage reviews page | Click confirm deletion Button | 'Pub sucessfully deleted' message displayed, user returned to manage reviews page.| PASS |
- |
+| Confirm Delete Review Button Functional | Review deleted, flash message displayed, and user redirected to manage reviews page | Click Confirm Deletion Button | 'Review successfully deleted' message displayed, user returned to manage reviews page | PASS |
+| Cancel Delete Review Button Functional | Cancels deletion, user returned to manage reviews page | Click Cancel Button | Deletion canceled and user redirected to manage reviews page | PASS |
+| Delete Pub Button Operational | Redirects to Confirm Deletion Page | Click Button | Confirm Deletion Page displayed | PASS |
+| Confirm Delete Pub Button Functional | Pub deleted, flash message displayed, and user redirected to manage reviews page | Click Confirm Deletion Button | 'Pub successfully deleted' message displayed, user returned to manage reviews page | PASS |
 
 -----
 
@@ -338,28 +344,13 @@ Log in | Flash message indicates success and redirects to profile | Enter correc
 
 | Bug                                                                                                                                         | Fix                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| Initial rendering of reviews.html failed with a cursor object error.  | The problem arose from using 'reviews.pub_name' to access database information. However, 'reviews' represents the entire cursor object retrieved from MongoDB, while 'pub_name' is an attribute of each individual document (review) within the cursor. Changing 'reviews' to 'review' in the iteration loop resolved the error.   | 
-
- Side navbar mobile function not working, 404 error on js file being returned  | A simple typo had caused this error, the Javascript folder had been named 'jss'. Correcting it to 'js', resolved the issue and the scripts.js file was able to be located and executed    | 
-
-
-
-Encountered a type error while attempting to implement a visual star rating system based on the users rating.   | The issue stemmed from comparing a string to an integer, resulting in a TypeError. Resolution involved converting the rating to an integer using the int() function before comparison, thereby rectifying the issue."   | 
-
-Resolved an issue where the food bowl icon failed to display in the review card main panel.  | The problem stemmed from a typo in the MongoDB naming pairs, where 'dog_meals=True' was incorrectly written as 'dog_meals=:True'. By removing the erroneous '=', the fontawesome food bowl icon now displays correctly.  | 
-
-After implementing a for loop in the get_pubs application to fetch and render reviews associated with pub IDs, only pubs were displayed on the homepage without any reviews |   To address this, debugging statements were integrated into the route function, revealing that although both pubs and reviews were retrieved from the database, there were no reviews associated with pub IDs. A thorough examination of the MongoDB collections highlighted a data type discrepancy: the reviews collection utilized "pub_id" as a string, while the pubs collection employed ObjectId. This mismatch prevented proper association between pubs and reviews.
-
-Resolution: To resolve the issue, code was added to convert ObjectId to a string format when retrieving data from the pubs collection. This adjustment ensured compatibility between the pub IDs in both collections, enabling accurate linkage between pubs and their associated reviews. With the data type mismatch rectified, the reviews were successfully associated with the corresponding pubs, allowing them to be displayed on the homepage as intended.   | 
-
-Issue around displaying user_rating within the reviews visually as stars, despite converting to integers within the write_review route there was still a type error being displayed.  |  It appears that the issue is not with the conversion of user_rating to an integer in the route function but rather with how it's being used in the template. The error message indicated that a string object cannot be interpreted as an integer, which suggests that user_rating is still a string when it's being used in the template. Further investigation revealed that the error specifically occured on the line where user_rating was being used in the range function.
-This was resolved by adding |int after review.user_rating, which ensured that user_rating was intepreted as an integer before being used in the range function.   | 
-
-
-After creating the Flask route for editing reviews, an issue arose where the edit_review.html template failed to render. No error messages were displayed, and upon introducing print statements to the route for debugging, it became apparent that the route wasn't being called at all.Further investigation revealed a simple error in the edit_review.html template. The "Edit" button was not enclosed within a form element, preventing the GET request to the edit_review URL from being sent.   | Correcting this oversight by ensuring the "Edit" button was appropriately placed within a form element with the method set to "GET" enabled the Flask route to handle the GET request effectively, resulting in the expected rendering of the edit_review.html template
-
-
-
+| Initial rendering of `reviews.html` failed with a cursor object error.  | The issue was caused by using `reviews.pub_name` to access database information. Since `reviews` represents the entire cursor object from MongoDB, and `pub_name` is an attribute of each individual review document, changing `reviews` to `review` in the iteration loop resolved the error. |
+| Side navbar mobile function not working; 404 error on JS file being returned  | A typo in the folder name caused the issue. The folder was incorrectly named `jss` instead of `js`. Renaming it to `js` allowed the `scripts.js` file to be located and executed correctly. |
+| Encountered a type error while implementing a visual star rating system based on user ratings.   | The error occurred due to comparing a string to an integer. The solution was to convert the rating to an integer using the `int()` function before comparison. |
+| Resolved an issue where the food bowl icon failed to display in the review card main panel.  | The issue was due to a typo in MongoDB naming pairs: `dog_meals=True` was incorrectly written as `dog_meals=:True`. Removing the erroneous `=` corrected the display of the FontAwesome food bowl icon. |
+| Issue with displaying reviews associated with pub IDs on the homepage. | Although both pubs and reviews were retrieved from the database, no reviews were associated with pub IDs due to a data type mismatch: the reviews collection used `"pub_id"` as a string, while the pubs collection used `ObjectId`. Adding code to convert `ObjectId` to a string format resolved the issue, enabling accurate linkage between pubs and reviews. |
+| Issue with displaying `user_rating` visually as stars. Despite converting to integers within the `write_review` route, a type error was still present. | The problem was not with converting `user_rating` to an integer but with its usage in the template. The error message indicated that a string object could not be interpreted as an integer. Adding `|int` after `review.user_rating` in the template ensured that `user_rating` was treated as an integer before being used in the `range` function. |
+| Issue with the `edit_review.html` template failing to render. | The issue was due to the "Edit" button not being enclosed within a form element, preventing the GET request from being sent. Placing the "Edit" button within a form element with the method set to "GET" resolved the issue, allowing the Flask route to handle the request and render the template correctly. |
 
 <sup><sub>[*Back to top*](#contents)</sup></sub>
 
@@ -367,15 +358,9 @@ After creating the Flask route for editing reviews, an issue arose where the edi
 
 ### Known Bugs
 
-       | Fix                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Bug                                                                 | Fix                                                                                    |
+| ------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | Search Results Display Unpredictably | Despite various attempts to style the search results with CSS, they do not consistently appear at the top of the page as expected. Further investigation is needed to determine if the issue is related to the use of Materialize for card layouts. |
-
 | Database Photos Not Deleted with Pubs | Photos stored in the database are not being removed when corresponding pubs are deleted, leading to increased storage use. This issue needs urgent attention. The current approach, which stores images as binary data, raises scalability concerns. Storing images separately via URLs could be a more efficient solution. The fact that images remain in the database even after the related pubs are deleted is not sustainable. |
 
-
-
-
 <sup><sub>[*Back to top*](#contents)</sup></sub>
-
------
