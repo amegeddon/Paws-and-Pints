@@ -20,7 +20,7 @@
             </button>
         </div>
         <div class="col s12 m6 center-align full-width-btn">
-            <a href="{{ url_for('get_pubs') }}" class="btn-large red darken-1 text-shadow">
+            <a href="{{ url_for('profile', username=session['user']) }}" class="btn-large red darken-1 text-shadow">
                 Continue without uploading <i class="fas fa-arrow-right right hide"></i>
             </a>
         </div>
