@@ -119,7 +119,6 @@ def profile(username):
 
     # Grab the session user's username from db
     session_username = mongo.db.users.find_one({"username": session["user"]})["username"]
-    print("Session Username:", session_username)
 
     if session_username:
         print("Session user is:", session_username)
@@ -131,20 +130,17 @@ def profile(username):
 
         # Query the database for the user
         user = mongo.db.users.find_one({"username": username})
-        print("User:", user)
 
         if not user:
             print("User not found")
             return "User not found"
 
         user_reviews = list(mongo.db.reviews.find({"user_id": user["_id"]}))
-        print("User Reviews:", user_reviews)
 
         if user_reviews:
             first_review = user_reviews[0]
-            print("First Review:", first_review)
         user_pubs = list(mongo.db.pubs.find({"user_id": user["_id"]}))
-        print("User Pubs:", user_pubs)
+        
 
         return render_template(
          "profile.html",
@@ -281,11 +277,6 @@ def delete_review(review_id):
     return redirect(url_for("profile", username=session['user']))
 
 
-# Iterate over endpoint names
-for rule in app.url_map.iter_rules():
-    print(rule.endpoint)
-
-
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
     # Check if user is logged in
@@ -352,11 +343,8 @@ def cancel_edit_review():
  
 @app.route("/manage_reviews")
 def manage_reviews():
-    print("Manage reviews route accessed.")
     pubs_cursor = mongo.db.pubs.find()
     pubs = list(pubs_cursor)
-    print("Number of pubs fetched:", len(pubs))
-    print("Pubs data:", pubs)
 
     for pub in pubs:
         pub_id_str = str(pub['_id'])  
@@ -375,8 +363,6 @@ def manage_reviews():
         else:
             pub['average_rating'] = 0
         
-        print(f"Pub ID: {pub_id_str}, Total Ratings: {total_ratings}, Num Reviews: {num_reviews}, Average Rating: {pub['average_rating']}")
-
     return render_template("manage_reviews.html", pubs=pubs)
 
 
