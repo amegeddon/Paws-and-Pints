@@ -157,11 +157,6 @@ label {
 .mt-4 { margin-top: 32px; }
 .mt-5 { margin-top: 40px; }
 
-/* this needs to go in a media query for larger devices */
-.row .col:nth-child(-n+3) .card {
-    margin-top: 10%; 
-}
-
 
 .searchbar {
     margin-top: 5%;
@@ -182,7 +177,7 @@ label {
 
 @media (max-width: 600px) {
     .password-label {
-        margin: 10px; /* Adjust margin */
+        margin: 10px; 
         text-align: center;
     }
     .login-button, .add-pub-button {
@@ -194,7 +189,7 @@ label {
         align-items: center;
     }
     .btn-large {
-        font-size: 13px; /* Adjust font size as needed */
+        font-size: 13px; 
       
     }
     .hide {
@@ -206,5 +201,11 @@ label {
     }
     .mobile-margin {
         margin: 15px;;
+    }
+}
+
+@media (min-width: 992px) {
+    .row .col:nth-child(-n+3) .card {
+        margin-top: 10%; 
     }
 }
