@@ -127,7 +127,7 @@
 For this dog-friendly pub review site, I've opted to use MongoDB for its non-relational database capabilities. This choice supports dynamic inputs across collections, facilitating diverse data storage such as user reviews, pub details, and photos.
 
 
-<img src="ADD HERE ">
+<img src="static/images/data-structure.jpg">
 
 ## Design
 
@@ -146,11 +146,23 @@ For this dog-friendly pub review site, I've opted to use MongoDB for its non-rel
 
 ### Wireframes
 
-<details><summary>Laptop & desktop</summary>
-<img src="ADD HERE ">
+<details><summary>HOME</summary>
+<img src="static/images/home.jpg">
 </details>
-<details><summary>Mobile</summary>
-<img src="ADD HERE ">
+<details><summary>LOGIN </summary>
+<img src="static/images/login-wireframe.jpg">
+</details>
+<details><summary>REGISTER</summary>
+<img src="static/images/register-wireframe.jpg">
+</details>
+<details><summary>PROFILE</summary>
+<img src="static/images/profile-wireframe.jpg">
+</details>
+<details><summary>ADD PUB</summary>
+<img src="static/images/pub-wireframe.jpg">
+</details>
+<details><summary>MANAGE REVIEWS (admin page)</summary>
+<img src="static/images/admin-wireframe.jpg">
 </details>
 
 ## Technologies Used
